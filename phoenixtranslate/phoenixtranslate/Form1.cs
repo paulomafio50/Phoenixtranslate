@@ -28,7 +28,7 @@ namespace phoenixtranslate
         private void button1_Click(object sender, EventArgs e)
         {
             geckoWebBrowser1.Navigate("https://www.deepl.com/translator");
-           
+         
         }
         public string Extract(string xpath, string type)
         {
@@ -95,6 +95,7 @@ namespace phoenixtranslate
 
         private GeckoHtmlElement GetElement(GeckoWebBrowser wb, string xpath)
         {
+
             GeckoHtmlElement elm = null/* TODO Change to default(_) if this is not a reference type */;
 
             if (xpath.StartsWith("/"))
@@ -134,6 +135,15 @@ namespace phoenixtranslate
             }
 
             return result;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+                //GeckoTextAreaElement inputter = (GeckoTextAreaElement)geckoWebBrowser1.Document.G
+           
+
+            textBox1.Text = Extract("/html[1]/body[1]/div[2]/div[1]/div[1]/div[4]/div[3]/div[1]/textarea[1]", "text");
         }
     }
 }
