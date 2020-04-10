@@ -1,6 +1,6 @@
 ﻿namespace phoenixtranslate
 {
-    partial class Form1
+    partial class Translator
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -33,6 +33,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.buttontranslatorconfig = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // geckoWebBrowser1
@@ -46,7 +47,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(680, 32);
+            this.button1.Location = new System.Drawing.Point(120, 646);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -56,7 +57,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(418, 50);
+            this.button2.Location = new System.Drawing.Point(680, 646);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -80,17 +81,28 @@
             this.textBox2.Size = new System.Drawing.Size(230, 85);
             this.textBox2.TabIndex = 4;
             // 
-            // Form1
+            // buttontranslatorconfig
+            // 
+            this.buttontranslatorconfig.Location = new System.Drawing.Point(38, 26);
+            this.buttontranslatorconfig.Name = "buttontranslatorconfig";
+            this.buttontranslatorconfig.Size = new System.Drawing.Size(75, 23);
+            this.buttontranslatorconfig.TabIndex = 5;
+            this.buttontranslatorconfig.Text = "config";
+            this.buttontranslatorconfig.UseVisualStyleBackColor = true;
+            this.buttontranslatorconfig.Click += new System.EventHandler(this.buttontranslatorconfig_Click);
+            // 
+            // Traducteur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1209, 710);
+            this.Controls.Add(this.buttontranslatorconfig);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.geckoWebBrowser1);
-            this.Name = "Form1";
+            this.Name = "Traducteur";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -105,6 +117,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button buttontranslatorconfig;
     }
 }
 

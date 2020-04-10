@@ -10,15 +10,20 @@ using Gecko.DOM;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 using System.Text;
+using Gecko.Events;
 
 namespace phoenixtranslate
 {
-    public partial class Form1 : Form
+    public partial class Translator : Form
     {
-        public Form1()
+        public string textesource;
+        public string textescible="";
+        public string textescibleold;
+        public Translator()
         {
             InitializeComponent();
             Xpcom.Initialize("Firefox");
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -28,8 +33,11 @@ namespace phoenixtranslate
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-         
+            fill("/html[1]/body[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/textarea[1]", textBox1.Text);
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox2.Text = Extract("/html[1]/body[1]/div[2]/div[1]/div[1]/div[4]/div[3]/div[1]/textarea[1]", "text");
         }
         public string Extract(string xpath, string type)
         {
@@ -138,23 +146,8 @@ namespace phoenixtranslate
             return result;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
 
-            //GeckoTextAreaElement inputter = (GeckoTextAreaElement)geckoWebBrowser1.Document.G
-            fill("/html[1]/body[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/textarea[1]", textBox1.Text);
-            //wait(5000);
-
-
-                while (Extract("/html[1]/body[1]/div[2]/div[1]/div[1]/div[4]/div[3]/div[1]/textarea[1]", "text")=="")
-                {
-                    wait(1000);
-
-                }
-            textBox2.Text = Extract("/html[1]/body[1]/div[2]/div[1]/div[1]/div[4]/div[3]/div[1]/textarea[1]", "text");
-
-
-        }
+       
         public void fill(string xpath, string value)
         {
             GeckoWebBrowser wb = geckoWebBrowser1;
@@ -165,8 +158,6 @@ namespace phoenixtranslate
                     GeckoHtmlElement elm = GetElement(wb, xpath);
                     if (elm != null)
                     {
-               
-                  
                                 GeckoTextAreaElement input1 = (GeckoTextAreaElement)elm;
                                 input1.Value = "";
                                 input1.Focus();
@@ -200,6 +191,12 @@ namespace phoenixtranslate
             {
                 Application.DoEvents();
             }
+        }
+
+        private void buttontranslatorconfig_Click(object sender, EventArgs e)
+        {
+            Form translatorconfig = new Translatorconfig();
+            translatorconfig.Show();
         }
     }
 }
