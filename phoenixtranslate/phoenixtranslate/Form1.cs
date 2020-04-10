@@ -141,11 +141,19 @@ namespace phoenixtranslate
         private void button2_Click(object sender, EventArgs e)
         {
 
-         
+            //GeckoTextAreaElement inputter = (GeckoTextAreaElement)geckoWebBrowser1.Document.G
             fill("/html[1]/body[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/textarea[1]", textBox1.Text);
-            wait(5000);//a changer
-          
-          textBox2.Text = Extract("/html[1]/body[1]/div[2]/div[1]/div[1]/div[4]/div[3]/div[1]/textarea[1]", "text");
+            //wait(5000);
+
+
+                while (Extract("/html[1]/body[1]/div[2]/div[1]/div[1]/div[4]/div[3]/div[1]/textarea[1]", "text")=="")
+                {
+                    wait(1000);
+
+                }
+            textBox2.Text = Extract("/html[1]/body[1]/div[2]/div[1]/div[1]/div[4]/div[3]/div[1]/textarea[1]", "text");
+
+
         }
         public void fill(string xpath, string value)
         {
