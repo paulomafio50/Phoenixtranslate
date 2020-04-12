@@ -16,8 +16,9 @@ namespace phoenixtranslate
 {
     public partial class Translator : Form
     {
+        //remetre droit ctrl+K et D
         public string textesource;
-        public string textescible="";
+        public string textescible = "";
         public string textescibleold;
         public Translator()
         {
@@ -30,7 +31,12 @@ namespace phoenixtranslate
         {
             geckoWebBrowser1.Navigate("https://www.deepl.com/translator");
         }
-
+        protected override void OnClosed(EventArgs e)
+        {
+            geckoWebBrowser1.Dispose();
+            Xpcom.Shutdown();
+            base.OnClosed(e);
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             fill("/html[1]/body[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/textarea[1]", textBox1.Text);
@@ -49,44 +55,44 @@ namespace phoenixtranslate
             {
                 Elm = GetElement(wb, xpath);
 
-            if (Elm != null)
-            {
                 if (Elm != null)
                 {
-                    switch (type)
+                    if (Elm != null)
                     {
-                        case "html":
-                            {
-                                result = Elm.OuterHtml;
-                                break;
-                            }
+                        switch (type)
+                        {
+                            case "html":
+                                {
+                                    result = Elm.OuterHtml;
+                                    break;
+                                }
 
-                        case "text":
-                            {
-                                if (Elm.GetType().Name == "GeckoTextAreaElement")
-                                    result = ((GeckoTextAreaElement)Elm).Value;
-                                else
-                                    result = Elm.TextContent.Trim();
-                                break;
-                            }
+                            case "text":
+                                {
+                                    if (Elm.GetType().Name == "GeckoTextAreaElement")
+                                        result = ((GeckoTextAreaElement)Elm).Value;
+                                    else
+                                        result = Elm.TextContent.Trim();
+                                    break;
+                                }
 
-                        case "value":
-                            {
-                                result = ((GeckoInputElement)Elm).Value;
-                                break;
-                            }
+                            case "value":
+                                {
+                                    result = ((GeckoInputElement)Elm).Value;
+                                    break;
+                                }
 
-                        default:
-                            {
-                                result = ExtractData(Elm, type);
-                                break;
-                            }
+                            default:
+                                {
+                                    result = ExtractData(Elm, type);
+                                    break;
+                                }
+                        }
                     }
                 }
             }
-        }
 
-        return result;
+            return result;
         }
         private string ExtractData(GeckoHtmlElement ele, string attribute)
         {
@@ -147,7 +153,7 @@ namespace phoenixtranslate
         }
 
 
-       
+
         public void fill(string xpath, string value)
         {
             GeckoWebBrowser wb = geckoWebBrowser1;
@@ -158,19 +164,15 @@ namespace phoenixtranslate
                     GeckoHtmlElement elm = GetElement(wb, xpath);
                     if (elm != null)
                     {
-                                GeckoTextAreaElement input1 = (GeckoTextAreaElement)elm;
-                                input1.Value = "";
-                                input1.Focus();
-                                input1.Click();
-                                Clipboard.SetText(value);
-                                geckoWebBrowser1.Paste();
-                     
+                        GeckoTextAreaElement input1 = (GeckoTextAreaElement)elm;
+                        input1.Value = "";
+                        input1.Focus();
+                        input1.Click();
+                        Clipboard.SetText(value);
+                        geckoWebBrowser1.Paste();
                     }
-                
-                
                 }
             }
-
         }
 
         public void wait(int milliseconds)
@@ -195,8 +197,8 @@ namespace phoenixtranslate
 
         private void buttontranslatorconfig_Click(object sender, EventArgs e)
         {
-            Form translatorconfig = new Translatorconfig();
-            translatorconfig.Show();
+            new Translator_config().Show();
         }
+
     }
 }
