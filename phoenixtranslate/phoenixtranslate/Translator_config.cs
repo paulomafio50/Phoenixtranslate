@@ -4,9 +4,12 @@ namespace phoenixtranslate
 {
     public partial class Translator_config : Form
     {
-        public Translator_config()
+
+        private Translator _Translator;
+        public Translator_config(Translator translator)
         {
             InitializeComponent();
+            this._Translator = translator;
         }
         private void Translator_config_Load(object sender, EventArgs e)
         {
@@ -58,21 +61,26 @@ namespace phoenixtranslate
                     {
                         textBoxXpathreceive.Text = Properties.Settings.Default.XpathDeeplR;
                         textBoxXpathsender.Text = Properties.Settings.Default.XpathDeeplS;
+                        Properties.Settings.Default.comboboxNav = "https://www.deepl.com/translator";
                         break;
                     }
                 case "Google":
                     {
                         textBoxXpathreceive.Text = Properties.Settings.Default.XpathGoogleR;
                         textBoxXpathsender.Text = Properties.Settings.Default.XpathGoogleS;
+                        Properties.Settings.Default.comboboxNav = "https://translate.google.com";
                         break;
                     }
                 case "Yandex":
                     {
                         textBoxXpathreceive.Text = Properties.Settings.Default.XpathyandexR;
                         textBoxXpathsender.Text = Properties.Settings.Default.XpathyandexS;
+                        Properties.Settings.Default.comboboxNav = "https://translate.yandex.com/";
                         break;
                     }
             }
+            Properties.Settings.Default.Save();
+            this._Translator.geckoWebBrowser.Navigate(Properties.Settings.Default.comboboxNav);
         }
         private void buttonXpathsenderSet_Click(object sender, EventArgs e)
         {
@@ -81,22 +89,20 @@ namespace phoenixtranslate
                 case "Deepl":
                     {
                         Properties.Settings.Default.XpathDeeplS = textBoxXpathsender.Text;
-                        Properties.Settings.Default.Save();
                         break;
                     }
                 case "Google":
                     {
                         Properties.Settings.Default.XpathGoogleS = textBoxXpathsender.Text;
-                        Properties.Settings.Default.Save();
                         break;
                     }
                 case "Yandex":
                     {
                         Properties.Settings.Default.XpathyandexS = textBoxXpathsender.Text;
-                        Properties.Settings.Default.Save();
                         break;
                     }
             }
+            Properties.Settings.Default.Save();
         }
         private void buttonbuttonXpathrecieverSet_Click(object sender, EventArgs e)
         {
@@ -105,22 +111,20 @@ namespace phoenixtranslate
                 case "Deepl":
                     {
                         Properties.Settings.Default.XpathDeeplR = textBoxXpathreceive.Text;
-                        Properties.Settings.Default.Save();
                         break;
                     }
                 case "Google":
                     {
                         Properties.Settings.Default.XpathGoogleR = textBoxXpathreceive.Text;
-                        Properties.Settings.Default.Save();
                         break;
                     }
                 case "Yandex":
                     {
                         Properties.Settings.Default.XpathyandexR = textBoxXpathreceive.Text;
-                        Properties.Settings.Default.Save();
                         break;
                     }
             }
+            Properties.Settings.Default.Save();
         }
         #region function Lang
         public string Lang(string Lang)
@@ -651,5 +655,10 @@ namespace phoenixtranslate
             return Lang;
         }
         #endregion
+
+        private void buttonNavSet_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

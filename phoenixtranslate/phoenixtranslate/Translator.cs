@@ -17,9 +17,12 @@ namespace phoenixtranslate
     public partial class Translator : Form
     {
         //remetre droit ctrl+K et D
+       
         public string textesource;
         public string textescible = "";
         public string textescibleold;
+        public GeckoWebBrowser geckoWebBrowser => geckoWebBrowser1;
+
         public Translator()
         {
             InitializeComponent();
@@ -29,7 +32,8 @@ namespace phoenixtranslate
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            geckoWebBrowser1.Navigate("https://www.deepl.com/translator");
+   
+            geckoWebBrowser1.Navigate(Properties.Settings.Default.comboboxNav);
         }
         protected override void OnClosed(EventArgs e)
         {
@@ -197,7 +201,9 @@ namespace phoenixtranslate
 
         private void buttontranslatorconfig_Click(object sender, EventArgs e)
         {
-            new Translator_config().Show();
+            Translator_config translator_config = new Translator_config(this);
+            translator_config.ShowDialog();
+          
         }
 
     }
