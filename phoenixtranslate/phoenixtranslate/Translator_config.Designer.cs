@@ -33,11 +33,15 @@
             this.textBoxXpathsender = new System.Windows.Forms.TextBox();
             this.textBoxXpathreceiver = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonRemove = new System.Windows.Forms.Button();
             this.buttonAddTranslator = new System.Windows.Forms.Button();
             this.textBoxLink = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.buttonLinkSet = new System.Windows.Forms.Button();
+            this.buttonXpathSSet = new System.Windows.Forms.Button();
+            this.buttonXpathRSet = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +52,8 @@
             this.comboBoxNav.Name = "comboBoxNav";
             this.comboBoxNav.Size = new System.Drawing.Size(121, 21);
             this.comboBoxNav.TabIndex = 3;
+            this.comboBoxNav.SelectedIndexChanged += new System.EventHandler(this.comboBoxNav_SelectedIndexChanged);
+            this.comboBoxNav.SelectionChangeCommitted += new System.EventHandler(this.comboBoxNav_SelectionChangeCommitted);
             // 
             // label3
             // 
@@ -64,7 +70,6 @@
             this.textBoxXpathsender.Name = "textBoxXpathsender";
             this.textBoxXpathsender.Size = new System.Drawing.Size(266, 20);
             this.textBoxXpathsender.TabIndex = 6;
-            this.textBoxXpathsender.TextChanged += new System.EventHandler(this.textBoxXpathsender_TextChanged);
             // 
             // textBoxXpathreceiver
             // 
@@ -72,10 +77,13 @@
             this.textBoxXpathreceiver.Name = "textBoxXpathreceiver";
             this.textBoxXpathreceiver.Size = new System.Drawing.Size(266, 20);
             this.textBoxXpathreceiver.TabIndex = 6;
-            this.textBoxXpathreceiver.TextChanged += new System.EventHandler(this.textBoxXpathreceiver_TextChanged);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonXpathRSet);
+            this.panel1.Controls.Add(this.buttonXpathSSet);
+            this.panel1.Controls.Add(this.buttonLinkSet);
+            this.panel1.Controls.Add(this.buttonRemove);
             this.panel1.Controls.Add(this.buttonAddTranslator);
             this.panel1.Controls.Add(this.textBoxLink);
             this.panel1.Controls.Add(this.label1);
@@ -90,11 +98,21 @@
             this.panel1.Size = new System.Drawing.Size(798, 195);
             this.panel1.TabIndex = 7;
             // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Location = new System.Drawing.Point(245, 52);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(56, 23);
+            this.buttonRemove.TabIndex = 12;
+            this.buttonRemove.Text = "Remove";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            // 
             // buttonAddTranslator
             // 
-            this.buttonAddTranslator.Location = new System.Drawing.Point(260, 34);
+            this.buttonAddTranslator.Location = new System.Drawing.Point(245, 12);
             this.buttonAddTranslator.Name = "buttonAddTranslator";
-            this.buttonAddTranslator.Size = new System.Drawing.Size(41, 23);
+            this.buttonAddTranslator.Size = new System.Drawing.Size(56, 23);
             this.buttonAddTranslator.TabIndex = 11;
             this.buttonAddTranslator.Text = "Add";
             this.buttonAddTranslator.UseVisualStyleBackColor = true;
@@ -106,7 +124,6 @@
             this.textBoxLink.Name = "textBoxLink";
             this.textBoxLink.Size = new System.Drawing.Size(266, 20);
             this.textBoxLink.TabIndex = 10;
-            this.textBoxLink.TextChanged += new System.EventHandler(this.textBoxLink_TextChanged);
             // 
             // label1
             // 
@@ -135,6 +152,36 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Xpath sender";
             // 
+            // buttonLinkSet
+            // 
+            this.buttonLinkSet.Location = new System.Drawing.Point(699, 29);
+            this.buttonLinkSet.Name = "buttonLinkSet";
+            this.buttonLinkSet.Size = new System.Drawing.Size(75, 23);
+            this.buttonLinkSet.TabIndex = 13;
+            this.buttonLinkSet.Text = "Set";
+            this.buttonLinkSet.UseVisualStyleBackColor = true;
+            this.buttonLinkSet.Click += new System.EventHandler(this.buttonLinkSet_Click_1);
+            // 
+            // buttonXpathSSet
+            // 
+            this.buttonXpathSSet.Location = new System.Drawing.Point(699, 69);
+            this.buttonXpathSSet.Name = "buttonXpathSSet";
+            this.buttonXpathSSet.Size = new System.Drawing.Size(75, 23);
+            this.buttonXpathSSet.TabIndex = 13;
+            this.buttonXpathSSet.Text = "Set";
+            this.buttonXpathSSet.UseVisualStyleBackColor = true;
+            this.buttonXpathSSet.Click += new System.EventHandler(this.buttonXpathSSet_Click);
+            // 
+            // buttonXpathRSet
+            // 
+            this.buttonXpathRSet.Location = new System.Drawing.Point(699, 109);
+            this.buttonXpathRSet.Name = "buttonXpathRSet";
+            this.buttonXpathRSet.Size = new System.Drawing.Size(75, 23);
+            this.buttonXpathRSet.TabIndex = 13;
+            this.buttonXpathRSet.Text = "Set";
+            this.buttonXpathRSet.UseVisualStyleBackColor = true;
+            this.buttonXpathRSet.Click += new System.EventHandler(this.buttonXpathRSet_Click);
+            // 
             // Translator_config
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,5 +208,9 @@
         private System.Windows.Forms.TextBox textBoxLink;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonAddTranslator;
+        private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.Button buttonXpathRSet;
+        private System.Windows.Forms.Button buttonXpathSSet;
+        private System.Windows.Forms.Button buttonLinkSet;
     }
 }
