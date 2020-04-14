@@ -19,8 +19,8 @@ namespace phoenixtranslate
         private void InitializeComboBox()
         {
 
-            int n=Properties.Settings.Default.Name_Translator.Cast<string>().ToArray().Length;
-            if (n >= 1)
+          
+            if (Properties.Settings.Default.Name_Translator.Cast<string>().ToArray().Length >= 1)
             {
                 comboBoxNav.DataSource = Properties.Settings.Default.Name_Translator.Cast<string>().ToArray();
 
