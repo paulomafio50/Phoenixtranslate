@@ -6,7 +6,7 @@ namespace phoenixtranslate
 {
     public partial class Translator_config : Form
     {
-        public int index =Properties.Settings.Default.index;
+        public int index =0;
         private Translator _Translator;
         public Translator_config(Translator translator)
         
@@ -27,6 +27,7 @@ namespace phoenixtranslate
                 textBoxLink.Text = Properties.Settings.Default.Link[index];
                 textBoxXpathsender.Text = Properties.Settings.Default.Xpathsender[index];
                 textBoxXpathreceiver.Text = Properties.Settings.Default.Xpathreceiver[index];
+                this._Translator.geckoWebBrowser.Navigate(Properties.Settings.Default.Link[index].ToString());
             }
             else
             {
@@ -34,12 +35,7 @@ namespace phoenixtranslate
             }
 
         }
-        private void ComboBoxIndexChangedEventHandler(object sender,EventArgs e)
-        {
-            index = comboBoxNav.SelectedIndex;
-            textBoxLink.Text = Properties.Settings.Default.Link[index];
-            this._Translator.geckoWebBrowser.Navigate(Properties.Settings.Default.Link[index].ToString());
-        }
+ 
 
   
 
