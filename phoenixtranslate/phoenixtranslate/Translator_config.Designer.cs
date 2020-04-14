@@ -33,15 +33,15 @@
             this.textBoxXpathsender = new System.Windows.Forms.TextBox();
             this.textBoxXpathreceiver = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonXpathRSet = new System.Windows.Forms.Button();
+            this.buttonXpathSSet = new System.Windows.Forms.Button();
+            this.buttonLinkSet = new System.Windows.Forms.Button();
             this.buttonRemove = new System.Windows.Forms.Button();
             this.buttonAddTranslator = new System.Windows.Forms.Button();
             this.textBoxLink = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.buttonLinkSet = new System.Windows.Forms.Button();
-            this.buttonXpathSSet = new System.Windows.Forms.Button();
-            this.buttonXpathRSet = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +52,6 @@
             this.comboBoxNav.Name = "comboBoxNav";
             this.comboBoxNav.Size = new System.Drawing.Size(121, 21);
             this.comboBoxNav.TabIndex = 3;
-            this.comboBoxNav.SelectedIndexChanged += new System.EventHandler(this.comboBoxNav_SelectedIndexChanged);
             this.comboBoxNav.SelectionChangeCommitted += new System.EventHandler(this.comboBoxNav_SelectionChangeCommitted);
             // 
             // label3
@@ -98,6 +97,36 @@
             this.panel1.Size = new System.Drawing.Size(798, 195);
             this.panel1.TabIndex = 7;
             // 
+            // buttonXpathRSet
+            // 
+            this.buttonXpathRSet.Location = new System.Drawing.Point(699, 109);
+            this.buttonXpathRSet.Name = "buttonXpathRSet";
+            this.buttonXpathRSet.Size = new System.Drawing.Size(75, 23);
+            this.buttonXpathRSet.TabIndex = 13;
+            this.buttonXpathRSet.Text = "Set";
+            this.buttonXpathRSet.UseVisualStyleBackColor = true;
+            this.buttonXpathRSet.Click += new System.EventHandler(this.buttonXpathRSet_Click);
+            // 
+            // buttonXpathSSet
+            // 
+            this.buttonXpathSSet.Location = new System.Drawing.Point(699, 69);
+            this.buttonXpathSSet.Name = "buttonXpathSSet";
+            this.buttonXpathSSet.Size = new System.Drawing.Size(75, 23);
+            this.buttonXpathSSet.TabIndex = 13;
+            this.buttonXpathSSet.Text = "Set";
+            this.buttonXpathSSet.UseVisualStyleBackColor = true;
+            this.buttonXpathSSet.Click += new System.EventHandler(this.buttonXpathSSet_Click);
+            // 
+            // buttonLinkSet
+            // 
+            this.buttonLinkSet.Location = new System.Drawing.Point(699, 29);
+            this.buttonLinkSet.Name = "buttonLinkSet";
+            this.buttonLinkSet.Size = new System.Drawing.Size(75, 23);
+            this.buttonLinkSet.TabIndex = 13;
+            this.buttonLinkSet.Text = "Set";
+            this.buttonLinkSet.UseVisualStyleBackColor = true;
+            this.buttonLinkSet.Click += new System.EventHandler(this.buttonLinkSet_Click_1);
+            // 
             // buttonRemove
             // 
             this.buttonRemove.Location = new System.Drawing.Point(245, 52);
@@ -139,9 +168,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(339, 112);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 13);
+            this.label5.Size = new System.Drawing.Size(79, 13);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Xpath  receive";
+            this.label5.Text = "Xpath  receiver";
             // 
             // label4
             // 
@@ -151,36 +180,6 @@
             this.label4.Size = new System.Drawing.Size(70, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "Xpath sender";
-            // 
-            // buttonLinkSet
-            // 
-            this.buttonLinkSet.Location = new System.Drawing.Point(699, 29);
-            this.buttonLinkSet.Name = "buttonLinkSet";
-            this.buttonLinkSet.Size = new System.Drawing.Size(75, 23);
-            this.buttonLinkSet.TabIndex = 13;
-            this.buttonLinkSet.Text = "Set";
-            this.buttonLinkSet.UseVisualStyleBackColor = true;
-            this.buttonLinkSet.Click += new System.EventHandler(this.buttonLinkSet_Click_1);
-            // 
-            // buttonXpathSSet
-            // 
-            this.buttonXpathSSet.Location = new System.Drawing.Point(699, 69);
-            this.buttonXpathSSet.Name = "buttonXpathSSet";
-            this.buttonXpathSSet.Size = new System.Drawing.Size(75, 23);
-            this.buttonXpathSSet.TabIndex = 13;
-            this.buttonXpathSSet.Text = "Set";
-            this.buttonXpathSSet.UseVisualStyleBackColor = true;
-            this.buttonXpathSSet.Click += new System.EventHandler(this.buttonXpathSSet_Click);
-            // 
-            // buttonXpathRSet
-            // 
-            this.buttonXpathRSet.Location = new System.Drawing.Point(699, 109);
-            this.buttonXpathRSet.Name = "buttonXpathRSet";
-            this.buttonXpathRSet.Size = new System.Drawing.Size(75, 23);
-            this.buttonXpathRSet.TabIndex = 13;
-            this.buttonXpathRSet.Text = "Set";
-            this.buttonXpathRSet.UseVisualStyleBackColor = true;
-            this.buttonXpathRSet.Click += new System.EventHandler(this.buttonXpathRSet_Click);
             // 
             // Translator_config
             // 

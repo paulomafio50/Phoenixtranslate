@@ -33,7 +33,7 @@ namespace phoenixtranslate
         private void Form1_Load(object sender, EventArgs e)
         {
    
-            //geckoWebBrowser1.Navigate(Properties.Settings.Default.comboboxNav);
+            geckoWebBrowser1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString());
         }
         protected override void OnClosed(EventArgs e)
         {

@@ -6,7 +6,7 @@ namespace phoenixtranslate
 {
     public partial class Translator_config : Form
     {
-        public int index =0;
+        public int index =Properties.Settings.Default.index;
         private Translator _Translator;
         public Translator_config(Translator translator)
         
@@ -19,18 +19,23 @@ namespace phoenixtranslate
         private void InitializeComboBox()
         {
 
-
-            comboBoxNav.DataSource = Properties.Settings.Default.Name_Translator.Cast<string>().ToArray();
-            if (comboBoxNav.Items.Count != 0)
+            int n=Properties.Settings.Default.Name_Translator.Cast<string>().ToArray().Length;
+            if (n >= 1)
             {
+                comboBoxNav.DataSource = Properties.Settings.Default.Name_Translator.Cast<string>().ToArray();
+
+          
                 comboBoxNav.SelectedIndex = index;
                 textBoxLink.Text = Properties.Settings.Default.Link[index];
                 textBoxXpathsender.Text = Properties.Settings.Default.Xpathsender[index];
                 textBoxXpathreceiver.Text = Properties.Settings.Default.Xpathreceiver[index];
-                this._Translator.geckoWebBrowser.Navigate(Properties.Settings.Default.Link[index].ToString());
+                
             }
             else
             {
+                textBoxLink.Text = string.Empty;
+                textBoxXpathsender.Text = string.Empty;
+                textBoxXpathreceiver.Text= string.Empty;
                 comboBoxNav.SelectedIndex = -1;
             }
 
@@ -96,10 +101,7 @@ namespace phoenixtranslate
             
         }
 
-        private void comboBoxNav_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
+
 
         private void comboBoxNav_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -110,7 +112,7 @@ namespace phoenixtranslate
             textBoxLink.Text = Properties.Settings.Default.Link[comboBoxNav.SelectedIndex];
             textBoxXpathsender.Text=Properties.Settings.Default.Xpathsender[comboBoxNav.SelectedIndex];
             textBoxXpathreceiver.Text=Properties.Settings.Default.Xpathreceiver[comboBoxNav.SelectedIndex];
-            
+            this._Translator.geckoWebBrowser.Navigate(Properties.Settings.Default.Link[index].ToString());
 
 
         }
