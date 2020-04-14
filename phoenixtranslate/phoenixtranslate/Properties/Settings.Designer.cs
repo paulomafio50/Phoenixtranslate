@@ -25,145 +25,45 @@ namespace phoenixtranslate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int comboboxLSindex {
+        public global::System.Collections.Specialized.StringCollection Name_Translator {
             get {
-                return ((int)(this["comboboxLSindex"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["Name_Translator"]));
             }
             set {
-                this["comboboxLSindex"] = value;
+                this["Name_Translator"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int comboboxLTindex {
+        public global::System.Collections.Specialized.StringCollection Link {
             get {
-                return ((int)(this["comboboxLTindex"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["Link"]));
             }
             set {
-                this["comboboxLTindex"] = value;
+                this["Link"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int comboboxNavindex {
+        public global::System.Collections.Specialized.StringCollection Xpathsender {
             get {
-                return ((int)(this["comboboxNavindex"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["Xpathsender"]));
             }
             set {
-                this["comboboxNavindex"] = value;
+                this["Xpathsender"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string comboboxLS {
+        public global::System.Collections.Specialized.StringCollection Xpathreceiver {
             get {
-                return ((string)(this["comboboxLS"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["Xpathreceiver"]));
             }
             set {
-                this["comboboxLS"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string comboboxLT {
-            get {
-                return ((string)(this["comboboxLT"]));
-            }
-            set {
-                this["comboboxLT"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string comboboxNav {
-            get {
-                return ((string)(this["comboboxNav"]));
-            }
-            set {
-                this["comboboxNav"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string XpathDeeplS {
-            get {
-                return ((string)(this["XpathDeeplS"]));
-            }
-            set {
-                this["XpathDeeplS"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string XpathDeeplR {
-            get {
-                return ((string)(this["XpathDeeplR"]));
-            }
-            set {
-                this["XpathDeeplR"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string XpathGoogleS {
-            get {
-                return ((string)(this["XpathGoogleS"]));
-            }
-            set {
-                this["XpathGoogleS"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string XpathGoogleR {
-            get {
-                return ((string)(this["XpathGoogleR"]));
-            }
-            set {
-                this["XpathGoogleR"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string XpathyandexS {
-            get {
-                return ((string)(this["XpathyandexS"]));
-            }
-            set {
-                this["XpathyandexS"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string XpathyandexR {
-            get {
-                return ((string)(this["XpathyandexR"]));
-            }
-            set {
-                this["XpathyandexR"] = value;
+                this["Xpathreceiver"] = value;
             }
         }
     }

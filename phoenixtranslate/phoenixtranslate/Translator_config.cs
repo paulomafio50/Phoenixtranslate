@@ -1,131 +1,151 @@
 ﻿using System;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 namespace phoenixtranslate
 {
     public partial class Translator_config : Form
     {
-
+        public int index;
         private Translator _Translator;
         public Translator_config(Translator translator)
+        
         {
             InitializeComponent();
             this._Translator = translator;
+            InitializeComboBox();
         }
-        private void Translator_config_Load(object sender, EventArgs e)
+        private void InitializeComboBox()
         {
-            comboBoxLS.SelectedIndex = Properties.Settings.Default.comboboxLSindex;
-            comboBoxLT.SelectedIndex = Properties.Settings.Default.comboboxLTindex;
-            comboBoxNav.SelectedIndex = Properties.Settings.Default.comboboxNavindex;
-            switch (comboBoxNav.SelectedItem)
+
+            if (Properties.Settings.Default.Name_Translator.Count == 0)
             {
-                case "Deepl":
-                    {
-                        textBoxXpathreceive.Text = Properties.Settings.Default.XpathDeeplR;
-                        textBoxXpathsender.Text = Properties.Settings.Default.XpathDeeplS;
-                        break;
-                    }
-                case "Google":
-                    {
-                        textBoxXpathreceive.Text = Properties.Settings.Default.XpathGoogleR;
-                        textBoxXpathsender.Text = Properties.Settings.Default.XpathGoogleS;
-                        break;
-                    }
-                case "Yandex":
-                    {
-                        textBoxXpathreceive.Text = Properties.Settings.Default.XpathyandexR;
-                        textBoxXpathsender.Text = Properties.Settings.Default.XpathyandexS;
-                        break;
-                    }
+                Properties.Settings.Default.Name_Translator.Add("");
+
             }
-        }
-        private void comboBoxLT_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.comboboxLTindex = comboBoxLT.SelectedIndex;
-            Properties.Settings.Default.comboboxLT = Lang(comboBoxLT.GetItemText(comboBoxLT.SelectedItem));
-            Properties.Settings.Default.Save();
-        }
-        private void comboBoxLS_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.comboboxLSindex = comboBoxLS.SelectedIndex;
-            Properties.Settings.Default.comboboxLS = Lang(comboBoxLS.GetItemText(comboBoxLS.SelectedItem));
-            Properties.Settings.Default.Save();
-        }
-        private void comboBoxNav_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.comboboxNavindex = comboBoxNav.SelectedIndex;
-            Properties.Settings.Default.comboboxNav = comboBoxNav.GetItemText(comboBoxNav.SelectedItem);
-            Properties.Settings.Default.Save();
-            switch (comboBoxNav.SelectedItem)
+            else
             {
-                case "Deepl":
-                    {
-                        textBoxXpathreceive.Text = Properties.Settings.Default.XpathDeeplR;
-                        textBoxXpathsender.Text = Properties.Settings.Default.XpathDeeplS;
-                        Properties.Settings.Default.comboboxNav = "https://www.deepl.com/translator";
-                        break;
-                    }
-                case "Google":
-                    {
-                        textBoxXpathreceive.Text = Properties.Settings.Default.XpathGoogleR;
-                        textBoxXpathsender.Text = Properties.Settings.Default.XpathGoogleS;
-                        Properties.Settings.Default.comboboxNav = "https://translate.google.com";
-                        break;
-                    }
-                case "Yandex":
-                    {
-                        textBoxXpathreceive.Text = Properties.Settings.Default.XpathyandexR;
-                        textBoxXpathsender.Text = Properties.Settings.Default.XpathyandexS;
-                        Properties.Settings.Default.comboboxNav = "https://translate.yandex.com/";
-                        break;
-                    }
+
+            
+                foreach (string s in Properties.Settings.Default.Name_Translator)
+                {
+                    comboBoxNav.Items.Add(s);
+                }
+                comboBoxNav.SelectedIndex = 0;
+                index = comboBoxNav.SelectedIndex;
+                textBoxLink.Text = Properties.Settings.Default.Link[index];
+                comboBoxNav.SelectedIndexChanged += ComboBoxIndexChangedEventHandler;
             }
-            Properties.Settings.Default.Save();
-            this._Translator.geckoWebBrowser.Navigate(Properties.Settings.Default.comboboxNav);
+
         }
-        private void buttonXpathsenderSet_Click(object sender, EventArgs e)
+        private void ComboBoxIndexChangedEventHandler(object sender,EventArgs e)
         {
-            switch (comboBoxNav.SelectedItem)
-            {
-                case "Deepl":
-                    {
-                        Properties.Settings.Default.XpathDeeplS = textBoxXpathsender.Text;
-                        break;
-                    }
-                case "Google":
-                    {
-                        Properties.Settings.Default.XpathGoogleS = textBoxXpathsender.Text;
-                        break;
-                    }
-                case "Yandex":
-                    {
-                        Properties.Settings.Default.XpathyandexS = textBoxXpathsender.Text;
-                        break;
-                    }
-            }
-            Properties.Settings.Default.Save();
+            index = comboBoxNav.SelectedIndex;
+            textBoxLink.Text = Properties.Settings.Default.Link[index];
+            this._Translator.geckoWebBrowser.Navigate(Properties.Settings.Default.Link[index].ToString());
         }
-        private void buttonbuttonXpathrecieverSet_Click(object sender, EventArgs e)
-        {
-            switch (comboBoxNav.SelectedItem)
-            {
-                case "Deepl":
-                    {
-                        Properties.Settings.Default.XpathDeeplR = textBoxXpathreceive.Text;
-                        break;
-                    }
-                case "Google":
-                    {
-                        Properties.Settings.Default.XpathGoogleR = textBoxXpathreceive.Text;
-                        break;
-                    }
-                case "Yandex":
-                    {
-                        Properties.Settings.Default.XpathyandexR = textBoxXpathreceive.Text;
-                        break;
-                    }
-            }
-            Properties.Settings.Default.Save();
-        }
+        //private void Translator_config_Load(object sender, EventArgs e)
+        //{
+          
+        //    comboBoxNav.SelectedIndex = Properties.Settings.Default.comboboxNavindex;
+        //    switch (comboBoxNav.SelectedItem)
+        //    {
+        //        case "Deepl":
+        //            {
+        //                textBoxXpathreceive.Text = Properties.Settings.Default.XpathDeeplR;
+        //                textBoxXpathsender.Text = Properties.Settings.Default.XpathDeeplS;
+        //                break;
+        //            }
+        //        case "Google":
+        //            {
+        //                textBoxXpathreceive.Text = Properties.Settings.Default.XpathGoogleR;
+        //                textBoxXpathsender.Text = Properties.Settings.Default.XpathGoogleS;
+        //                break;
+        //            }
+        //        case "Yandex":
+        //            {
+        //                textBoxXpathreceive.Text = Properties.Settings.Default.XpathyandexR;
+        //                textBoxXpathsender.Text = Properties.Settings.Default.XpathyandexS;
+        //                break;
+        //            }
+        //    }
+        //}
+
+        //private void comboBoxNav_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    Properties.Settings.Default.comboboxNavindex = comboBoxNav.SelectedIndex;
+        //    Properties.Settings.Default.comboboxNav = comboBoxNav.GetItemText(comboBoxNav.SelectedItem);
+        //    Properties.Settings.Default.Save();
+        //    switch (comboBoxNav.SelectedItem)
+        //    {
+        //        case "Deepl":
+        //            {
+        //                textBoxXpathreceive.Text = Properties.Settings.Default.XpathDeeplR;
+        //                textBoxXpathsender.Text = Properties.Settings.Default.XpathDeeplS;
+        //                Properties.Settings.Default.comboboxNav = "https://www.deepl.com/translator";
+        //                break;
+        //            }
+        //        case "Google":
+        //            {
+        //                textBoxXpathreceive.Text = Properties.Settings.Default.XpathGoogleR;
+        //                textBoxXpathsender.Text = Properties.Settings.Default.XpathGoogleS;
+        //                Properties.Settings.Default.comboboxNav = "https://translate.google.com";
+        //                break;
+        //            }
+        //        case "Yandex":
+        //            {
+        //                textBoxXpathreceive.Text = Properties.Settings.Default.XpathyandexR;
+        //                textBoxXpathsender.Text = Properties.Settings.Default.XpathyandexS;
+        //                Properties.Settings.Default.comboboxNav = "https://translate.yandex.com/";
+        //                break;
+        //            }
+        //    }
+        //    Properties.Settings.Default.Save();
+        //    this._Translator.geckoWebBrowser.Navigate(Properties.Settings.Default.comboboxNav);
+        //}
+        //private void buttonXpathsenderSet_Click(object sender, EventArgs e)
+        //{
+        //    switch (comboBoxNav.SelectedItem)
+        //    {
+        //        case "Deepl":
+        //            {
+        //                Properties.Settings.Default.XpathDeeplS = textBoxXpathsender.Text;
+        //                break;
+        //            }
+        //        case "Google":
+        //            {
+        //                Properties.Settings.Default.XpathGoogleS = textBoxXpathsender.Text;
+        //                break;
+        //            }
+        //        case "Yandex":
+        //            {
+        //                Properties.Settings.Default.XpathyandexS = textBoxXpathsender.Text;
+        //                break;
+        //            }
+        //    }
+        //    Properties.Settings.Default.Save();
+        //}
+        //private void buttonbuttonXpathrecieverSet_Click(object sender, EventArgs e)
+        //{
+        //    switch (comboBoxNav.SelectedItem)
+        //    {
+        //        case "Deepl":
+        //            {
+        //                Properties.Settings.Default.XpathDeeplR = textBoxXpathreceive.Text;
+        //                break;
+        //            }
+        //        case "Google":
+        //            {
+        //                Properties.Settings.Default.XpathGoogleR = textBoxXpathreceive.Text;
+        //                break;
+        //            }
+        //        case "Yandex":
+        //            {
+        //                Properties.Settings.Default.XpathyandexR = textBoxXpathreceive.Text;
+        //                break;
+        //            }
+        //    }
+        //    Properties.Settings.Default.Save();
+        //}
         #region function Lang
         public string Lang(string Lang)
         {
@@ -659,6 +679,49 @@ namespace phoenixtranslate
         private void buttonNavSet_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void buttonLinkSet_Click(object sender, EventArgs e)
+        {
+
+            Properties.Settings.Default.Link[index] = textBoxLink.Text;
+        }
+
+        private void buttonAddTranslator_Click(object sender, EventArgs e)
+        {
+            string result = Interaction.InputBox("Enter Name of translator");
+            if (result!=null)
+            {
+                Properties.Settings.Default.Name_Translator.Add(result.ToString());
+                Properties.Settings.Default.Link.Add(String.Empty);
+                Properties.Settings.Default.Xpathreceiver.Add(String.Empty);
+                Properties.Settings.Default.Xpathsender.Add(String.Empty);
+                Properties.Settings.Default.Save();
+                comboBoxNav.Items.Clear();
+                InitializeComboBox();
+            }
+
+            //Properties.Settings.Default.Websites.Add()
+        }
+
+        private void textBoxLink_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Link[index] = textBoxLink.Text;
+        }
+
+        private void textBoxXpathsender_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Xpathsender[index] = textBoxXpathsender.Text;
+        }
+
+        private void textBoxXpathreceiver_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Xpathreceiver[index] = textBoxXpathreceiver.Text;
+        }
+
+        private void Translator_config_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
