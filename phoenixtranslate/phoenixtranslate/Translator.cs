@@ -14,10 +14,11 @@ using Gecko.Events;
 
 namespace phoenixtranslate
 {
+    
     public partial class Translator : Form
     {
         //remetre droit ctrl+K et D
-       
+        public string ActivateTraslate = string.Empty;
         public string textesource;
         public string textescible = "";
         public string textescibleold;
@@ -32,7 +33,7 @@ namespace phoenixtranslate
 
         private void Form1_Load(object sender, EventArgs e)
         {
-   
+
             geckoWebBrowser1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString());
         }
         protected override void OnClosed(EventArgs e)
@@ -43,11 +44,13 @@ namespace phoenixtranslate
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            fill("/html[1]/body[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/textarea[1]", textBox1.Text);
+            fill((Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]), textBox1.Text);
+            //fill("/html[1]/body[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/textarea[1]", textBox1.Text);
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox2.Text = Extract("/html[1]/body[1]/div[2]/div[1]/div[1]/div[4]/div[3]/div[1]/textarea[1]", "text");
+            textBox2.Text = Extract(Properties.Settings.Default.Xpathreceiver[Properties.Settings.Default.index], "text");
+            //textBox2.Text = Extract("/html[1]/body[1]/div[2]/div[1]/div[1]/div[4]/div[3]/div[1]/textarea[1]", "text");
         }
         public string Extract(string xpath, string type)
         {
@@ -133,7 +136,8 @@ namespace phoenixtranslate
                     }
                 }
                 else
-                    elm = (GeckoHtmlElement)wb.Document.EvaluateXPath(xpath).GetNodes().FirstOrDefault();
+                    
+                elm = (GeckoHtmlElement)wb.Document.EvaluateXPath(xpath).GetNodes().FirstOrDefault();
             }
             else
                 elm = (GeckoHtmlElement)wb.Document.GetElementById(xpath);
@@ -172,8 +176,12 @@ namespace phoenixtranslate
                         input1.Value = "";
                         input1.Focus();
                         input1.Click();
-                        Clipboard.SetText(value);
-                        geckoWebBrowser1.Paste();
+                        if (value != "")
+                        {
+                            Clipboard.SetText(value);
+                            geckoWebBrowser1.Paste();
+                            Clipboard.Clear();
+                        }
                     }
                 }
             }
@@ -203,8 +211,26 @@ namespace phoenixtranslate
         {
             Translator_config translator_config = new Translator_config(this);
             translator_config.ShowDialog();
-          
+
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            ActivateTraslate = Extract(Properties.Settings.Default.Xpathreceiver[Properties.Settings.Default.index], "text");
+           
+            if (ActivateTraslate==string.Empty)
+            {
+                button2.Enabled = false;
+            }
+            else
+            {
+                button2.Enabled = true;
+            }
+        }
+
+        private void Translator_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer1.Enabled = false;
+        }
     }
 }
