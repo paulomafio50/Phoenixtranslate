@@ -18,6 +18,7 @@ namespace phoenixtranslate
     public partial class Translator : Form
     {
         //remetre droit ctrl+K et D
+        public int currentRow;
         public string ActivateTraslate = string.Empty;
         public string textesource;
         public string textescible = "";
@@ -27,13 +28,26 @@ namespace phoenixtranslate
         public Translator()
         {
             InitializeComponent();
-            Xpcom.Initialize("Firefox");
+            Gecko.Xpcom.Initialize("Firefox");
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            geckoWebBrowser1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString());
+ 
+            if (Properties.Settings.Default.Name_Translator.Cast<string>().ToArray().Length == 0)
+            {
+                Properties.Settings.Default.index = -1;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+            
+                    geckoWebBrowser1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString());
+             
+            }
+            dataGridView1.Rows.Add("home", "");
+            dataGridView1.Rows.Add("car", "");
+            //MessageBox.Show(Properties.Settings.Default.index.ToString());
         }
         protected override void OnClosed(EventArgs e)
         {
@@ -43,11 +57,30 @@ namespace phoenixtranslate
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]), textBox1.Text);
+            if (Properties.Settings.Default.index != -1)
+            {
+                if (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index] != string.Empty)
+                {
+                    fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]), dataGridView1.CurrentCell.Value.ToString());
+                }
+            }
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox2.Text = Extract(wb1, Properties.Settings.Default.Xpathreceiver[Properties.Settings.Default.index], "text");
+            if (Properties.Settings.Default.index != -1)
+            {
+                dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Value = Extract(wb1, Properties.Settings.Default.Xpathreceiver[Properties.Settings.Default.index], "text");
+                currentRow = dataGridView1.SelectedRows[0].Index;
+                if (currentRow < dataGridView1.RowCount - 1)
+                {
+                    dataGridView1.Rows[++currentRow].Cells[0].Selected = true;
+                }
+                else
+                {
+                    //fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]), dataGridView1.Rows[currentRow].Cells[0].Value.ToString());
+                    MessageBox.Show("Fin.", "Important Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
         }
         public string Extract(GeckoWebBrowser wb, string xpath, string type)
         {
@@ -157,7 +190,6 @@ namespace phoenixtranslate
 
         public void fill(GeckoWebBrowser wb, string xpath, string value)
         {
-
             if (wb != null)
             {
                 if (xpath.StartsWith("/"))
@@ -200,7 +232,6 @@ namespace phoenixtranslate
         {
             Translator_config translator_config = new Translator_config(this);
             translator_config.ShowDialog();
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -227,11 +258,18 @@ namespace phoenixtranslate
 
         }
 
-        private void geckoWebBrowser1_ShowContextMenu(object sender, GeckoContextMenuEventArgs e)
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            contextMenuStrip1.Show((Control)sender, e.Location);
-      
-
+            if (Properties.Settings.Default.index!=-1)
+            {
+                if (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index] != string.Empty)
+                {
+                    currentRow = dataGridView1.SelectedRows[0].Index;
+                    fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]), dataGridView1.Rows[currentRow].Cells[0].Value.ToString());
+                }
+            }
         }
+
+
     }
 }

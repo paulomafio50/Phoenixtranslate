@@ -19,26 +19,27 @@ namespace phoenixtranslate
         private void InitializeComboBox()
         {
 
-          
-            if (Properties.Settings.Default.Name_Translator.Cast<string>().ToArray().Length >= 1)
+            if (Properties.Settings.Default.index != -1)
             {
-                comboBoxNav.DataSource = Properties.Settings.Default.Name_Translator.Cast<string>().ToArray();
+                if (Properties.Settings.Default.Name_Translator.Cast<string>().ToArray().Length >= 1)
+                {
+                    comboBoxNav.DataSource = Properties.Settings.Default.Name_Translator.Cast<string>().ToArray();
 
-          
-                comboBoxNav.SelectedIndex = index;
-                textBoxLink.Text = Properties.Settings.Default.Link[index];
-                textBoxXpathsender.Text = Properties.Settings.Default.Xpathsender[index];
-                textBoxXpathreceiver.Text = Properties.Settings.Default.Xpathreceiver[index];
-                
-            }
-            else
-            {
-                textBoxLink.Text = string.Empty;
-                textBoxXpathsender.Text = string.Empty;
-                textBoxXpathreceiver.Text= string.Empty;
-                comboBoxNav.SelectedIndex = -1;
-            }
 
+                    comboBoxNav.SelectedIndex = index;
+                    textBoxLink.Text = Properties.Settings.Default.Link[index];
+                    textBoxXpathsender.Text = Properties.Settings.Default.Xpathsender[index];
+                    textBoxXpathreceiver.Text = Properties.Settings.Default.Xpathreceiver[index];
+
+                }
+                else
+                {
+                    textBoxLink.Text = string.Empty;
+                    textBoxXpathsender.Text = string.Empty;
+                    textBoxXpathreceiver.Text = string.Empty;
+                    comboBoxNav.SelectedIndex = -1;
+                }
+            }
         }
  
 
@@ -61,6 +62,11 @@ namespace phoenixtranslate
                 Properties.Settings.Default.Xpathsender.Add(String.Empty);
                 Properties.Settings.Default.Save();
                 index=comboBoxNav.Items.Count;
+                if (Properties.Settings.Default.index==-1)
+                {
+                    Properties.Settings.Default.index = 0;
+                    Properties.Settings.Default.Save();
+                }
                 InitializeComboBox();
 
 
@@ -87,9 +93,11 @@ namespace phoenixtranslate
                 Properties.Settings.Default.Xpathsender.RemoveAt(comboBoxNav.SelectedIndex);
                 Properties.Settings.Default.Save();
                 comboBoxNav.DataSource=null;
-                if (index != 0)
+                if (index == 0)
                 {
                     index = index - 1;
+                    Properties.Settings.Default.index = -1;
+
                 }
                    
            
