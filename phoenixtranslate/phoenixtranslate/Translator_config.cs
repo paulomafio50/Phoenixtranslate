@@ -2,6 +2,9 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using System.Xml.XPath;
+using System.Drawing;
 namespace phoenixtranslate
 {
     public partial class Translator_config : Form
@@ -47,7 +50,6 @@ namespace phoenixtranslate
 
         private void buttonLinkSet_Click(object sender, EventArgs e)
         {
-
             Properties.Settings.Default.Link[index] = textBoxLink.Text;
         }
 
@@ -68,7 +70,6 @@ namespace phoenixtranslate
                     Properties.Settings.Default.Save();
                 }
                 InitializeComboBox();
-
 
             }
 
@@ -143,6 +144,76 @@ namespace phoenixtranslate
             Properties.Settings.Default.Xpathreceiver[comboBoxNav.SelectedIndex] = textBoxXpathreceiver.Text;
             Properties.Settings.Default.Save();
 
+        }
+
+        private void textBoxLink_TextChanged(object sender, EventArgs e)
+        {
+            Regex regex = new Regex(@"^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)");
+
+            
+            Match match = regex.Match(textBoxLink.Text);
+
+           
+            if (match.Success)
+            {
+                textBoxLink.BackColor = Color.White;
+                buttonLinkSet.Enabled = true;
+            }
+            else
+            {
+                textBoxLink.BackColor = Color.Red;
+                buttonLinkSet.Enabled = false;
+            }
+        }
+
+
+        private void textBoxXpathsender_TextChanged(object sender, EventArgs e)
+        {
+            if(ValidateXpath(textBoxXpathsender.Text))
+            {
+                textBoxXpathsender.BackColor = Color.White;
+                buttonXpathSSet.Enabled = true;
+            }
+            else
+            {
+                textBoxXpathsender.BackColor = Color.Red;
+                buttonXpathSSet.Enabled = false;
+            }
+
+        }
+        private void textBoxXpathreceiver_TextChanged(object sender, EventArgs e)
+        {
+            if (ValidateXpath(textBoxXpathreceiver.Text))
+            {
+                textBoxXpathreceiver.BackColor = Color.White;
+                buttonXpathRSet.Enabled = true;
+            }
+            else
+            {
+                textBoxXpathreceiver.BackColor = Color.Red;
+                buttonXpathRSet.Enabled = false;
+            }
+
+        }
+        public bool ValidateXpath(string xpath)
+        {
+            try
+            {
+                XPathExpression.Compile(xpath);
+                return true;
+            }
+            catch (XPathException)
+            {
+                return false;
+            }
+        }
+
+        private void Translator_config_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (textBoxLink.BackColor==Color.Red || textBoxXpathreceiver.BackColor==Color.Red || textBoxXpathsender.BackColor == Color.Red)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

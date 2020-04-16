@@ -55,6 +55,7 @@
             this.geckoWebBrowser1.Size = new System.Drawing.Size(1145, 502);
             this.geckoWebBrowser1.TabIndex = 0;
             this.geckoWebBrowser1.UseHttpActivityObserver = false;
+            this.geckoWebBrowser1.ShowContextMenu += new System.EventHandler<Gecko.GeckoContextMenuEventArgs>(this.geckoWebBrowser1_ShowContextMenu);
             // 
             // contextMenuwb1
             // 

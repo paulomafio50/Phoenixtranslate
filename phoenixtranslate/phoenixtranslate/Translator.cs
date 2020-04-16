@@ -33,7 +33,7 @@ namespace phoenixtranslate
 
         private void Form1_Load(object sender, EventArgs e)
         {
- 
+
             if (Properties.Settings.Default.Name_Translator.Cast<string>().ToArray().Length == 0)
             {
                 Properties.Settings.Default.index = -1;
@@ -41,9 +41,9 @@ namespace phoenixtranslate
             }
             else
             {
-            
-                    geckoWebBrowser1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString());
-             
+
+                geckoWebBrowser1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString());
+
             }
             dataGridView1.Rows.Add("home", "");
             dataGridView1.Rows.Add("car", "");
@@ -77,7 +77,6 @@ namespace phoenixtranslate
                 }
                 else
                 {
-                    //fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]), dataGridView1.Rows[currentRow].Cells[0].Value.ToString());
                     MessageBox.Show("Fin.", "Important Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
@@ -87,48 +86,40 @@ namespace phoenixtranslate
             string result = string.Empty;
             GeckoHtmlElement Elm;
 
-
             if (wb != null)
             {
-                Elm = GetElement(wb, xpath);
+                Elm = (GeckoHtmlElement)wb.Document.EvaluateXPath(xpath).GetNodes().FirstOrDefault();
 
                 if (Elm != null)
                 {
-                    if (Elm != null)
+                    switch (type)
                     {
-                        switch (type)
-                        {
-                            case "html":
-                                {
-                                    result = Elm.OuterHtml;
-                                    break;
-                                }
+                        case "html":
 
-                            case "text":
-                                {
-                                    if (Elm.GetType().Name == "GeckoTextAreaElement")
-                                        result = ((GeckoTextAreaElement)Elm).Value;
-                                    else
-                                        result = Elm.TextContent.Trim();
-                                    break;
-                                }
+                            result = Elm.OuterHtml;
+                            break;
 
-                            case "value":
-                                {
-                                    result = ((GeckoInputElement)Elm).Value;
-                                    break;
-                                }
+                        case "text":
 
-                            default:
-                                {
-                                    result = ExtractData(Elm, type);
-                                    break;
-                                }
-                        }
+                            if (Elm.GetType().Name == "GeckoTextAreaElement")
+                                result = ((GeckoTextAreaElement)Elm).Value;
+                            else
+                                result = Elm.TextContent.Trim();
+                            break;
+
+                        case "value":
+
+                            result = ((GeckoInputElement)Elm).Value;
+                            break;
+
+                        default:
+
+                            result = ExtractData(Elm, type);
+                            break;
                     }
                 }
-            }
 
+            }
             return result;
         }
         private string ExtractData(GeckoHtmlElement ele, string attribute)
@@ -141,38 +132,8 @@ namespace phoenixtranslate
                 if (tmp != null)
                     result = tmp.Trim();
             }
-
             return result;
         }
-
-        private GeckoHtmlElement GetElement(GeckoWebBrowser wb, string xpath)
-        {
-            GeckoHtmlElement elm = null;
-            if (xpath.StartsWith("/"))
-            {
-                if (xpath.Contains("@class") || xpath.Contains("@data-type"))
-                {
-                    var html = GetHtmlFromGeckoDocument(wb.Document);
-                    HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-                    doc.LoadHtml(html);
-                    var node = doc.DocumentNode.SelectSingleNode(xpath);
-
-                    if (node != null)
-                    {
-                        var currentXpath = "/" + node.XPath;
-                        elm = (GeckoHtmlElement)wb.Document.EvaluateXPath(currentXpath).GetNodes().FirstOrDefault();
-                    }
-                }
-                else
-
-                    elm = (GeckoHtmlElement)wb.Document.EvaluateXPath(xpath).GetNodes().FirstOrDefault();
-            }
-            else
-                elm = (GeckoHtmlElement)wb.Document.GetElementById(xpath);
-
-            return elm;
-        }
-
         private string GetHtmlFromGeckoDocument(GeckoDocument doc)
         {
             var result = string.Empty;
@@ -185,27 +146,31 @@ namespace phoenixtranslate
             }
             return result;
         }
-
-
-
         public void fill(GeckoWebBrowser wb, string xpath, string value)
         {
             if (wb != null)
             {
-                if (xpath.StartsWith("/"))
+                GeckoHtmlElement elm = (GeckoHtmlElement)wb.Document.EvaluateXPath(xpath).GetNodes().FirstOrDefault();
+                if (elm != null)
                 {
-                    GeckoHtmlElement elm = GetElement(wb, xpath);
-                    if (elm != null)
+                    GeckoTextAreaElement input1 = (GeckoTextAreaElement)elm;
+                    input1.Value = value;
+                    var evt =wb.Document.CreateEvent("HTMLEvents");
+                    using (Gecko.AutoJSContext java = new Gecko.AutoJSContext(wb.Window))
                     {
-                        GeckoTextAreaElement input1 = (GeckoTextAreaElement)elm;
-                        input1.Value = "";
-                        wb.Focus();
-                        input1.Focus();
-                        if (value != "")
-                        {
-                            SendKeys.Send(value);
-                        }
+                        java.EvaluateScript($@"var xpathResult = document.evaluate('{xpath.Replace("'","\\'")}') 
+                    var evt = document.createEvent('HTMLEvents');
+                    evt.initEvent('change', false, true);
+                        xpathResult.dispatchEvent(evt);
+                        ", out string outString);
                     }
+                   
+                    //wb.Focus();
+                    //input1.Focus();
+                    //if (value != "")
+                    //{
+                    //    SendKeys.Send(value);
+                    //}
                 }
             }
         }
@@ -247,20 +212,10 @@ namespace phoenixtranslate
                 button2.Enabled = true;
             }
         }
-
-        private void Translator_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            timer1.Enabled = false;
-        }
-
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        private void Translator_FormClosing(object sender, FormClosingEventArgs e){timer1.Enabled = false;}
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.index!=-1)
+            if (Properties.Settings.Default.index != -1)
             {
                 if (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index] != string.Empty)
                 {
@@ -269,7 +224,7 @@ namespace phoenixtranslate
                 }
             }
         }
-
-
+        private void geckoWebBrowser1_ShowContextMenu(object sender, GeckoContextMenuEventArgs e) { this.contextMenuwb1.Show(Control.MousePosition); }
+        
     }
 }

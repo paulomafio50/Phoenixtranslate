@@ -69,6 +69,7 @@
             this.textBoxXpathsender.Name = "textBoxXpathsender";
             this.textBoxXpathsender.Size = new System.Drawing.Size(266, 20);
             this.textBoxXpathsender.TabIndex = 6;
+            this.textBoxXpathsender.TextChanged += new System.EventHandler(this.textBoxXpathsender_TextChanged);
             // 
             // textBoxXpathreceiver
             // 
@@ -76,6 +77,7 @@
             this.textBoxXpathreceiver.Name = "textBoxXpathreceiver";
             this.textBoxXpathreceiver.Size = new System.Drawing.Size(266, 20);
             this.textBoxXpathreceiver.TabIndex = 6;
+            this.textBoxXpathreceiver.TextChanged += new System.EventHandler(this.textBoxXpathreceiver_TextChanged);
             // 
             // panel1
             // 
@@ -149,10 +151,12 @@
             // 
             // textBoxLink
             // 
+            this.textBoxLink.BackColor = System.Drawing.Color.Red;
             this.textBoxLink.Location = new System.Drawing.Point(427, 31);
             this.textBoxLink.Name = "textBoxLink";
             this.textBoxLink.Size = new System.Drawing.Size(266, 20);
             this.textBoxLink.TabIndex = 10;
+            this.textBoxLink.TextChanged += new System.EventHandler(this.textBoxLink_TextChanged);
             // 
             // label1
             // 
@@ -189,6 +193,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Translator_config";
             this.Text = "Translator_config";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Translator_config_FormClosing);
             this.Load += new System.EventHandler(this.Translator_config_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
