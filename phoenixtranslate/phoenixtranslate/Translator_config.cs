@@ -112,7 +112,7 @@ namespace phoenixtranslate
             textBoxLink.Text = Properties.Settings.Default.Link[comboBoxNav.SelectedIndex];
             textBoxXpathsender.Text=Properties.Settings.Default.Xpathsender[comboBoxNav.SelectedIndex];
             textBoxXpathreceiver.Text=Properties.Settings.Default.Xpathreceiver[comboBoxNav.SelectedIndex];
-            this._Translator.geckoWebBrowser.Navigate(Properties.Settings.Default.Link[index].ToString());
+            this._Translator.wb1.Navigate(Properties.Settings.Default.Link[index].ToString());
 
 
         }

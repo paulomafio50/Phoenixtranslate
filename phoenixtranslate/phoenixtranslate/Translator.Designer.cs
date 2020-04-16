@@ -36,16 +36,20 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.buttontranslatorconfig = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SuspendLayout();
             // 
             // geckoWebBrowser1
             // 
+            this.geckoWebBrowser1.ContextMenuStrip = this.contextMenuStrip1;
             this.geckoWebBrowser1.FrameEventsPropagateToMainWindow = false;
             this.geckoWebBrowser1.Location = new System.Drawing.Point(38, 79);
             this.geckoWebBrowser1.Name = "geckoWebBrowser1";
+            this.geckoWebBrowser1.NoDefaultContextMenu = true;
             this.geckoWebBrowser1.Size = new System.Drawing.Size(1145, 502);
             this.geckoWebBrowser1.TabIndex = 0;
             this.geckoWebBrowser1.UseHttpActivityObserver = false;
+            this.geckoWebBrowser1.ShowContextMenu += new System.EventHandler<Gecko.GeckoContextMenuEventArgs>(this.geckoWebBrowser1_ShowContextMenu);
             // 
             // button1
             // 
@@ -99,6 +103,11 @@
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // Translator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,6 +137,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button buttontranslatorconfig;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 
