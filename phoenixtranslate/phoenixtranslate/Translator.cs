@@ -33,7 +33,8 @@ namespace phoenixtranslate
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+          //Properties.Settings.Default.Name_Translator.Clear();
+          //  Properties.Settings.Default.Save();
             if (Properties.Settings.Default.Name_Translator.Cast<string>().ToArray().Length == 0)
             {
                 Properties.Settings.Default.index = -1;
@@ -61,7 +62,7 @@ namespace phoenixtranslate
             {
                 if (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index] != string.Empty)
                 {
-                    fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]), dataGridView1.CurrentCell.Value.ToString());
+                    fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]),(Properties.Settings.Default.Querysender[Properties.Settings.Default.index]), dataGridView1.CurrentCell.Value.ToString());
                 }
             }
         }
@@ -146,25 +147,28 @@ namespace phoenixtranslate
             }
             return result;
         }
-        public void fill(GeckoWebBrowser wb, string xpath, string value)
+        public void fill(GeckoWebBrowser wb, string xpath, string Query, string value)
         {
             if (wb != null)
             {
                 GeckoHtmlElement elm = (GeckoHtmlElement)wb.Document.EvaluateXPath(xpath).GetNodes().FirstOrDefault();
+
                 if (elm != null)
                 {
                     GeckoTextAreaElement input1 = (GeckoTextAreaElement)elm;
                     input1.Value = value;
-                    var evt =wb.Document.CreateEvent("HTMLEvents");
+                    var evt = wb.Document.CreateEvent("HTMLEvents");
                     using (Gecko.AutoJSContext java = new Gecko.AutoJSContext(wb.Window))
                     {
-                        java.EvaluateScript($@"var xpathResult = document.evaluate('{xpath.Replace("'","\\'")}') 
-                    var evt = document.createEvent('HTMLEvents');
-                    evt.initEvent('change', false, true);
+                        var selector = Query;//todo
+                        java.EvaluateScript($@"
+                        var xpathResult = document.querySelector('{selector}') 
+                        var evt = document.createEvent('HTMLEvents');
+                        evt.initEvent('change', false, true);
                         xpathResult.dispatchEvent(evt);
                         ", out string outString);
                     }
-                   
+
                     //wb.Focus();
                     //input1.Focus();
                     //if (value != "")
@@ -220,11 +224,28 @@ namespace phoenixtranslate
                 if (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index] != string.Empty)
                 {
                     currentRow = dataGridView1.SelectedRows[0].Index;
-                    fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]), dataGridView1.Rows[currentRow].Cells[0].Value.ToString());
+                    fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]),(Properties.Settings.Default.Querysender[Properties.Settings.Default.index]), dataGridView1.Rows[currentRow].Cells[0].Value.ToString());
                 }
             }
         }
         private void geckoWebBrowser1_ShowContextMenu(object sender, GeckoContextMenuEventArgs e) { this.contextMenuwb1.Show(Control.MousePosition); }
-        
+
+        private void geckoWebBrowser1_Navigated(object sender, GeckoNavigatedEventArgs e)
+        {
+
+        }
+
+        private void geckoWebBrowser1_DocumentCompleted(object sender, GeckoDocumentCompletedEventArgs e)
+        {
+          
+            if (Properties.Settings.Default.index != -1)
+            {
+                if (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index] != string.Empty)
+                {
+                    wait(1000);
+                    fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]),(Properties.Settings.Default.Querysender[Properties.Settings.Default.index]), dataGridView1.CurrentCell.Value.ToString());
+                }
+            }
+        }
     }
 }

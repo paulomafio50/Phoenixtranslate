@@ -42,6 +42,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.buttonQuerySet = new System.Windows.Forms.Button();
+            this.label = new System.Windows.Forms.Label();
+            this.textBoxQuerysender = new System.Windows.Forms.TextBox();
+            this.buttonDefault = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +56,7 @@
             this.comboBoxNav.Name = "comboBoxNav";
             this.comboBoxNav.Size = new System.Drawing.Size(121, 21);
             this.comboBoxNav.TabIndex = 3;
+            this.comboBoxNav.SelectedIndexChanged += new System.EventHandler(this.comboBoxNav_SelectedIndexChanged);
             this.comboBoxNav.SelectionChangeCommitted += new System.EventHandler(this.comboBoxNav_SelectionChangeCommitted);
             // 
             // label3
@@ -65,6 +70,7 @@
             // 
             // textBoxXpathsender
             // 
+            this.textBoxXpathsender.BackColor = System.Drawing.Color.Red;
             this.textBoxXpathsender.Location = new System.Drawing.Point(427, 69);
             this.textBoxXpathsender.Name = "textBoxXpathsender";
             this.textBoxXpathsender.Size = new System.Drawing.Size(266, 20);
@@ -73,7 +79,8 @@
             // 
             // textBoxXpathreceiver
             // 
-            this.textBoxXpathreceiver.Location = new System.Drawing.Point(427, 112);
+            this.textBoxXpathreceiver.BackColor = System.Drawing.Color.Red;
+            this.textBoxXpathreceiver.Location = new System.Drawing.Point(427, 152);
             this.textBoxXpathreceiver.Name = "textBoxXpathreceiver";
             this.textBoxXpathreceiver.Size = new System.Drawing.Size(266, 20);
             this.textBoxXpathreceiver.TabIndex = 6;
@@ -81,6 +88,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonQuerySet);
+            this.panel1.Controls.Add(this.label);
+            this.panel1.Controls.Add(this.textBoxQuerysender);
             this.panel1.Controls.Add(this.buttonXpathRSet);
             this.panel1.Controls.Add(this.buttonXpathSSet);
             this.panel1.Controls.Add(this.buttonLinkSet);
@@ -101,7 +111,7 @@
             // 
             // buttonXpathRSet
             // 
-            this.buttonXpathRSet.Location = new System.Drawing.Point(699, 109);
+            this.buttonXpathRSet.Location = new System.Drawing.Point(699, 149);
             this.buttonXpathRSet.Name = "buttonXpathRSet";
             this.buttonXpathRSet.Size = new System.Drawing.Size(75, 23);
             this.buttonXpathRSet.TabIndex = 13;
@@ -170,7 +180,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(339, 112);
+            this.label5.Location = new System.Drawing.Point(339, 152);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 13);
             this.label5.TabIndex = 7;
@@ -185,11 +195,50 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Xpath sender";
             // 
+            // buttonQuerySet
+            // 
+            this.buttonQuerySet.Location = new System.Drawing.Point(699, 101);
+            this.buttonQuerySet.Name = "buttonQuerySet";
+            this.buttonQuerySet.Size = new System.Drawing.Size(75, 23);
+            this.buttonQuerySet.TabIndex = 16;
+            this.buttonQuerySet.Text = "Set";
+            this.buttonQuerySet.UseVisualStyleBackColor = true;
+            this.buttonQuerySet.Click += new System.EventHandler(this.buttonQuerySet_Click);
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(339, 104);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(70, 13);
+            this.label.TabIndex = 15;
+            this.label.Text = "Query sender";
+            // 
+            // textBoxQuerysender
+            // 
+            this.textBoxQuerysender.BackColor = System.Drawing.Color.Red;
+            this.textBoxQuerysender.Location = new System.Drawing.Point(427, 101);
+            this.textBoxQuerysender.Name = "textBoxQuerysender";
+            this.textBoxQuerysender.Size = new System.Drawing.Size(266, 20);
+            this.textBoxQuerysender.TabIndex = 14;
+            this.textBoxQuerysender.TextChanged += new System.EventHandler(this.textBoxQuerysender_TextChanged);
+            // 
+            // buttonDefault
+            // 
+            this.buttonDefault.Location = new System.Drawing.Point(685, 293);
+            this.buttonDefault.Name = "buttonDefault";
+            this.buttonDefault.Size = new System.Drawing.Size(75, 23);
+            this.buttonDefault.TabIndex = 9;
+            this.buttonDefault.Text = "Default";
+            this.buttonDefault.UseVisualStyleBackColor = true;
+            this.buttonDefault.Click += new System.EventHandler(this.buttonDefault_Click);
+            // 
             // Translator_config
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonDefault);
             this.Controls.Add(this.panel1);
             this.Name = "Translator_config";
             this.Text = "Translator_config";
@@ -216,5 +265,9 @@
         private System.Windows.Forms.Button buttonXpathRSet;
         private System.Windows.Forms.Button buttonXpathSSet;
         private System.Windows.Forms.Button buttonLinkSet;
+        private System.Windows.Forms.Button buttonQuerySet;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.TextBox textBoxQuerysender;
+        private System.Windows.Forms.Button buttonDefault;
     }
 }

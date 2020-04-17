@@ -24,14 +24,15 @@ namespace phoenixtranslate
 
             if (Properties.Settings.Default.index != -1)
             {
-                if (Properties.Settings.Default.Name_Translator.Cast<string>().ToArray().Length >= 1)
+                if (Properties.Settings.Default.Name_Translator.Count>=1)
                 {
                     comboBoxNav.DataSource = Properties.Settings.Default.Name_Translator.Cast<string>().ToArray();
 
 
-                    comboBoxNav.SelectedIndex = index;
+                    comboBoxNav.SelectedIndex = Properties.Settings.Default.index;
                     textBoxLink.Text = Properties.Settings.Default.Link[index];
                     textBoxXpathsender.Text = Properties.Settings.Default.Xpathsender[index];
+                    textBoxQuerysender.Text = Properties.Settings.Default.Querysender[index];
                     textBoxXpathreceiver.Text = Properties.Settings.Default.Xpathreceiver[index];
 
                 }
@@ -39,6 +40,7 @@ namespace phoenixtranslate
                 {
                     textBoxLink.Text = string.Empty;
                     textBoxXpathsender.Text = string.Empty;
+                    textBoxQuerysender.Text= string.Empty;
                     textBoxXpathreceiver.Text = string.Empty;
                     comboBoxNav.SelectedIndex = -1;
                 }
@@ -91,8 +93,14 @@ namespace phoenixtranslate
                 Properties.Settings.Default.Name_Translator.RemoveAt(comboBoxNav.SelectedIndex);
                 Properties.Settings.Default.Link.RemoveAt(comboBoxNav.SelectedIndex);
                 Properties.Settings.Default.Xpathreceiver.RemoveAt(comboBoxNav.SelectedIndex);
+                Properties.Settings.Default.Querysender.RemoveAt(comboBoxNav.SelectedIndex);
                 Properties.Settings.Default.Xpathsender.RemoveAt(comboBoxNav.SelectedIndex);
                 Properties.Settings.Default.Save();
+                textBoxLink.Text = string.Empty;
+                textBoxQuerysender.Text = string.Empty;
+                textBoxXpathreceiver.Text = string.Empty;
+                textBoxXpathsender.Text = string.Empty;
+
                 comboBoxNav.DataSource=null;
                 if (index == 0)
                 {
@@ -121,7 +129,7 @@ namespace phoenixtranslate
             textBoxLink.Text = Properties.Settings.Default.Link[comboBoxNav.SelectedIndex];
             textBoxXpathsender.Text=Properties.Settings.Default.Xpathsender[comboBoxNav.SelectedIndex];
             textBoxXpathreceiver.Text=Properties.Settings.Default.Xpathreceiver[comboBoxNav.SelectedIndex];
-            this._Translator.wb1.Navigate(Properties.Settings.Default.Link[index].ToString());
+            
 
 
         }
@@ -138,7 +146,11 @@ namespace phoenixtranslate
             Properties.Settings.Default.Xpathsender[comboBoxNav.SelectedIndex] = textBoxXpathsender.Text;
             Properties.Settings.Default.Save();
         }
-
+        private void buttonQuerySet_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Querysender[comboBoxNav.SelectedIndex] = textBoxQuerysender.Text;
+            Properties.Settings.Default.Save();
+        }
         private void buttonXpathRSet_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Xpathreceiver[comboBoxNav.SelectedIndex] = textBoxXpathreceiver.Text;
@@ -195,6 +207,22 @@ namespace phoenixtranslate
             }
 
         }
+        private void textBoxQuerysender_TextChanged(object sender, EventArgs e)
+        {
+          
+
+
+            if (textBoxQuerysender.Text.Length>0)
+            {
+                textBoxQuerysender.BackColor = Color.White;
+                buttonQuerySet.Enabled = true;
+            }
+            else
+            {
+                textBoxQuerysender.BackColor = Color.Red;
+                buttonQuerySet.Enabled = false;
+            }
+        }
         public bool ValidateXpath(string xpath)
         {
             try
@@ -214,6 +242,36 @@ namespace phoenixtranslate
             {
                 e.Cancel = true;
             }
+            else
+            {
+                this._Translator.wb1.Navigate(Properties.Settings.Default.Link[index].ToString());
+            }
         }
+
+
+
+        private void buttonDefault_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Xpathreceiver.Clear();
+            Properties.Settings.Default.Xpathsender.Clear();
+            Properties.Settings.Default.Link.Clear();
+            Properties.Settings.Default.Name_Translator.Clear();
+            Properties.Settings.Default.Querysender.Clear();
+            Properties.Settings.Default.index = 0;
+            Properties.Settings.Default.Xpathreceiver.Add("/html[1]/body[1]/div[2]/div[1]/div[1]/div[4]/div[3]/div[1]/textarea[1]");
+            Properties.Settings.Default.Xpathsender.Add("/html[1]/body[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/textarea[1]");
+            Properties.Settings.Default.Querysender.Add("#dl_translator > div.lmt__sides_container > div.lmt__side_container.lmt__side_container--source > div.lmt__textarea_container > div > textarea");
+            Properties.Settings.Default.Name_Translator.Add("Deepl");
+            Properties.Settings.Default.Link.Add("https://www.deepl.com/translator");
+            Properties.Settings.Default.Save();
+            InitializeComboBox();
+        }
+
+        private void comboBoxNav_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            index= Properties.Settings.Default.index;
+        }
+
+
     }
 }

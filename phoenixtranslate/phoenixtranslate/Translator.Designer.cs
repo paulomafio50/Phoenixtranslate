@@ -34,7 +34,6 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gfdgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fggdggfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.buttontranslatorconfig = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -55,6 +54,8 @@
             this.geckoWebBrowser1.Size = new System.Drawing.Size(1145, 502);
             this.geckoWebBrowser1.TabIndex = 0;
             this.geckoWebBrowser1.UseHttpActivityObserver = false;
+            this.geckoWebBrowser1.Navigated += new System.EventHandler<Gecko.GeckoNavigatedEventArgs>(this.geckoWebBrowser1_Navigated);
+            this.geckoWebBrowser1.DocumentCompleted += new System.EventHandler<Gecko.Events.GeckoDocumentCompletedEventArgs>(this.geckoWebBrowser1_DocumentCompleted);
             this.geckoWebBrowser1.ShowContextMenu += new System.EventHandler<Gecko.GeckoContextMenuEventArgs>(this.geckoWebBrowser1_ShowContextMenu);
             // 
             // contextMenuwb1
@@ -83,16 +84,6 @@
             this.fggdggfToolStripMenuItem.Name = "fggdggfToolStripMenuItem";
             this.fggdggfToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.fggdggfToolStripMenuItem.Text = "fggdggf";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(38, 766);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -155,7 +146,6 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttontranslatorconfig);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.geckoWebBrowser1);
             this.Name = "Translator";
             this.Text = "Form1";
@@ -170,7 +160,6 @@
         #endregion
 
         private Gecko.GeckoWebBrowser geckoWebBrowser1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttontranslatorconfig;
         private System.Windows.Forms.Timer timer1;
