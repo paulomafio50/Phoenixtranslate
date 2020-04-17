@@ -129,7 +129,7 @@ namespace phoenixtranslate
             textBoxLink.Text = Properties.Settings.Default.Link[comboBoxNav.SelectedIndex];
             textBoxXpathsender.Text=Properties.Settings.Default.Xpathsender[comboBoxNav.SelectedIndex];
             textBoxXpathreceiver.Text=Properties.Settings.Default.Xpathreceiver[comboBoxNav.SelectedIndex];
-            
+            textBoxQuerysender.Text= Properties.Settings.Default.Querysender[comboBoxNav.SelectedIndex];
 
 
         }
@@ -241,6 +241,8 @@ namespace phoenixtranslate
             if (textBoxLink.BackColor==Color.Red || textBoxXpathreceiver.BackColor==Color.Red || textBoxXpathsender.BackColor == Color.Red)
             {
                 e.Cancel = true;
+                MessageBox.Show("Fill config or restore default", "Important Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+               
             }
             else
             {
@@ -252,17 +254,33 @@ namespace phoenixtranslate
 
         private void buttonDefault_Click(object sender, EventArgs e)
         {
+            //efface les Properties.Settings.Default
             Properties.Settings.Default.Xpathreceiver.Clear();
             Properties.Settings.Default.Xpathsender.Clear();
             Properties.Settings.Default.Link.Clear();
             Properties.Settings.Default.Name_Translator.Clear();
             Properties.Settings.Default.Querysender.Clear();
-            Properties.Settings.Default.index = 0;
+            
+            //ajoute les Properties.Settings.Default deepl
             Properties.Settings.Default.Xpathreceiver.Add("/html[1]/body[1]/div[2]/div[1]/div[1]/div[4]/div[3]/div[1]/textarea[1]");
             Properties.Settings.Default.Xpathsender.Add("/html[1]/body[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/textarea[1]");
             Properties.Settings.Default.Querysender.Add("#dl_translator > div.lmt__sides_container > div.lmt__side_container.lmt__side_container--source > div.lmt__textarea_container > div > textarea");
             Properties.Settings.Default.Name_Translator.Add("Deepl");
             Properties.Settings.Default.Link.Add("https://www.deepl.com/translator");
+            //ajoute les Properties.Settings.Default Google
+            Properties.Settings.Default.Xpathreceiver.Add("/html[1]/body[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[3]/div[1]/div[2]/div[1]");
+            Properties.Settings.Default.Xpathsender.Add("/html/body/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div/div/div[1]/textarea");
+            Properties.Settings.Default.Querysender.Add("#source");
+            Properties.Settings.Default.Name_Translator.Add("Google");
+            Properties.Settings.Default.Link.Add("https://translate.google.com/");
+            //ajoute les Properties.Settings.Default Google
+            Properties.Settings.Default.Xpathreceiver.Add("/html[1]/body[1]/div[2]/div[2]/div[2]/div[2]/div[1]/pre[1]");
+            Properties.Settings.Default.Xpathsender.Add("/html[1]/body[1]/div[2]/div[2]/div[1]/div[2]/div[1]/textarea[1]");
+            Properties.Settings.Default.Querysender.Add("#textarea");
+            Properties.Settings.Default.Name_Translator.Add("Yandex");
+            Properties.Settings.Default.Link.Add("https://translate.yandex.com/");
+
+            Properties.Settings.Default.index = 2;
             Properties.Settings.Default.Save();
             InitializeComboBox();
         }
