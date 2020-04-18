@@ -40,12 +40,15 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Source = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Target = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonConfigTag = new System.Windows.Forms.Button();
             this.contextMenuwb1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // geckoWebBrowser1
             // 
+            this.geckoWebBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.geckoWebBrowser1.ContextMenuStrip = this.contextMenuwb1;
             this.geckoWebBrowser1.FrameEventsPropagateToMainWindow = false;
             this.geckoWebBrowser1.Location = new System.Drawing.Point(38, 79);
@@ -87,6 +90,7 @@
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Location = new System.Drawing.Point(1108, 766);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
@@ -101,7 +105,7 @@
             this.buttontranslatorconfig.Name = "buttontranslatorconfig";
             this.buttontranslatorconfig.Size = new System.Drawing.Size(75, 23);
             this.buttontranslatorconfig.TabIndex = 5;
-            this.buttontranslatorconfig.Text = "config";
+            this.buttontranslatorconfig.Text = "Config translator";
             this.buttontranslatorconfig.UseVisualStyleBackColor = true;
             this.buttontranslatorconfig.Click += new System.EventHandler(this.buttontranslatorconfig_Click);
             // 
@@ -113,6 +117,9 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -137,12 +144,23 @@
             this.Target.HeaderText = "Target";
             this.Target.Name = "Target";
             // 
+            // buttonConfigTag
+            // 
+            this.buttonConfigTag.Location = new System.Drawing.Point(157, 26);
+            this.buttonConfigTag.Name = "buttonConfigTag";
+            this.buttonConfigTag.Size = new System.Drawing.Size(75, 23);
+            this.buttonConfigTag.TabIndex = 7;
+            this.buttonConfigTag.Text = "Config Tag";
+            this.buttonConfigTag.UseVisualStyleBackColor = true;
+            this.buttonConfigTag.Visible = false;
+            // 
             // Translator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1237, 857);
             this.ContextMenuStrip = this.contextMenuwb1;
+            this.Controls.Add(this.buttonConfigTag);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttontranslatorconfig);
             this.Controls.Add(this.button2);
@@ -170,6 +188,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Target;
         private System.Windows.Forms.ToolStripMenuItem gfdgToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fggdggfToolStripMenuItem;
+        private System.Windows.Forms.Button buttonConfigTag;
     }
 }
 

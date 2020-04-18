@@ -33,6 +33,9 @@
             this.textBoxXpathsender = new System.Windows.Forms.TextBox();
             this.textBoxXpathreceiver = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonQuerySet = new System.Windows.Forms.Button();
+            this.label = new System.Windows.Forms.Label();
+            this.textBoxQuerysender = new System.Windows.Forms.TextBox();
             this.buttonXpathRSet = new System.Windows.Forms.Button();
             this.buttonXpathSSet = new System.Windows.Forms.Button();
             this.buttonLinkSet = new System.Windows.Forms.Button();
@@ -42,9 +45,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.buttonQuerySet = new System.Windows.Forms.Button();
-            this.label = new System.Windows.Forms.Label();
-            this.textBoxQuerysender = new System.Windows.Forms.TextBox();
             this.buttonDefault = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -88,6 +88,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonDefault);
             this.panel1.Controls.Add(this.buttonQuerySet);
             this.panel1.Controls.Add(this.label);
             this.panel1.Controls.Add(this.textBoxQuerysender);
@@ -106,8 +107,36 @@
             this.panel1.Controls.Add(this.comboBoxNav);
             this.panel1.Location = new System.Drawing.Point(7, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(798, 195);
+            this.panel1.Size = new System.Drawing.Size(798, 233);
             this.panel1.TabIndex = 7;
+            // 
+            // buttonQuerySet
+            // 
+            this.buttonQuerySet.Location = new System.Drawing.Point(699, 101);
+            this.buttonQuerySet.Name = "buttonQuerySet";
+            this.buttonQuerySet.Size = new System.Drawing.Size(75, 23);
+            this.buttonQuerySet.TabIndex = 16;
+            this.buttonQuerySet.Text = "Set";
+            this.buttonQuerySet.UseVisualStyleBackColor = true;
+            this.buttonQuerySet.Click += new System.EventHandler(this.buttonQuerySet_Click);
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(339, 104);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(70, 13);
+            this.label.TabIndex = 15;
+            this.label.Text = "Query sender";
+            // 
+            // textBoxQuerysender
+            // 
+            this.textBoxQuerysender.BackColor = System.Drawing.Color.Red;
+            this.textBoxQuerysender.Location = new System.Drawing.Point(427, 101);
+            this.textBoxQuerysender.Name = "textBoxQuerysender";
+            this.textBoxQuerysender.Size = new System.Drawing.Size(266, 20);
+            this.textBoxQuerysender.TabIndex = 14;
+            this.textBoxQuerysender.TextChanged += new System.EventHandler(this.textBoxQuerysender_TextChanged);
             // 
             // buttonXpathRSet
             // 
@@ -195,37 +224,9 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Xpath sender";
             // 
-            // buttonQuerySet
-            // 
-            this.buttonQuerySet.Location = new System.Drawing.Point(699, 101);
-            this.buttonQuerySet.Name = "buttonQuerySet";
-            this.buttonQuerySet.Size = new System.Drawing.Size(75, 23);
-            this.buttonQuerySet.TabIndex = 16;
-            this.buttonQuerySet.Text = "Set";
-            this.buttonQuerySet.UseVisualStyleBackColor = true;
-            this.buttonQuerySet.Click += new System.EventHandler(this.buttonQuerySet_Click);
-            // 
-            // label
-            // 
-            this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(339, 104);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(70, 13);
-            this.label.TabIndex = 15;
-            this.label.Text = "Query sender";
-            // 
-            // textBoxQuerysender
-            // 
-            this.textBoxQuerysender.BackColor = System.Drawing.Color.Red;
-            this.textBoxQuerysender.Location = new System.Drawing.Point(427, 101);
-            this.textBoxQuerysender.Name = "textBoxQuerysender";
-            this.textBoxQuerysender.Size = new System.Drawing.Size(266, 20);
-            this.textBoxQuerysender.TabIndex = 14;
-            this.textBoxQuerysender.TextChanged += new System.EventHandler(this.textBoxQuerysender_TextChanged);
-            // 
             // buttonDefault
             // 
-            this.buttonDefault.Location = new System.Drawing.Point(685, 293);
+            this.buttonDefault.Location = new System.Drawing.Point(699, 207);
             this.buttonDefault.Name = "buttonDefault";
             this.buttonDefault.Size = new System.Drawing.Size(75, 23);
             this.buttonDefault.TabIndex = 9;
@@ -238,7 +239,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.buttonDefault);
             this.Controls.Add(this.panel1);
             this.Name = "Translator_config";
             this.Text = "Translator_config";

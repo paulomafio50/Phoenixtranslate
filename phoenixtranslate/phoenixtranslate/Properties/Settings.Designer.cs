@@ -26,7 +26,9 @@ namespace phoenixtranslate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
-            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" />")]
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring>Deepl</string>\r\n  <string>Google</string>\r\n  <string>Yandex</string>\r\n</Ar" +
+            "rayOfString>")]
         public global::System.Collections.Specialized.StringCollection Name_Translator {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Name_Translator"]));
@@ -38,8 +40,12 @@ namespace phoenixtranslate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
-            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" />")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>https://www.deepl.com/translator</string>
+  <string>https://translate.google.com/</string>
+  <string>https://translate.yandex.com/</string>
+</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection Link {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Link"]));
@@ -51,8 +57,12 @@ namespace phoenixtranslate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
-            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" />")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>/html[1]/body[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/textarea[1]</string>
+  <string>/html/body/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div/div/div[1]/textarea</string>
+  <string>/html[1]/body[1]/div[2]/div[2]/div[1]/div[2]/div[1]/textarea[1]</string>
+</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection Xpathsender {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Xpathsender"]));
@@ -64,8 +74,12 @@ namespace phoenixtranslate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
-            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" />")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>/html[1]/body[1]/div[2]/div[1]/div[1]/div[4]/div[3]/div[1]/textarea[1]</string>
+  <string>/html[1]/body[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[3]/div[1]/div[2]/div[1]</string>
+  <string>/html[1]/body[1]/div[2]/div[2]/div[2]/div[2]/div[1]/pre[1]</string>
+</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection Xpathreceiver {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Xpathreceiver"]));
@@ -77,7 +91,7 @@ namespace phoenixtranslate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int index {
             get {
                 return ((int)(this["index"]));
@@ -89,14 +103,30 @@ namespace phoenixtranslate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
-            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" />")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>#dl_translator &gt; div.lmt__sides_container &gt; div.lmt__side_container.lmt__side_container--source &gt; div.lmt__textarea_container &gt; div &gt; textarea</string>
+  <string>#source</string>
+  <string>#fakeArea</string>
+</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection Querysender {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Querysender"]));
             }
             set {
                 this["Querysender"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ParameterTag {
+            get {
+                return ((bool)(this["ParameterTag"]));
+            }
+            set {
+                this["ParameterTag"] = value;
             }
         }
     }
