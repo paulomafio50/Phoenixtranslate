@@ -6,7 +6,6 @@
         /// Variable nécessaire au concepteur.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Nettoyage des ressources utilisées.
         /// </summary>
@@ -19,9 +18,7 @@
             }
             base.Dispose(disposing);
         }
-
         #region Code généré par le Concepteur Windows Form
-
         /// <summary>
         /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
         /// le contenu de cette méthode avec l'éditeur de code.
@@ -111,6 +108,7 @@
             // 
             // timer1
             // 
+            this.timer1.Enabled = true;
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
@@ -152,7 +150,7 @@
             this.buttonConfigTag.TabIndex = 7;
             this.buttonConfigTag.Text = "Config Tag";
             this.buttonConfigTag.UseVisualStyleBackColor = true;
-            this.buttonConfigTag.Visible = false;
+            this.buttonConfigTag.Click += new System.EventHandler(this.buttonConfigTag_Click);
             // 
             // Translator
             // 
@@ -174,9 +172,7 @@
             this.ResumeLayout(false);
 
         }
-
         #endregion
-
         private Gecko.GeckoWebBrowser geckoWebBrowser1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttontranslatorconfig;
@@ -191,4 +187,3 @@
         private System.Windows.Forms.Button buttonConfigTag;
     }
 }
-

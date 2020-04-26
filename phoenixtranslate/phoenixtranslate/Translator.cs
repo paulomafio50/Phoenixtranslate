@@ -11,10 +11,8 @@ using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 using System.Text;
 using Gecko.Events;
-
 namespace phoenixtranslate
 {
-
     public partial class Translator : Form
     {
         //remetre droit ctrl+K et D
@@ -22,15 +20,13 @@ namespace phoenixtranslate
         public string ActivateTraslate = string.Empty;
         public string textesource;
         public string textescible = "";
-        public string textescibleold;
+        public string textescibleold="old";
         public GeckoWebBrowser wb1 => geckoWebBrowser1;
-
         public Translator()
         {
             InitializeComponent();
             Gecko.Xpcom.Initialize("Firefox");
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
           //Properties.Settings.Default.Name_Translator.Clear();
@@ -42,11 +38,9 @@ namespace phoenixtranslate
             }
             else
             {
-
                 geckoWebBrowser1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString());
-
             }
-            buttonConfigTag.Visible = Properties.Settings.Default.ParameterTag;
+            //buttonConfigTag.Visible = Properties.Settings.Default.ParameterTag;
             #region region text
             dataGridView1.Rows.Add("There lived a princess called Min-seo. ", "");
             dataGridView1.Rows.Add("She liked weapons. Everyone was terrified of her.", "");
@@ -253,52 +247,43 @@ namespace phoenixtranslate
                     MessageBox.Show("Fin.", "Important Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
+            timer1.Enabled = true;
+            button2.Enabled = false;
         }
         public string Extract(GeckoWebBrowser wb, string xpath, string type)
         {
             string result = string.Empty;
             GeckoHtmlElement Elm;
-
             if (wb != null)
             {
                 Elm = (GeckoHtmlElement)wb.Document.EvaluateXPath(xpath).GetNodes().FirstOrDefault();
-
                 if (Elm != null)
                 {
                     switch (type)
                     {
                         case "html":
-
                             result = Elm.OuterHtml;
                             break;
-
                         case "text":
-
                             if (Elm.GetType().Name == "GeckoTextAreaElement")
                                 result = ((GeckoTextAreaElement)Elm).Value;
                             else
                                 result = Elm.TextContent.Trim();
                             break;
-
                         case "value":
-
                             result = ((GeckoInputElement)Elm).Value;
                             break;
-
                         default:
-
                             result = ExtractData(Elm, type);
                             break;
                     }
                 }
-
             }
             return result;
         }
         private string ExtractData(GeckoHtmlElement ele, string attribute)
         {
             var result = string.Empty;
-
             if (ele != null)
             {
                 var tmp = ele.GetAttribute(attribute);
@@ -321,46 +306,45 @@ namespace phoenixtranslate
         }
         public void fill(GeckoWebBrowser wb, string xpath, string Query, string value)
         {
-            if (wb != null)
-            {
-                GeckoHtmlElement elm = (GeckoHtmlElement)wb.Document.EvaluateXPath(xpath).GetNodes().FirstOrDefault();
-
-                if (elm != null)
-                {
-                   
-                    GeckoTextAreaElement input1 = (GeckoTextAreaElement)elm;
-                   
-                    if (Query != "#fakeArea")
-                    {
-                        input1.Value = value;
-                        var evt = wb.Document.CreateEvent("HTMLEvents");
-                        using (Gecko.AutoJSContext java = new Gecko.AutoJSContext(wb.Window))
-                        {
-                            var selector = Query;
-                            java.EvaluateScript($@"
-                        var xpathResult = document.querySelector('{selector}') 
-                        var evt = document.createEvent('HTMLEvents');
-                        evt.initEvent('change', false, true);
-                        xpathResult.dispatchEvent(evt);
-                        ", out string outString);
-                        }
-                    }
-                  else
-                    {
-                        input1.Value = "";
-                        wb.Focus();
-                        //input1.Focus();
-                        if (value != "")
-                        {
-                            SendKeys.Send(value);
-                        }
-                    }
-
-   
-                }
-            }
+            string str = System.Uri.EscapeDataString(value);
+            string b = Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString() + "/" + Properties.Settings.Default.LangSource[Int32.Parse(Properties.Settings.Default.LangSource_index[Properties.Settings.Default.index])].ToString() + "/" + Properties.Settings.Default.LangTarget[Int32.Parse(Properties.Settings.Default.LangTarget_index[Properties.Settings.Default.index])].ToString() + "/" + str;
+            string c = Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString() +"/"+ Properties.Settings.Default.LangSource[Int32.Parse(Properties.Settings.Default.LangSource_index[Properties.Settings.Default.index])].ToString() + "/" + Properties.Settings.Default.LangTarget[Int32.Parse(Properties.Settings.Default.LangTarget_index[Properties.Settings.Default.index])].ToString() + "/" + str;
+            wb1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString() + "/" + Properties.Settings.Default.LangSource[Int32.Parse(Properties.Settings.Default.LangSource_index[Properties.Settings.Default.index])].ToString() + "/" + Properties.Settings.Default.LangTarget[Int32.Parse(Properties.Settings.Default.LangTarget_index[Properties.Settings.Default.index])].ToString() + "/" + str);
+            //value = Remove_and_replace_Tag(value);
+            //if (wb != null)
+            //{
+            //    GeckoHtmlElement elm = (GeckoHtmlElement)wb.Document.EvaluateXPath(xpath).GetNodes().FirstOrDefault();
+            //    if (elm != null)
+            //    {
+            //        GeckoTextAreaElement input1 = (GeckoTextAreaElement)elm;
+            //        if (Query != "#fakeArea")
+            //        {
+            //            input1.Value = value;
+            //            var evt = wb.Document.CreateEvent("HTMLEvents");
+            //            using (Gecko.AutoJSContext java = new Gecko.AutoJSContext(wb.Window))
+            //            {
+            //                var selector = Query;
+            //                java.EvaluateScript($@"
+            //            var xpathResult = document.querySelector('{selector}') 
+            //            var evt = document.createEvent('HTMLEvents');
+            //            evt.initEvent('change', false, true);
+            //            xpathResult.dispatchEvent(evt);
+            //            ", out string outString);
+            //            }
+            //        }
+            //      else
+            //        {
+            //            input1.Value = "";
+            //            wb.Focus();
+                      
+            //            if (value != "")
+            //            {
+            //                SendKeys.Send(value);
+            //            }
+            //        }
+            //    }
+            //}
         }
-
         public void wait(int milliseconds)
         {
             System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
@@ -378,24 +362,28 @@ namespace phoenixtranslate
                 Application.DoEvents();
             }
         }
-
         private void buttontranslatorconfig_Click(object sender, EventArgs e)
         {
             Translator_config translator_config = new Translator_config(this);
             translator_config.ShowDialog();
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ActivateTraslate = Extract(wb1, Properties.Settings.Default.Xpathreceiver[Properties.Settings.Default.index], "text");
-
-            if (ActivateTraslate == string.Empty)
+            textescible = Extract(wb1, Properties.Settings.Default.Xpathreceiver[Properties.Settings.Default.index], "text");
+            if (textescible == string.Empty || textescible == textescibleold || button2.Enabled == true)
             {
-                button2.Enabled = false;
+               if (textescible == string.Empty || textescible == textescibleold)
+                {
+                    button2.Enabled = false;
+                }
+              
             }
             else
             {
+                textescible = textescibleold;
+              
                 button2.Enabled = true;
+                timer1.Enabled = false;
             }
         }
         private void Translator_FormClosing(object sender, FormClosingEventArgs e){timer1.Enabled = false;}
@@ -411,15 +399,11 @@ namespace phoenixtranslate
             }
         }
         private void geckoWebBrowser1_ShowContextMenu(object sender, GeckoContextMenuEventArgs e) { this.contextMenuwb1.Show(Control.MousePosition); }
-
         private void geckoWebBrowser1_Navigated(object sender, GeckoNavigatedEventArgs e)
         {
-
         }
-
         private void geckoWebBrowser1_DocumentCompleted(object sender, GeckoDocumentCompletedEventArgs e)
         {
-          
             if (Properties.Settings.Default.index != -1)
             {
                 if (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index] != string.Empty)
@@ -428,6 +412,22 @@ namespace phoenixtranslate
                     fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]),(Properties.Settings.Default.Querysender[Properties.Settings.Default.index]), dataGridView1.CurrentCell.Value.ToString());
                 }
             }
+        }
+        private string Remove_and_replace_Tag(string input)
+        {
+            string pattern = @"\{.+\}";
+            string replacement = "";
+           
+            string result = Regex.Replace(input, pattern, replacement);
+
+
+            return result;
+        }
+
+        private void buttonConfigTag_Click(object sender, EventArgs e)
+        {
+            Config_Tag config_Tag = new Config_Tag(this);
+            config_Tag.ShowDialog();
         }
     }
 }
