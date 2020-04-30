@@ -306,10 +306,8 @@ namespace phoenixtranslate
         }
         public void fill(GeckoWebBrowser wb, string xpath, string Query, string value)
         {
-            string str = System.Uri.EscapeDataString(value);
-            string b = Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString() + "/" + Properties.Settings.Default.LangSource[Int32.Parse(Properties.Settings.Default.LangSource_index[Properties.Settings.Default.index])].ToString() + "/" + Properties.Settings.Default.LangTarget[Int32.Parse(Properties.Settings.Default.LangTarget_index[Properties.Settings.Default.index])].ToString() + "/" + str;
-            string c = Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString() +"/"+ Properties.Settings.Default.LangSource[Int32.Parse(Properties.Settings.Default.LangSource_index[Properties.Settings.Default.index])].ToString() + "/" + Properties.Settings.Default.LangTarget[Int32.Parse(Properties.Settings.Default.LangTarget_index[Properties.Settings.Default.index])].ToString() + "/" + str;
-            wb1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString() + "/" + Properties.Settings.Default.LangSource[Int32.Parse(Properties.Settings.Default.LangSource_index[Properties.Settings.Default.index])].ToString() + "/" + Properties.Settings.Default.LangTarget[Int32.Parse(Properties.Settings.Default.LangTarget_index[Properties.Settings.Default.index])].ToString() + "/" + str);
+            string str = System.Uri.EscapeDataString(Tagextract(value));
+            wb1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString() + str);
             //value = Remove_and_replace_Tag(value);
             //if (wb != null)
             //{
@@ -413,21 +411,24 @@ namespace phoenixtranslate
                 }
             }
         }
-        private string Remove_and_replace_Tag(string input)
-        {
-            string pattern = @"\{.+\}";
-            string replacement = "";
-           
-            string result = Regex.Replace(input, pattern, replacement);
-
-
-            return result;
-        }
 
         private void buttonConfigTag_Click(object sender, EventArgs e)
         {
             Config_Tag config_Tag = new Config_Tag(this);
             config_Tag.ShowDialog();
+        }
+        private string Tagextract(string text)
+        {
+            Regex regex = new Regex(@"\{.*?\}");
+
+
+            foreach (Match match in regex.Matches(text))
+            {
+               
+                text = text.Replace(match.ToString(),string.Empty);
+            }
+        
+            return text;
         }
     }
 }

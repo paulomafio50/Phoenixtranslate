@@ -5,11 +5,13 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Xml.XPath;
 using System.Drawing;
+
 namespace phoenixtranslate
 {
     public partial class Translator_config : Form
     {
         private Translator _Translator;
+    
         public Translator_config(Translator translator)
         {
             InitializeComponent();
@@ -26,16 +28,12 @@ namespace phoenixtranslate
                     comboBoxNav.SelectedIndex = Properties.Settings.Default.index;
                     textBoxLink.Text = Properties.Settings.Default.Link[Properties.Settings.Default.index];
                     textBoxXpathreceiver.Text = Properties.Settings.Default.Xpathreceiver[Properties.Settings.Default.index];
-                    comboBoxLangSource.SelectedIndex = Int32.Parse(Properties.Settings.Default.LangSource_index[comboBoxNav.SelectedIndex]);
-                    comboBoxLangTarget.SelectedIndex = Int32.Parse(Properties.Settings.Default.LangTarget_index[comboBoxNav.SelectedIndex]);
                 }
                 else
                 {
                     comboBoxNav.DataSource = null;
                     textBoxLink.Text = string.Empty;
                     textBoxXpathreceiver.Text = string.Empty;
-                    comboBoxLangTarget.SelectedIndex = -1;
-                    comboBoxLangSource.SelectedIndex = -1;
                 }
             }
         }
@@ -50,8 +48,6 @@ namespace phoenixtranslate
             {
                 Properties.Settings.Default.Name_Translator.Add(result.ToString());
                 Properties.Settings.Default.Link.Add(String.Empty);
-                Properties.Settings.Default.LangSource_index.Add("0");
-                Properties.Settings.Default.LangTarget_index.Add("0");
                 Properties.Settings.Default.Xpathreceiver.Add(String.Empty);
                 Properties.Settings.Default.index = Properties.Settings.Default.index + 1;
                 Properties.Settings.Default.Save();
@@ -146,40 +142,33 @@ namespace phoenixtranslate
             Properties.Settings.Default.Xpathreceiver.Clear();
             Properties.Settings.Default.Link.Clear();
             Properties.Settings.Default.Name_Translator.Clear();
-            Properties.Settings.Default.LangSource_index.Clear();
-            Properties.Settings.Default.LangTarget_index.Clear();
             //ajoute les Properties.Settings.Default deepl
             Properties.Settings.Default.Xpathreceiver.Add("/html[1]/body[1]/div[2]/div[1]/div[1]/div[4]/div[3]/div[1]/textarea[1]");
             Properties.Settings.Default.Name_Translator.Add("Deepl");
-            Properties.Settings.Default.LangSource_index.Add("3");
-            Properties.Settings.Default.LangTarget_index.Add("4");
-            Properties.Settings.Default.Link.Add("https://www.deepl.com");
+            Properties.Settings.Default.Link.Add("https://www.deepl.com/translator#fr/en/");
             //ajoute les Properties.Settings.Default Google
             Properties.Settings.Default.Xpathreceiver.Add("/html[1]/body[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[3]/div[1]/div[2]/div[1]");
             Properties.Settings.Default.Name_Translator.Add("Google");
-            Properties.Settings.Default.LangSource_index.Add("3");
-            Properties.Settings.Default.LangTarget_index.Add("4");
-            Properties.Settings.Default.Link.Add("https://translate.google.com/");
+            Properties.Settings.Default.Link.Add("https://translate.google.com/#view=home&op=translate&sl=en&tl=fr&text=");
             //ajoute les Properties.Settings.Default Google
             Properties.Settings.Default.Xpathreceiver.Add("/html[1]/body[1]/div[2]/div[2]/div[2]/div[2]/div[1]/pre[1]");
             Properties.Settings.Default.Name_Translator.Add("Yandex");
-            Properties.Settings.Default.LangSource_index.Add("3");
-            Properties.Settings.Default.LangTarget_index.Add("4");
-            Properties.Settings.Default.Link.Add("https://translate.yandex.com/");
+            Properties.Settings.Default.Link.Add("https://translate.yandex.com/?lang=en-fr&text=");
             Properties.Settings.Default.index = 2;
             Properties.Settings.Default.Save();
             InitializeComboBox();
         }
         private void comboBoxNav_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             Properties.Settings.Default.index = comboBoxNav.SelectedIndex;
             Properties.Settings.Default.Save();
             if (Properties.Settings.Default.index != -1)
             {
                 textBoxLink.Text = Properties.Settings.Default.Link[comboBoxNav.SelectedIndex];
                 textBoxXpathreceiver.Text = Properties.Settings.Default.Xpathreceiver[comboBoxNav.SelectedIndex];
-                comboBoxLangSource.SelectedIndex = Int32.Parse(Properties.Settings.Default.LangSource_index[comboBoxNav.SelectedIndex]);
-                comboBoxLangTarget.SelectedIndex = Int32.Parse(Properties.Settings.Default.LangTarget_index[comboBoxNav.SelectedIndex]);
+       
+             
             }
             else
             {
@@ -187,18 +176,7 @@ namespace phoenixtranslate
                 textBoxXpathreceiver.Text = string.Empty;
             }
         }
-        private void comboBoxNav_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-        }
 
-        private void comboBoxLangSource_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.LangSource_index[Properties.Settings.Default.index] = comboBoxLangSource.SelectedIndex.ToString();
-        }
 
-        private void comboBoxLangTarget_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.LangTarget_index[Properties.Settings.Default.index] = comboBoxLangTarget.SelectedIndex.ToString();
-        }
     }
 }
