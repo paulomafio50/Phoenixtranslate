@@ -99,6 +99,8 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="rpyFiles\1_diya.rpy" />
+    <None Include="Bdd\Basededonnees.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
