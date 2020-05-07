@@ -42,7 +42,7 @@ namespace phoenixtranslate.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>https://www.deepl.com/translator</string>
+  <string>https://www.deepl.com/translator#fr/en/</string>
   <string>https://translate.google.com/</string>
   <string>https://translate.yandex.com/</string>
 </ArrayOfString>")]
@@ -132,12 +132,40 @@ namespace phoenixtranslate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection TagName {
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" />")]
+        public global::System.Collections.Specialized.StringCollection CharacterTag {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["TagName"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["CharacterTag"]));
             }
             set {
-                this["TagName"] = value;
+                this["CharacterTag"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" />")]
+        public global::System.Collections.Specialized.StringCollection CharacterName {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["CharacterName"]));
+            }
+            set {
+                this["CharacterName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" />")]
+        public global::System.Collections.Specialized.StringCollection ListTag {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["ListTag"]));
+            }
+            set {
+                this["ListTag"] = value;
             }
         }
     }

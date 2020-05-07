@@ -11,6 +11,8 @@ using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 using System.Text;
 using Gecko.Events;
+using Microsoft.VisualBasic;
+using System.Xml.XPath;
 namespace phoenixtranslate
 {
     public partial class Translator : Form
@@ -20,17 +22,19 @@ namespace phoenixtranslate
         public string ActivateTraslate = string.Empty;
         public string textesource;
         public string textescible = "";
-        public string textescibleold="old";
+        public string textescibleold = "old";
         public GeckoWebBrowser wb1 => geckoWebBrowser1;
         public Translator()
         {
             InitializeComponent();
             Gecko.Xpcom.Initialize("Firefox");
+            InitializeComboBox();
+            InitializedataGridViewTagName();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-          //Properties.Settings.Default.Name_Translator.Clear();
-          // Properties.Settings.Default.Save();
+            //Properties.Settings.Default.Name_Translator.Clear();
+            // Properties.Settings.Default.Save();
             if (Properties.Settings.Default.Name_Translator.Cast<string>().ToArray().Length == 0)
             {
                 Properties.Settings.Default.index = -1;
@@ -228,7 +232,7 @@ namespace phoenixtranslate
             {
                 if (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index] != string.Empty)
                 {
-                    fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]),(Properties.Settings.Default.Querysender[Properties.Settings.Default.index]), dataGridView1.CurrentCell.Value.ToString());
+                    fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]), (Properties.Settings.Default.Querysender[Properties.Settings.Default.index]), dataGridView1.CurrentCell.Value.ToString());
                 }
             }
         }
@@ -334,7 +338,7 @@ namespace phoenixtranslate
             //        {
             //            input1.Value = "";
             //            wb.Focus();
-                      
+
             //            if (value != "")
             //            {
             //                SendKeys.Send(value);
@@ -362,29 +366,50 @@ namespace phoenixtranslate
         }
         private void buttontranslatorconfig_Click(object sender, EventArgs e)
         {
-            Translator_config translator_config = new Translator_config(this);
-            translator_config.ShowDialog();
+
+            if (panelConfig_Translator.Visible == false)
+            {
+                panelConfig_Translator.Visible = true;
+                paneltraducteur.Visible = false;
+                buttontranslatorconfig.Text = "Back";
+            }
+            else
+            {
+                if (textBoxLink.BackColor == Color.Red || textBoxXpathreceiver.BackColor == Color.Red)
+                {
+
+                    MessageBox.Show("Fill config or restore default", "Important Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    wb1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString());
+                    panelConfig_Translator.Visible = false;
+                    paneltraducteur.Visible = true;
+                    buttontranslatorconfig.Text = "Config";
+                }
+
+            }
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
             textescible = Extract(wb1, Properties.Settings.Default.Xpathreceiver[Properties.Settings.Default.index], "text");
             if (textescible == string.Empty || textescible == textescibleold || button2.Enabled == true)
             {
-               if (textescible == string.Empty || textescible == textescibleold)
+                if (textescible == string.Empty || textescible == textescibleold)
                 {
                     button2.Enabled = false;
                 }
-              
+
             }
             else
             {
                 textescible = textescibleold;
-              
+
                 button2.Enabled = true;
                 timer1.Enabled = false;
             }
         }
-        private void Translator_FormClosing(object sender, FormClosingEventArgs e){timer1.Enabled = false;}
+        private void Translator_FormClosing(object sender, FormClosingEventArgs e) { timer1.Enabled = false; }
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.index != -1)
@@ -392,11 +417,11 @@ namespace phoenixtranslate
                 if (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index] != string.Empty)
                 {
                     currentRow = dataGridView1.SelectedRows[0].Index;
-                    fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]),(Properties.Settings.Default.Querysender[Properties.Settings.Default.index]), dataGridView1.Rows[currentRow].Cells[0].Value.ToString());
+                    fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]), (Properties.Settings.Default.Querysender[Properties.Settings.Default.index]), dataGridView1.Rows[currentRow].Cells[0].Value.ToString());
                 }
             }
         }
-        private void geckoWebBrowser1_ShowContextMenu(object sender, GeckoContextMenuEventArgs e) { this.contextMenuwb1.Show(Control.MousePosition); }
+        //private void geckoWebBrowser1_ShowContextMenu(object sender, GeckoContextMenuEventArgs e) { this.contextMenuwb1.Show(Control.MousePosition); }
         private void geckoWebBrowser1_Navigated(object sender, GeckoNavigatedEventArgs e)
         {
         }
@@ -407,28 +432,280 @@ namespace phoenixtranslate
                 if (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index] != string.Empty)
                 {
                     wait(1000);
-                    fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]),(Properties.Settings.Default.Querysender[Properties.Settings.Default.index]), dataGridView1.CurrentCell.Value.ToString());
+                    fill(wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]), (Properties.Settings.Default.Querysender[Properties.Settings.Default.index]), dataGridView1.CurrentCell.Value.ToString());
                 }
             }
         }
 
-        private void buttonConfigTag_Click(object sender, EventArgs e)
-        {
-            Config_Tag config_Tag = new Config_Tag(this);
-            config_Tag.ShowDialog();
-        }
+
         private string Tagextract(string text)
         {
+
+
+
             Regex regex = new Regex(@"\{.*?\}");
 
 
             foreach (Match match in regex.Matches(text))
             {
-               
-                text = text.Replace(match.ToString(),string.Empty);
+
+                text = text.Replace(match.ToString(), string.Empty);
             }
-        
+
             return text;
+        }
+
+        ////////////////////////////////////////////////config//////////////////////////////////////////////////////////////////////////////////
+        ///
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void InitializeComboBox()
+        {
+            if (Properties.Settings.Default.index != -1)
+            {
+                if (Properties.Settings.Default.Name_Translator.Count >= 1)
+                {
+                    comboBoxNav.DataSource = Properties.Settings.Default.Name_Translator.Cast<string>().ToArray();
+                    comboBoxNav.SelectedIndex = Properties.Settings.Default.index;
+                    textBoxLink.Text = Properties.Settings.Default.Link[Properties.Settings.Default.index];
+                    textBoxXpathreceiver.Text = Properties.Settings.Default.Xpathreceiver[Properties.Settings.Default.index];
+                }
+                else
+                {
+                    comboBoxNav.DataSource = null;
+                    textBoxLink.Text = string.Empty;
+                    textBoxXpathreceiver.Text = string.Empty;
+                }
+            }
+        }
+        private void buttonLinkSet_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Link[Properties.Settings.Default.index] = textBoxLink.Text;
+        }
+        private void buttonAddTranslator_Click(object sender, EventArgs e)
+        {
+            string result = Interaction.InputBox("Enter Name of translator");
+            if (result != null)
+            {
+                Properties.Settings.Default.Name_Translator.Add(result.ToString());
+                Properties.Settings.Default.Link.Add(String.Empty);
+                Properties.Settings.Default.Xpathreceiver.Add(String.Empty);
+                Properties.Settings.Default.index = Properties.Settings.Default.index + 1;
+                Properties.Settings.Default.Save();
+                InitializeComboBox();
+            }
+        }
+        private void Translator_config_Load(object sender, EventArgs e)
+        {
+        }
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.index != -1)
+            {
+                Properties.Settings.Default.Link.RemoveAt(comboBoxNav.SelectedIndex);
+                Properties.Settings.Default.Xpathreceiver.RemoveAt(comboBoxNav.SelectedIndex);
+                Properties.Settings.Default.Name_Translator.RemoveAt(comboBoxNav.SelectedIndex);
+                Properties.Settings.Default.Save();
+                textBoxLink.Text = string.Empty;
+                textBoxXpathreceiver.Text = string.Empty;
+                InitializeComboBox();
+            }
+        }
+        private void buttonLinkSet_Click_1(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Link[comboBoxNav.SelectedIndex] = textBoxLink.Text;
+            Properties.Settings.Default.Save();
+        }
+
+
+        private void buttonXpathRSet_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Xpathreceiver[comboBoxNav.SelectedIndex] = textBoxXpathreceiver.Text;
+            Properties.Settings.Default.Save();
+        }
+        private void textBoxLink_TextChanged(object sender, EventArgs e)
+        {
+            Regex regex = new Regex(@"^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)");
+            Match match = regex.Match(textBoxLink.Text);
+            if (match.Success)
+            {
+                textBoxLink.BackColor = Color.White;
+                buttonLinkSet.Enabled = true;
+            }
+            else
+            {
+                textBoxLink.BackColor = Color.Red;
+                buttonLinkSet.Enabled = false;
+            }
+        }
+
+        private void textBoxXpathreceiver_TextChanged(object sender, EventArgs e)
+        {
+            if (ValidateXpath(textBoxXpathreceiver.Text))
+            {
+                textBoxXpathreceiver.BackColor = Color.White;
+                buttonXpathRSet.Enabled = true;
+            }
+            else
+            {
+                textBoxXpathreceiver.BackColor = Color.Red;
+                buttonXpathRSet.Enabled = false;
+            }
+        }
+
+        public bool ValidateXpath(string xpath)
+        {
+            try
+            {
+                XPathExpression.Compile(xpath);
+                return true;
+            }
+            catch (XPathException)
+            {
+                return false;
+            }
+        }
+        private void Translator_config_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (textBoxLink.BackColor == Color.Red || textBoxXpathreceiver.BackColor == Color.Red)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Fill config or restore default", "Important Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                wb1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString());
+            }
+        }
+        private void buttonDefault_Click(object sender, EventArgs e)
+        {
+            //efface les Properties.Settings.Default
+            Properties.Settings.Default.Xpathreceiver.Clear();
+            Properties.Settings.Default.Link.Clear();
+            Properties.Settings.Default.Name_Translator.Clear();
+            //ajoute les Properties.Settings.Default deepl
+            Properties.Settings.Default.Xpathreceiver.Add("/html[1]/body[1]/div[2]/div[1]/div[1]/div[4]/div[3]/div[1]/textarea[1]");
+            Properties.Settings.Default.Name_Translator.Add("Deepl");
+            Properties.Settings.Default.Link.Add("https://www.deepl.com/translator#fr/en/");
+            //ajoute les Properties.Settings.Default Google
+            Properties.Settings.Default.Xpathreceiver.Add("/html[1]/body[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[3]/div[1]/div[2]/div[1]");
+            Properties.Settings.Default.Name_Translator.Add("Google");
+            Properties.Settings.Default.Link.Add("https://translate.google.com/#view=home&op=translate&sl=en&tl=fr&text=");
+            //ajoute les Properties.Settings.Default Google
+            Properties.Settings.Default.Xpathreceiver.Add("/html[1]/body[1]/div[2]/div[2]/div[2]/div[2]/div[1]/pre[1]");
+            Properties.Settings.Default.Name_Translator.Add("Yandex");
+            Properties.Settings.Default.Link.Add("https://translate.yandex.com/?lang=en-fr&text=");
+            Properties.Settings.Default.index = 2;
+            Properties.Settings.Default.Save();
+            InitializeComboBox();
+        }
+        private void comboBoxNav_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //actualise les box suivant l'index
+            Properties.Settings.Default.index = comboBoxNav.SelectedIndex;
+            Properties.Settings.Default.Save();
+            if (Properties.Settings.Default.index != -1)
+            {
+                textBoxLink.Text = Properties.Settings.Default.Link[comboBoxNav.SelectedIndex];
+                textBoxXpathreceiver.Text = Properties.Settings.Default.Xpathreceiver[comboBoxNav.SelectedIndex];
+
+
+            }
+            else
+            {
+                textBoxLink.Text = string.Empty;
+                textBoxXpathreceiver.Text = string.Empty;
+            }
+        }
+
+
+
+
+        private void InitializedataGridViewTagName()
+        {
+            int i = 0;
+            foreach (string item in Properties.Settings.Default.CharacterTag)
+            {
+
+                dataGridViewTagName.Rows.Add(item, Properties.Settings.Default.CharacterName[i].ToString());
+                i += 1;
+            }
+            foreach (string item in Properties.Settings.Default.ListTag)
+            {
+                dataGridViewGridListTag.Rows.Add(item);
+            }
+        }
+        private void DataGridViewTagName_CellEndEdit(object sender, DataGridViewCellEventArgs e) { SaveProperyDatagridviewCharcter(); }
+        private void DataGridViewTagName_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e) { SaveProperyDatagridviewCharcter(); }
+        private void SaveProperyDatagridviewCharcter()
+        {
+
+            Properties.Settings.Default.CharacterName.Clear();
+            Properties.Settings.Default.CharacterTag.Clear();
+            foreach (DataGridViewRow row in dataGridViewTagName.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    string CharacterTag;
+                    string CharacterName;
+                    if (row.Cells[0].Value == null)
+                    {
+                        CharacterTag = "";
+
+                    }
+                    else
+                    {
+                        CharacterTag = row.Cells[0].Value.ToString();
+                    }
+                    if (row.Cells[1].Value == null)
+                    {
+                        CharacterName = "";
+                    }
+                    else
+                    {
+                        CharacterName = row.Cells[1].Value.ToString();
+                    }
+
+                    Properties.Settings.Default.CharacterName.Add(CharacterName);
+                    Properties.Settings.Default.CharacterTag.Add(CharacterTag);
+
+                }
+            }
+            Properties.Settings.Default.Save();
+
+        }
+        private void DataGridViewGridListTag_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e) { SaveProperyDatagridviewListTag(); }
+        private void DataGridViewGridListTag_CellEndEdit(object sender, DataGridViewCellEventArgs e) { SaveProperyDatagridviewListTag(); }
+        private void SaveProperyDatagridviewListTag()
+        {
+
+
+            Properties.Settings.Default.ListTag.Clear();
+            foreach (DataGridViewRow row in dataGridViewGridListTag.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    string Tag = row.Cells[0].Value.ToString();
+
+                    Properties.Settings.Default.ListTag.Add(Tag);
+
+                }
+
+            }
+            Properties.Settings.Default.Save();
+        }
+
+        private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            contextMenuStripTag.Items.Clear();
+            foreach (string item in Properties.Settings.Default.ListTag)
+            {
+                if (dataGridView1.CurrentRow.Cells[0].Value.ToString().Contains(item))
+                {
+                    contextMenuStripTag.Items.Add(item);
+                }
+            }
         }
     }
 }
+
