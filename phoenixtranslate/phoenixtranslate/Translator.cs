@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -8,8 +6,6 @@ using System.Windows.Forms;
 using Gecko;
 using Gecko.DOM;
 using System.Text.RegularExpressions;
-using HtmlAgilityPack;
-using System.Text;
 using Gecko.Events;
 using Microsoft.VisualBasic;
 using System.Xml.XPath;
@@ -240,9 +236,42 @@ namespace phoenixtranslate
         {
             if (Properties.Settings.Default.index != -1)
             {
-                dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Value = Extract(wb1, Properties.Settings.Default.Xpathreceiver[Properties.Settings.Default.index], "text");
-                currentRow = dataGridView1.SelectedRows[0].Index;
-                if (currentRow < dataGridView1.RowCount - 1)
+                string texttranslated = Extract(wb1, Properties.Settings.Default.Xpathreceiver[Properties.Settings.Default.index], "text");
+                foreach (string item in Properties.Settings.Default.ListTag)
+                {
+                    if (dataGridView1.CurrentRow.Cells[0].Value.ToString().StartsWith(item))
+                    {
+                        texttranslated = texttranslated.Insert(0, item);
+                    }
+                    if (dataGridView1.CurrentRow.Cells[0].Value.ToString().EndsWith(item))
+                    {
+                        texttranslated = texttranslated.Insert(texttranslated.Length, item);
+                    }
+                }
+
+
+                dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Value = texttranslated;
+                foreach (string item in Properties.Settings.Default.ListTag)
+                {
+
+
+
+
+                    if (dataGridView1.CurrentRow.Cells[0].Value.ToString().Contains(item))
+                    {
+                        int count = new Regex(Regex.Escape(item)).Matches(dataGridView1.CurrentRow.Cells[0].Value.ToString()).Count;
+                        int count2 = new Regex(Regex.Escape(item)).Matches(dataGridView1.CurrentRow.Cells[1].Value.ToString()).Count;
+                        if (count != count2)
+                        {
+                            dataGridView1.CurrentRow.Cells[1].Style.BackColor = Color.Red;
+                           
+                         
+                        }
+
+                    }
+                }
+
+                if (dataGridView1.SelectedRows[0].Index < dataGridView1.RowCount - 1)
                 {
                     dataGridView1.Rows[++currentRow].Cells[0].Selected = true;
                 }
@@ -310,6 +339,7 @@ namespace phoenixtranslate
         }
         public void fill(GeckoWebBrowser wb, string xpath, string Query, string value)
         {
+
             string str = System.Uri.EscapeDataString(Tagextract(value));
             wb1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString() + str);
             //value = Remove_and_replace_Tag(value);
@@ -441,17 +471,33 @@ namespace phoenixtranslate
         private string Tagextract(string text)
         {
 
-
+   
 
             Regex regex = new Regex(@"\{.*?\}");
 
 
             foreach (Match match in regex.Matches(text))
             {
+                if (Properties.Settings.Default.ListTag.Contains(match.ToString()))
+                {
+                    text = text.Replace(match.ToString(), string.Empty);
+                }
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show("Do you want to add " + match.ToString()+ "to the list of tags", "Question", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        dataGridViewGridListTag.Rows.Add(match.ToString());
+                        SaveProperyDatagridviewListTag();
+                        text = text.Replace(match.ToString(), string.Empty);
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        break;
+                    }
 
-                text = text.Replace(match.ToString(), string.Empty);
+                }
             }
-
             return text;
         }
 
@@ -592,10 +638,10 @@ namespace phoenixtranslate
             Properties.Settings.Default.Name_Translator.Add("Google");
             Properties.Settings.Default.Link.Add("https://translate.google.com/#view=home&op=translate&sl=en&tl=fr&text=");
             //ajoute les Properties.Settings.Default Google
-            Properties.Settings.Default.Xpathreceiver.Add("/html[1]/body[1]/div[2]/div[2]/div[2]/div[2]/div[1]/pre[1]");
-            Properties.Settings.Default.Name_Translator.Add("Yandex");
-            Properties.Settings.Default.Link.Add("https://translate.yandex.com/?lang=en-fr&text=");
-            Properties.Settings.Default.index = 2;
+            //Properties.Settings.Default.Xpathreceiver.Add("/html[1]/body[1]/div[2]/div[2]/div[2]/div[2]/div[1]/pre[1]");
+            //Properties.Settings.Default.Name_Translator.Add("Yandex");
+            //Properties.Settings.Default.Link.Add("https://translate.yandex.com/?lang=en-fr&text=");
+            //Properties.Settings.Default.index = 2;
             Properties.Settings.Default.Save();
             InitializeComboBox();
         }
@@ -700,11 +746,48 @@ namespace phoenixtranslate
             contextMenuStripTag.Items.Clear();
             foreach (string item in Properties.Settings.Default.ListTag)
             {
+
+
+
+
                 if (dataGridView1.CurrentRow.Cells[0].Value.ToString().Contains(item))
                 {
-                    contextMenuStripTag.Items.Add(item);
+                    int count = new Regex(Regex.Escape(item)).Matches(dataGridView1.CurrentRow.Cells[0].Value.ToString()).Count;
+                    int count2 = new Regex(Regex.Escape(item)).Matches(dataGridView1.CurrentRow.Cells[1].Value.ToString()).Count;
+                    if (count != count2)
+                    {
+                        dataGridView1.CurrentRow.Cells[1].Style.BackColor = Color.Red;
+                        ToolStripItem item2 = contextMenuStripTag.Items.Add(item);
+                        item2.Click += Insert_Item_Click;
+                    }
+
                 }
             }
+        }
+
+
+
+        private void Insert_Item_Click(object sender, EventArgs e)
+        {
+            ToolStripItem item2 = sender as ToolStripItem;
+            DataGridViewTextBoxEditingControl editing = dataGridView1.EditingControl as DataGridViewTextBoxEditingControl;
+            dataGridView1.EditingControl.Text = dataGridView1.EditingControl.Text.Insert(editing.SelectionStart, item2.Text);
+            int count = new Regex(Regex.Escape(item2.Text)).Matches(dataGridView1.CurrentRow.Cells[0].Value.ToString()).Count;
+            int count2 = new Regex(Regex.Escape(item2.Text)).Matches(dataGridView1.EditingControl.Text).Count;
+            if (count == count2)
+            {
+                contextMenuStripTag.Items.Remove(item2);
+                dataGridView1.CurrentRow.Cells[1].Style.BackColor = Color.Empty;
+            }
+        }
+        private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.ContextMenuStrip = contextMenuStripTag;
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

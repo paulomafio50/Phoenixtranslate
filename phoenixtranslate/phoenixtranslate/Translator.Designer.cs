@@ -31,6 +31,9 @@
             this.buttontranslatorconfig = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Source = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Target = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStripTag = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.paneltraducteur = new System.Windows.Forms.Panel();
             this.panelConfig_Translator = new System.Windows.Forms.Panel();
             this.dataGridViewGridListTag = new System.Windows.Forms.DataGridView();
@@ -49,9 +52,6 @@
             this.dataGridViewTagName = new System.Windows.Forms.DataGridView();
             this.CharacterTag = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CharacterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStripTag = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Source = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Target = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.paneltraducteur.SuspendLayout();
             this.panelConfig_Translator.SuspendLayout();
@@ -118,7 +118,26 @@
             this.dataGridView1.Size = new System.Drawing.Size(1234, 272);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // Source
+            // 
+            this.Source.HeaderText = "Source";
+            this.Source.Name = "Source";
+            this.Source.ReadOnly = true;
+            // 
+            // Target
+            // 
+            this.Target.ContextMenuStrip = this.contextMenuStripTag;
+            this.Target.HeaderText = "Target";
+            this.Target.Name = "Target";
+            // 
+            // contextMenuStripTag
+            // 
+            this.contextMenuStripTag.Name = "contextMenuStripTag";
+            this.contextMenuStripTag.Size = new System.Drawing.Size(61, 4);
             // 
             // paneltraducteur
             // 
@@ -309,23 +328,6 @@
             // 
             this.CharacterName.HeaderText = "CharacterName";
             this.CharacterName.Name = "CharacterName";
-            // 
-            // contextMenuStripTag
-            // 
-            this.contextMenuStripTag.Name = "contextMenuStripTag";
-            this.contextMenuStripTag.Size = new System.Drawing.Size(61, 4);
-            // 
-            // Source
-            // 
-            this.Source.HeaderText = "Source";
-            this.Source.Name = "Source";
-            this.Source.ReadOnly = true;
-            // 
-            // Target
-            // 
-            this.Target.ContextMenuStrip = this.contextMenuStripTag;
-            this.Target.HeaderText = "Target";
-            this.Target.Name = "Target";
             // 
             // Translator
             // 
