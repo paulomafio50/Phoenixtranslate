@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\ReadWrite_rpy.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -93,6 +94,7 @@
     <EmbeddedResource Include="Translator_config.resx">
       <DependentUpon>Translator_config.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Bdd\BaseDD.db" />
     <None Include="Firefox\omni.ja" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -100,7 +102,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="rpyFiles\1_diya.rpy" />
-    <None Include="Bdd\Basededonnees.cs" />
+    <None Include="Class\Basededonnees.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

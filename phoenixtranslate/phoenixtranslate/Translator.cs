@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 using System.Text;
 using Gecko.Events;
+using phoenixtranslate.Class;
 
 namespace phoenixtranslate
 {
@@ -206,5 +207,10 @@ namespace phoenixtranslate
           
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ReadWrite_rpy test = new ReadWrite_rpy();
+            test.Read_rpy();
+        }
     }
 }
