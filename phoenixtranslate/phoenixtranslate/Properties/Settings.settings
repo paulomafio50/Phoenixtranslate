@@ -7,15 +7,13 @@
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;string&gt;Deepl&lt;/string&gt;
   &lt;string&gt;Google&lt;/string&gt;
-  &lt;string&gt;Yandex&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="Link" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;string&gt;https://www.deepl.com/translator#fr/en/&lt;/string&gt;
-  &lt;string&gt;https://translate.google.com/&lt;/string&gt;
-  &lt;string&gt;https://translate.yandex.com/&lt;/string&gt;
+  &lt;string&gt;https://translate.google.com/#view=home&amp;amp;op=translate&amp;amp;sl=en&amp;amp;tl=fr&amp;amp;text=&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="Xpathsender" Type="System.Collections.Specialized.StringCollection" Scope="User">
@@ -23,7 +21,6 @@
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;string&gt;/html[1]/body[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/textarea[1]&lt;/string&gt;
   &lt;string&gt;/html/body/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div/div/div[1]/textarea&lt;/string&gt;
-  &lt;string&gt;/html[1]/body[1]/div[2]/div[2]/div[1]/div[2]/div[1]/textarea[1]&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="Xpathreceiver" Type="System.Collections.Specialized.StringCollection" Scope="User">
@@ -31,7 +28,6 @@
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;string&gt;/html[1]/body[1]/div[2]/div[1]/div[1]/div[4]/div[3]/div[1]/textarea[1]&lt;/string&gt;
   &lt;string&gt;/html[1]/body[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[3]/div[1]/div[2]/div[1]&lt;/string&gt;
-  &lt;string&gt;/html[1]/body[1]/div[2]/div[2]/div[2]/div[2]/div[1]/pre[1]&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="index" Type="System.Int32" Scope="User">
