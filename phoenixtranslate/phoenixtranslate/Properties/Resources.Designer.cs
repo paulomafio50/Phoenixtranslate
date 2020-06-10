@@ -61,11 +61,128 @@ namespace phoenixtranslate.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à Auto activate.
         /// </summary>
-        internal static string String1 {
+        internal static string Auto_activate {
             get {
-                return ResourceManager.GetString("String1", resourceCulture);
+                return ResourceManager.GetString("Auto activate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Auto desactivate.
+        /// </summary>
+        internal static string Auto_desactivate {
+            get {
+                return ResourceManager.GetString("Auto desactivate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à copy.
+        /// </summary>
+        internal static string copy {
+            get {
+                return ResourceManager.GetString("copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à cut.
+        /// </summary>
+        internal static string cut {
+            get {
+                return ResourceManager.GetString("cut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Do you want to add.
+        /// </summary>
+        internal static string Doyouwanttoadd {
+            get {
+                return ResourceManager.GetString("Doyouwanttoadd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à End.
+        /// </summary>
+        internal static string End {
+            get {
+                return ResourceManager.GetString("End", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à incorrect config.
+        /// </summary>
+        internal static string error_incorrect_config {
+            get {
+                return ResourceManager.GetString("error incorrect config", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Fill config or restore default.
+        /// </summary>
+        internal static string Fillconfigorrestoredefault {
+            get {
+                return ResourceManager.GetString("Fillconfigorrestoredefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Beware the quotation marks have been removed.
+        /// </summary>
+        internal static string messagequotationremove {
+            get {
+                return ResourceManager.GetString("messagequotationremove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à past.
+        /// </summary>
+        internal static string past {
+            get {
+                return ResourceManager.GetString("past", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Select Directory!!.
+        /// </summary>
+        internal static string SelectDirectory {
+            get {
+                return ResourceManager.GetString("SelectDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à to the list of tags.
+        /// </summary>
+        internal static string tothelistoftags {
+            get {
+                return ResourceManager.GetString("tothelistoftags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à  was not found do you want to restart the search from the beginning of the table.
+        /// </summary>
+        internal static string wasnotfound {
+            get {
+                return ResourceManager.GetString("wasnotfound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à  was not found.
+        /// </summary>
+        internal static string wasnotfound2 {
+            get {
+                return ResourceManager.GetString("wasnotfound2", resourceCulture);
             }
         }
     }

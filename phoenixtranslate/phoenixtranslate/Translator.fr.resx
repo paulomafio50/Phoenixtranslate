@@ -117,607 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="GeckoWebBrowser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="Target.HeaderText" xml:space="preserve">
+    <value>Cible</value>
+  </data>
+  <data name="Result.HeaderText" xml:space="preserve">
+    <value>Resultat</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="GeckoWebBrowser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="GeckoWebBrowser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>998, 461</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="GeckoWebBrowser.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;GeckoWebBrowser.Name" xml:space="preserve">
-    <value>GeckoWebBrowser</value>
-  </data>
-  <data name="&gt;&gt;GeckoWebBrowser.Type" xml:space="preserve">
-    <value>Gecko.GeckoWebBrowser, Geckofx-Winforms, Version=45.0.34.0, Culture=neutral, PublicKeyToken=3209ac31600d1857</value>
-  </data>
-  <data name="&gt;&gt;GeckoWebBrowser.Parent" xml:space="preserve">
-    <value>Paneltraducteur</value>
-  </data>
-  <data name="&gt;&gt;GeckoWebBrowser.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="BtnTranslate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="BtnTranslate.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="BtnTranslate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1189, 41</value>
-  </data>
-  <data name="BtnTranslate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 65</value>
-  </data>
-  <data name="BtnTranslate.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="BtnTranslate.Text" xml:space="preserve">
-    <value>Translate</value>
-  </data>
-  <data name="&gt;&gt;BtnTranslate.Name" xml:space="preserve">
-    <value>BtnTranslate</value>
-  </data>
-  <data name="&gt;&gt;BtnTranslate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnTranslate.Parent" xml:space="preserve">
-    <value>Panelbottom</value>
-  </data>
-  <data name="&gt;&gt;BtnTranslate.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="Source.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="Source.HeaderText" xml:space="preserve">
-    <value>Source</value>
-  </data>
-  <metadata name="Target.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="Target.HeaderText" xml:space="preserve">
-    <value>Target</value>
-  </data>
-  <metadata name="Result.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="Result.HeaderText" xml:space="preserve">
-    <value>Result</value>
-  </data>
-  <data name="DataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="DataGridView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 461</value>
-  </data>
-  <data name="DataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>998, 214</value>
-  </data>
-  <data name="DataGridView.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;DataGridView.Name" xml:space="preserve">
-    <value>DataGridView</value>
-  </data>
-  <data name="&gt;&gt;DataGridView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DataGridView.Parent" xml:space="preserve">
-    <value>Paneltraducteur</value>
-  </data>
-  <data name="&gt;&gt;DataGridView.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="ContextMenuStripTag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>106, 17</value>
-  </metadata>
-  <data name="ContextMenuStripTag.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 4</value>
-  </data>
-  <data name="&gt;&gt;ContextMenuStripTag.Name" xml:space="preserve">
-    <value>ContextMenuStripTag</value>
-  </data>
-  <data name="&gt;&gt;ContextMenuStripTag.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Paneltraducteur.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="Paneltraducteur.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 27</value>
-  </data>
-  <data name="Paneltraducteur.Size" type="System.Drawing.Size, System.Drawing">
-    <value>998, 675</value>
-  </data>
-  <data name="Paneltraducteur.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;Paneltraducteur.Name" xml:space="preserve">
-    <value>Paneltraducteur</value>
-  </data>
-  <data name="&gt;&gt;Paneltraducteur.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Paneltraducteur.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Paneltraducteur.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="RadioButtonAdvenced.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RadioButtonAdvenced.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 22</value>
-  </data>
-  <data name="RadioButtonAdvenced.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 17</value>
-  </data>
-  <data name="RadioButtonAdvenced.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="RadioButtonAdvenced.Text" xml:space="preserve">
-    <value>Advenced</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonAdvenced.Name" xml:space="preserve">
-    <value>RadioButtonAdvenced</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonAdvenced.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonAdvenced.Parent" xml:space="preserve">
-    <value>PanelConfig_Translator</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonAdvenced.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="RadioButtonBasic.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RadioButtonBasic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 38</value>
-  </data>
-  <data name="RadioButtonBasic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 17</value>
-  </data>
-  <data name="RadioButtonBasic.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="RadioButtonBasic.Text" xml:space="preserve">
-    <value>Normal</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonBasic.Name" xml:space="preserve">
-    <value>RadioButtonBasic</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonBasic.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonBasic.Parent" xml:space="preserve">
-    <value>PanelConfig_Translator</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonBasic.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="BtnRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 46</value>
-  </data>
-  <data name="BtnRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
-  </data>
-  <data name="BtnRemove.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="BtnRemove.Text" xml:space="preserve">
-    <value>Remove</value>
-  </data>
-  <data name="&gt;&gt;BtnRemove.Name" xml:space="preserve">
-    <value>BtnRemove</value>
-  </data>
-  <data name="&gt;&gt;BtnRemove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnRemove.Parent" xml:space="preserve">
-    <value>PanelAdvenced</value>
-  </data>
-  <data name="&gt;&gt;BtnRemove.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TextBoxXpathreceiver.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 69</value>
-  </data>
-  <data name="TextBoxXpathreceiver.Size" type="System.Drawing.Size, System.Drawing">
-    <value>266, 20</value>
-  </data>
-  <data name="TextBoxXpathreceiver.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;TextBoxXpathreceiver.Name" xml:space="preserve">
-    <value>TextBoxXpathreceiver</value>
-  </data>
-  <data name="&gt;&gt;TextBoxXpathreceiver.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TextBoxXpathreceiver.Parent" xml:space="preserve">
-    <value>PanelAdvenced</value>
-  </data>
-  <data name="&gt;&gt;TextBoxXpathreceiver.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 69</value>
-  </data>
-  <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 13</value>
-  </data>
-  <data name="Label5.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="Label5.Text" xml:space="preserve">
-    <value>Xpath  receiver</value>
-  </data>
-  <data name="&gt;&gt;Label5.Name" xml:space="preserve">
-    <value>Label5</value>
-  </data>
-  <data name="&gt;&gt;Label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label5.Parent" xml:space="preserve">
-    <value>PanelAdvenced</value>
-  </data>
-  <data name="&gt;&gt;Label5.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="BtnDefault.Location" type="System.Drawing.Point, System.Drawing">
-    <value>457, 201</value>
-  </data>
-  <data name="BtnDefault.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="BtnDefault.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="BtnDefault.Text" xml:space="preserve">
-    <value>Default</value>
-  </data>
-  <data name="&gt;&gt;BtnDefault.Name" xml:space="preserve">
-    <value>BtnDefault</value>
-  </data>
-  <data name="&gt;&gt;BtnDefault.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnDefault.Parent" xml:space="preserve">
-    <value>PanelAdvenced</value>
-  </data>
-  <data name="&gt;&gt;BtnDefault.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 28</value>
-  </data>
-  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
-  </data>
-  <data name="Label1.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="Label1.Text" xml:space="preserve">
-    <value>Link :</value>
-  </data>
-  <data name="&gt;&gt;Label1.Name" xml:space="preserve">
-    <value>Label1</value>
-  </data>
-  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
-    <value>PanelAdvenced</value>
-  </data>
-  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="BtnXpathRSet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>457, 66</value>
-  </data>
-  <data name="BtnXpathRSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="BtnXpathRSet.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="BtnXpathRSet.Text" xml:space="preserve">
-    <value>Set</value>
-  </data>
-  <data name="&gt;&gt;BtnXpathRSet.Name" xml:space="preserve">
-    <value>BtnXpathRSet</value>
-  </data>
-  <data name="&gt;&gt;BtnXpathRSet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnXpathRSet.Parent" xml:space="preserve">
-    <value>PanelAdvenced</value>
-  </data>
-  <data name="&gt;&gt;BtnXpathRSet.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="TextBoxLink.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 25</value>
-  </data>
-  <data name="TextBoxLink.Size" type="System.Drawing.Size, System.Drawing">
-    <value>266, 20</value>
-  </data>
-  <data name="TextBoxLink.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;TextBoxLink.Name" xml:space="preserve">
-    <value>TextBoxLink</value>
-  </data>
-  <data name="&gt;&gt;TextBoxLink.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TextBoxLink.Parent" xml:space="preserve">
-    <value>PanelAdvenced</value>
-  </data>
-  <data name="&gt;&gt;TextBoxLink.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="BtnLinkSet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>457, 23</value>
-  </data>
-  <data name="BtnLinkSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="BtnLinkSet.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="BtnLinkSet.Text" xml:space="preserve">
-    <value>Set</value>
-  </data>
-  <data name="&gt;&gt;BtnLinkSet.Name" xml:space="preserve">
-    <value>BtnLinkSet</value>
-  </data>
-  <data name="&gt;&gt;BtnLinkSet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnLinkSet.Parent" xml:space="preserve">
-    <value>PanelAdvenced</value>
-  </data>
-  <data name="&gt;&gt;BtnLinkSet.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="BtnAddTranslator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 6</value>
-  </data>
-  <data name="BtnAddTranslator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
-  </data>
-  <data name="BtnAddTranslator.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="BtnAddTranslator.Text" xml:space="preserve">
-    <value>Add</value>
-  </data>
-  <data name="&gt;&gt;BtnAddTranslator.Name" xml:space="preserve">
-    <value>BtnAddTranslator</value>
-  </data>
-  <data name="&gt;&gt;BtnAddTranslator.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnAddTranslator.Parent" xml:space="preserve">
-    <value>PanelAdvenced</value>
-  </data>
-  <data name="&gt;&gt;BtnAddTranslator.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="PanelAdvenced.Location" type="System.Drawing.Point, System.Drawing">
-    <value>360, 38</value>
-  </data>
-  <data name="PanelAdvenced.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 237</value>
-  </data>
-  <data name="PanelAdvenced.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="PanelAdvenced.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;PanelAdvenced.Name" xml:space="preserve">
-    <value>PanelAdvenced</value>
-  </data>
-  <data name="&gt;&gt;PanelAdvenced.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PanelAdvenced.Parent" xml:space="preserve">
-    <value>PanelConfig_Translator</value>
-  </data>
-  <data name="&gt;&gt;PanelAdvenced.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="BtnBack.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 16</value>
-  </data>
-  <data name="BtnBack.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="BtnBack.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="BtnBack.Text" xml:space="preserve">
-    <value>Back</value>
-  </data>
-  <data name="&gt;&gt;BtnBack.Name" xml:space="preserve">
-    <value>BtnBack</value>
-  </data>
-  <data name="&gt;&gt;BtnBack.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnBack.Parent" xml:space="preserve">
-    <value>PanelConfig_Translator</value>
-  </data>
-  <data name="&gt;&gt;BtnBack.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="DataGridViewGridListTag.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 13</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 13</value>
   </data>
   <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>List Tag</value>
+    <value>Liste Tag</value>
   </data>
-  <data name="DataGridViewGridListTag.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 300</value>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 13</value>
   </data>
-  <data name="DataGridViewGridListTag.Size" type="System.Drawing.Size, System.Drawing">
-    <value>373, 99</value>
-  </data>
-  <data name="DataGridViewGridListTag.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;DataGridViewGridListTag.Name" xml:space="preserve">
-    <value>DataGridViewGridListTag</value>
-  </data>
-  <data name="&gt;&gt;DataGridViewGridListTag.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DataGridViewGridListTag.Parent" xml:space="preserve">
-    <value>PanelConfig_Translator</value>
-  </data>
-  <data name="&gt;&gt;DataGridViewGridListTag.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="Label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 66</value>
-  </data>
-  <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 13</value>
-  </data>
-  <data name="Label3.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="Label3.Text" xml:space="preserve">
-    <value>Translator</value>
-  </data>
-  <data name="&gt;&gt;Label3.Name" xml:space="preserve">
-    <value>Label3</value>
-  </data>
-  <data name="&gt;&gt;Label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label3.Parent" xml:space="preserve">
-    <value>PanelConfig_Translator</value>
-  </data>
-  <data name="&gt;&gt;Label3.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="ComboBoxNav.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 63</value>
-  </data>
-  <data name="ComboBoxNav.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="ComboBoxNav.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxNav.Name" xml:space="preserve">
-    <value>ComboBoxNav</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxNav.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxNav.Parent" xml:space="preserve">
-    <value>PanelConfig_Translator</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxNav.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="DataGridViewTagName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <metadata name="CharacterTag.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="CharacterTag.HeaderText" xml:space="preserve">
-    <value>Substitute variable</value>
+    <value>Variable de substitution</value>
   </data>
-  <metadata name="CharacterName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="CharacterName.HeaderText" xml:space="preserve">
-    <value>Variable to be substituted</value>
+    <value>Variable a substituer</value>
   </data>
-  <data name="DataGridViewTagName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>765, 300</value>
-  </data>
-  <data name="DataGridViewTagName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 99</value>
-  </data>
-  <data name="DataGridViewTagName.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;DataGridViewTagName.Name" xml:space="preserve">
-    <value>DataGridViewTagName</value>
-  </data>
-  <data name="&gt;&gt;DataGridViewTagName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DataGridViewTagName.Parent" xml:space="preserve">
-    <value>PanelConfig_Translator</value>
-  </data>
-  <data name="&gt;&gt;DataGridViewTagName.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="PanelConfig_Translator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-8, 77</value>
-  </data>
-  <data name="PanelConfig_Translator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1276, 562</value>
-  </data>
-  <data name="PanelConfig_Translator.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="PanelConfig_Translator.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;PanelConfig_Translator.Name" xml:space="preserve">
-    <value>PanelConfig_Translator</value>
-  </data>
-  <data name="&gt;&gt;PanelConfig_Translator.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PanelConfig_Translator.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PanelConfig_Translator.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <metadata name="OpenFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>277, 17</value>
-  </metadata>
-  <metadata name="Timerrefreshtextbox.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>419, 17</value>
-  </metadata>
-  <metadata name="MenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>580, 17</value>
-  </metadata>
-  <data name="OuvrirToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ouvrirToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJHSURBVDhPxZBdSNNhFMb/F110ZZEVhVBgeeHNICiiuggp
@@ -733,22 +158,13 @@
         g6eHO+A/lyD8ARfG3mk9fv1YAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="OuvrirToolStripMenuItem.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="ouvrirToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 22</value>
   </data>
-  <data name="OuvrirToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+O</value>
+  <data name="toolStripSeparator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 6</value>
   </data>
-  <data name="OuvrirToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 22</value>
-  </data>
-  <data name="OuvrirToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Open</value>
-  </data>
-  <data name="ToolStripSeparator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 6</value>
-  </data>
-  <data name="EnregistrerToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="enregistrerToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIySURBVDhPrZLfS5NRGMfff6H7boIuuq2pMZyL1eAt11CW
@@ -764,478 +180,49 @@
         AElFTkSuQmCC
 </value>
   </data>
-  <data name="EnregistrerToolStripMenuItem.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="enregistrerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 22</value>
   </data>
-  <data name="EnregistrerToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+S</value>
+  <data name="enregistrersousToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 22</value>
   </data>
-  <data name="EnregistrerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 22</value>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 6</value>
   </data>
-  <data name="EnregistrerToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Save</value>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 6</value>
   </data>
-  <data name="EnregistrersousToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 22</value>
+  <data name="quitterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 22</value>
   </data>
-  <data name="EnregistrersousToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save as</value>
+  <data name="fichierToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
   </data>
-  <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 6</value>
+  <data name="personnaliserToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
   </data>
-  <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 6</value>
+  <data name="optionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
   </data>
-  <data name="QuitterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 22</value>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 6</value>
   </data>
-  <data name="QuitterToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Quit</value>
-  </data>
-  <data name="FichierToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="FichierToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;File</value>
-  </data>
-  <data name="PersonnaliserToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 22</value>
-  </data>
-  <data name="PersonnaliserToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Customize</value>
-  </data>
-  <data name="OptionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 22</value>
-  </data>
-  <data name="OptionsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Options</value>
-  </data>
-  <data name="OutilsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 20</value>
-  </data>
-  <data name="OutilsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Parameters</value>
-  </data>
-  <data name="ToolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 6</value>
-  </data>
-  <data name="AproposdeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 22</value>
+  <data name="àproposdeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 22</value>
   </data>
   <data name="AproposdeToolStripMenuItem.Text" xml:space="preserve">
-    <value>about</value>
+    <value>A propos</value>
   </data>
-  <data name="AideToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
+  <data name="aideToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 20</value>
   </data>
-  <data name="AideToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Help</value>
+  <data name="checkBoxAuto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1198, 18</value>
   </data>
-  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 20</value>
+  <data name="checkBoxAuto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 17</value>
   </data>
-  <data name="ToolStripMenuItem1.Text" xml:space="preserve">
-    <value>↑</value>
-  </data>
-  <data name="MenuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="MenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1299, 24</value>
-  </data>
-  <data name="MenuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip1.Name" xml:space="preserve">
-    <value>MenuStrip1</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="CheckBoxAuto.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="CheckBoxAuto.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CheckBoxAuto.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="CheckBoxAuto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1189, 18</value>
-  </data>
-  <data name="CheckBoxAuto.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>Yes</value>
-  </data>
-  <data name="CheckBoxAuto.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 17</value>
-  </data>
-  <data name="CheckBoxAuto.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="CheckBoxAuto.Text" xml:space="preserve">
-    <value>Auto activate</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxAuto.Name" xml:space="preserve">
-    <value>CheckBoxAuto</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxAuto.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxAuto.Parent" xml:space="preserve">
-    <value>Panelbottom</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxAuto.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="TabControltextbox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
-  </data>
-  <data name="TextBoxSource.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="TextBoxSource.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 15.75pt, style=Bold</value>
-  </data>
-  <data name="TextBoxSource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="TextBoxSource.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="TextBoxSource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="TextBoxSource.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;TextBoxSource.Name" xml:space="preserve">
-    <value>TextBoxSource</value>
-  </data>
-  <data name="&gt;&gt;TextBoxSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TextBoxSource.Parent" xml:space="preserve">
-    <value>PaneltextBoxSource</value>
-  </data>
-  <data name="&gt;&gt;TextBoxSource.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PaneltextBoxSource.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="PaneltextBoxSource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="PaneltextBoxSource.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>30, 30, 30, 30</value>
-  </data>
-  <data name="PaneltextBoxSource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="PaneltextBoxSource.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;PaneltextBoxSource.Name" xml:space="preserve">
-    <value>PaneltextBoxSource</value>
-  </data>
-  <data name="&gt;&gt;PaneltextBoxSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PaneltextBoxSource.Parent" xml:space="preserve">
-    <value>TabSource</value>
-  </data>
-  <data name="&gt;&gt;PaneltextBoxSource.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TabSource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="TabSource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="TabSource.Text" xml:space="preserve">
-    <value>Source</value>
-  </data>
-  <data name="&gt;&gt;TabSource.Name" xml:space="preserve">
-    <value>TabSource</value>
-  </data>
-  <data name="&gt;&gt;TabSource.Type" xml:space="preserve">
-    <value>Manina.Windows.Forms.Tab, TabControl, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;TabSource.Parent" xml:space="preserve">
-    <value>TabControltextbox</value>
-  </data>
-  <data name="&gt;&gt;TabSource.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TextBoxTarget.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="TextBoxTarget.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 15.75pt, style=Bold</value>
-  </data>
-  <data name="TextBoxTarget.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="TextBoxTarget.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="TextBoxTarget.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="TextBoxTarget.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;TextBoxTarget.Name" xml:space="preserve">
-    <value>TextBoxTarget</value>
-  </data>
-  <data name="&gt;&gt;TextBoxTarget.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TextBoxTarget.Parent" xml:space="preserve">
-    <value>PaneltextBoxTarget</value>
-  </data>
-  <data name="&gt;&gt;TextBoxTarget.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PaneltextBoxTarget.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="PaneltextBoxTarget.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="PaneltextBoxTarget.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>30, 30, 30, 30</value>
-  </data>
-  <data name="PaneltextBoxTarget.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="PaneltextBoxTarget.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;PaneltextBoxTarget.Name" xml:space="preserve">
-    <value>PaneltextBoxTarget</value>
-  </data>
-  <data name="&gt;&gt;PaneltextBoxTarget.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PaneltextBoxTarget.Parent" xml:space="preserve">
-    <value>TabTarget</value>
-  </data>
-  <data name="&gt;&gt;PaneltextBoxTarget.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TabTarget.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="TabTarget.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="TabTarget.Text" xml:space="preserve">
-    <value>Target</value>
-  </data>
-  <data name="&gt;&gt;TabTarget.Name" xml:space="preserve">
-    <value>TabTarget</value>
-  </data>
-  <data name="&gt;&gt;TabTarget.Type" xml:space="preserve">
-    <value>Manina.Windows.Forms.Tab, TabControl, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;TabTarget.Parent" xml:space="preserve">
-    <value>TabControltextbox</value>
-  </data>
-  <data name="&gt;&gt;TabTarget.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="TextBoxResult.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="TextBoxResult.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="TextBoxResult.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="TextBoxResult.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1162, 83</value>
-  </data>
-  <data name="TextBoxResult.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;TextBoxResult.Name" xml:space="preserve">
-    <value>TextBoxResult</value>
-  </data>
-  <data name="&gt;&gt;TextBoxResult.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TextBoxResult.Parent" xml:space="preserve">
-    <value>TabResult</value>
-  </data>
-  <data name="&gt;&gt;TextBoxResult.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TabResult.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 21</value>
-  </data>
-  <data name="TabResult.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1162, 83</value>
-  </data>
-  <data name="TabResult.Text" xml:space="preserve">
-    <value>Result</value>
-  </data>
-  <data name="&gt;&gt;TabResult.Name" xml:space="preserve">
-    <value>TabResult</value>
-  </data>
-  <data name="&gt;&gt;TabResult.Type" xml:space="preserve">
-    <value>Manina.Windows.Forms.Tab, TabControl, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;TabResult.Parent" xml:space="preserve">
-    <value>TabControltextbox</value>
-  </data>
-  <data name="&gt;&gt;TabResult.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="TabControltextbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 3</value>
-  </data>
-  <data name="TabControltextbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1162, 103</value>
-  </data>
-  <data name="TabControltextbox.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;TabControltextbox.Name" xml:space="preserve">
-    <value>TabControltextbox</value>
-  </data>
-  <data name="&gt;&gt;TabControltextbox.Type" xml:space="preserve">
-    <value>Manina.Windows.Forms.TabControl, TabControl, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;TabControltextbox.Parent" xml:space="preserve">
-    <value>Panelbottom</value>
-  </data>
-  <data name="&gt;&gt;TabControltextbox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Panelleft.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left</value>
-  </data>
-  <data name="BtnfindLast.Location" type="System.Drawing.Point, System.Drawing">
-    <value>44, 82</value>
-  </data>
-  <data name="BtnfindLast.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 23</value>
-  </data>
-  <data name="BtnfindLast.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="BtnfindLast.Text" xml:space="preserve">
-    <value>Find Last Translation</value>
-  </data>
-  <data name="&gt;&gt;BtnfindLast.Name" xml:space="preserve">
-    <value>BtnfindLast</value>
-  </data>
-  <data name="&gt;&gt;BtnfindLast.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnfindLast.Parent" xml:space="preserve">
-    <value>Panelleft</value>
-  </data>
-  <data name="&gt;&gt;BtnfindLast.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="RadioButtonSearch1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RadioButtonSearch1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="RadioButtonSearch1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>44, 152</value>
-  </data>
-  <data name="RadioButtonSearch1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 17</value>
-  </data>
-  <data name="RadioButtonSearch1.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="RadioButtonSearch1.Text" xml:space="preserve">
-    <value>Column 1</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonSearch1.Name" xml:space="preserve">
-    <value>RadioButtonSearch1</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonSearch1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonSearch1.Parent" xml:space="preserve">
-    <value>Panelleft</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonSearch1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="RadioButtonSearch2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RadioButtonSearch2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 151</value>
-  </data>
-  <data name="RadioButtonSearch2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 17</value>
-  </data>
-  <data name="RadioButtonSearch2.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="RadioButtonSearch2.Text" xml:space="preserve">
-    <value>Column 2</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonSearch2.Name" xml:space="preserve">
-    <value>RadioButtonSearch2</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonSearch2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonSearch2.Parent" xml:space="preserve">
-    <value>Panelleft</value>
-  </data>
-  <data name="&gt;&gt;RadioButtonSearch2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="ProgressBar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 561</value>
-  </data>
-  <data name="ProgressBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 23</value>
-  </data>
-  <data name="ProgressBar1.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="ProgressBar1.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;ProgressBar1.Name" xml:space="preserve">
-    <value>ProgressBar1</value>
-  </data>
-  <data name="&gt;&gt;ProgressBar1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ProgressBar1.Parent" xml:space="preserve">
-    <value>Panelleft</value>
-  </data>
-  <data name="&gt;&gt;ProgressBar1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="Btnopenslide.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="Btnopenslide.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABJGlDQ1BJQ0MgcHJvZmlsZQAAKM+dkL9K
         w1AUxn9tpYooDlYHccjgWnAxk4t/MHQo1LaC0Sm9abGYxJCkFN/AN9GH6SAIPoFPoODsd6ODSwa9cPh+
@@ -1249,245 +236,11 @@
         gjKBAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="Btnopenslide.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 6</value>
-  </data>
-  <data name="Btnopenslide.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 38</value>
-  </data>
-  <data name="Btnopenslide.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="Btnopenslide.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
-  </data>
-  <data name="&gt;&gt;Btnopenslide.Name" xml:space="preserve">
-    <value>Btnopenslide</value>
-  </data>
-  <data name="&gt;&gt;Btnopenslide.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Btnopenslide.Parent" xml:space="preserve">
-    <value>Panelleft</value>
-  </data>
-  <data name="&gt;&gt;Btnopenslide.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="BtnLoadDirectory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 561</value>
-  </data>
-  <data name="BtnLoadDirectory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="BtnLoadDirectory.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="BtnLoadDirectory.Text" xml:space="preserve">
-    <value>Load Directory</value>
-  </data>
-  <data name="BtnLoadDirectory.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;BtnLoadDirectory.Name" xml:space="preserve">
-    <value>BtnLoadDirectory</value>
-  </data>
-  <data name="&gt;&gt;BtnLoadDirectory.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnLoadDirectory.Parent" xml:space="preserve">
-    <value>Panelleft</value>
-  </data>
-  <data name="&gt;&gt;BtnLoadDirectory.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="TreeView1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 262</value>
-  </data>
-  <data name="TreeView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 281</value>
-  </data>
-  <data name="TreeView1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="TreeView1.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;TreeView1.Name" xml:space="preserve">
-    <value>TreeView1</value>
-  </data>
-  <data name="&gt;&gt;TreeView1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TreeView1.Parent" xml:space="preserve">
-    <value>Panelleft</value>
-  </data>
-  <data name="&gt;&gt;TreeView1.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="BtnDirectoryPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>248, 220</value>
-  </data>
-  <data name="BtnDirectoryPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 23</value>
-  </data>
-  <data name="BtnDirectoryPath.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="BtnDirectoryPath.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="BtnDirectoryPath.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;BtnDirectoryPath.Name" xml:space="preserve">
-    <value>BtnDirectoryPath</value>
-  </data>
-  <data name="&gt;&gt;BtnDirectoryPath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnDirectoryPath.Parent" xml:space="preserve">
-    <value>Panelleft</value>
-  </data>
-  <data name="&gt;&gt;BtnDirectoryPath.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="TxtDirectoryPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 222</value>
-  </data>
-  <data name="TxtDirectoryPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 20</value>
-  </data>
-  <data name="TxtDirectoryPath.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="TxtDirectoryPath.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;TxtDirectoryPath.Name" xml:space="preserve">
-    <value>TxtDirectoryPath</value>
-  </data>
-  <data name="&gt;&gt;TxtDirectoryPath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtDirectoryPath.Parent" xml:space="preserve">
-    <value>Panelleft</value>
-  </data>
-  <data name="&gt;&gt;TxtDirectoryPath.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="BtnNEXT.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 82</value>
-  </data>
-  <data name="BtnNEXT.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 23</value>
-  </data>
-  <data name="BtnNEXT.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="BtnNEXT.Text" xml:space="preserve">
-    <value>Search</value>
-  </data>
-  <data name="&gt;&gt;BtnNEXT.Name" xml:space="preserve">
-    <value>BtnNEXT</value>
-  </data>
-  <data name="&gt;&gt;BtnNEXT.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnNEXT.Parent" xml:space="preserve">
-    <value>Panelleft</value>
-  </data>
-  <data name="&gt;&gt;BtnNEXT.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="TextBoxsearch.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 18pt, style=Bold</value>
-  </data>
-  <data name="TextBoxsearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>44, 111</value>
-  </data>
-  <data name="TextBoxsearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 35</value>
-  </data>
-  <data name="TextBoxsearch.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;TextBoxsearch.Name" xml:space="preserve">
-    <value>TextBoxsearch</value>
-  </data>
-  <data name="&gt;&gt;TextBoxsearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TextBoxsearch.Parent" xml:space="preserve">
-    <value>Panelleft</value>
-  </data>
-  <data name="&gt;&gt;TextBoxsearch.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="Panelleft.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
-  </data>
-  <data name="Panelleft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 676</value>
-  </data>
-  <data name="Panelleft.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="&gt;&gt;Panelleft.Name" xml:space="preserve">
-    <value>Panelleft</value>
-  </data>
-  <data name="&gt;&gt;Panelleft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Panelleft.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Panelleft.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="Panelbottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="Panelbottom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 708</value>
-  </data>
-  <data name="Panelbottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1299, 109</value>
-  </data>
-  <data name="Panelbottom.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="&gt;&gt;Panelbottom.Name" xml:space="preserve">
-    <value>Panelbottom</value>
-  </data>
-  <data name="&gt;&gt;Panelbottom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Panelbottom.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Panelbottom.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <metadata name="FolderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>695, 17</value>
-  </metadata>
-  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>866, 17</value>
-  </metadata>
-  <metadata name="Timerleft.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>965, 17</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>38</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1299, 817</value>
+  <data name="buttonNEXT.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 81</value>
+  </data>
+  <data name="buttonNEXT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 23</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3512,175 +2265,94 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 </value>
   </data>
+  <data name="TabSource.Text" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="BtnTranslate.Text" xml:space="preserve">
+    <value>Translate</value>
+  </data>
+  <data name="TabTarget.Text" xml:space="preserve">
+    <value>Cible</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>PhoenixTranslate V3</value>
   </data>
-  <data name="&gt;&gt;Timer1.Name" xml:space="preserve">
-    <value>Timer1</value>
-  </data>
-  <data name="&gt;&gt;Timer1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Source.Name" xml:space="preserve">
+  <data name="Source.HeaderText" xml:space="preserve">
     <value>Source</value>
   </data>
-  <data name="&gt;&gt;Source.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="AideToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Aide</value>
   </data>
-  <data name="&gt;&gt;Target.Name" xml:space="preserve">
-    <value>Target</value>
+  <data name="ToolStripMenuItem1.Text" xml:space="preserve">
+    <value>↑</value>
   </data>
-  <data name="&gt;&gt;Target.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="RadioButtonBasic.Text" xml:space="preserve">
+    <value>Normal</value>
   </data>
-  <data name="&gt;&gt;Result.Name" xml:space="preserve">
-    <value>Result</value>
+  <data name="RadioButtonAdvenced.Text" xml:space="preserve">
+    <value>Avancé</value>
   </data>
-  <data name="&gt;&gt;Result.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="QuitterToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Quitter</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn1</value>
+  <data name="PersonnaliserToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Personnaliser</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="OuvrirToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Ouvrir</value>
   </data>
-  <data name="&gt;&gt;CharacterTag.Name" xml:space="preserve">
-    <value>CharacterTag</value>
+  <data name="OutilsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Paramètres</value>
   </data>
-  <data name="&gt;&gt;CharacterTag.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="OptionsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Options</value>
   </data>
-  <data name="&gt;&gt;CharacterName.Name" xml:space="preserve">
-    <value>CharacterName</value>
+  <data name="Label5.Text" xml:space="preserve">
+    <value>Récepteur Xpath</value>
   </data>
-  <data name="&gt;&gt;CharacterName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Label3.Text" xml:space="preserve">
+    <value>Traducteur</value>
   </data>
-  <data name="&gt;&gt;OpenFileDialog1.Name" xml:space="preserve">
-    <value>OpenFileDialog1</value>
+  <data name="Label1.Text" xml:space="preserve">
+    <value>Adresse :</value>
   </data>
-  <data name="&gt;&gt;OpenFileDialog1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="FichierToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Fichier</value>
   </data>
-  <data name="&gt;&gt;Timerrefreshtextbox.Name" xml:space="preserve">
-    <value>Timerrefreshtextbox</value>
+  <data name="EnregistrerToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Sauvegarder</value>
   </data>
-  <data name="&gt;&gt;Timerrefreshtextbox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="EnregistrersousToolStripMenuItem.Text" xml:space="preserve">
+    <value>Enregistrer &amp;sous</value>
   </data>
-  <data name="&gt;&gt;FichierToolStripMenuItem.Name" xml:space="preserve">
-    <value>FichierToolStripMenuItem</value>
+  <data name="CheckBoxAuto.Text" xml:space="preserve">
+    <value>Auto activé</value>
   </data>
-  <data name="&gt;&gt;FichierToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="BtnAddTranslator.Text" xml:space="preserve">
+    <value>Ajouter</value>
   </data>
-  <data name="&gt;&gt;OuvrirToolStripMenuItem.Name" xml:space="preserve">
-    <value>OuvrirToolStripMenuItem</value>
+  <data name="BtnBack.Text" xml:space="preserve">
+    <value>Retour</value>
   </data>
-  <data name="&gt;&gt;OuvrirToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="BtnDefault.Text" xml:space="preserve">
+    <value>Par défaut</value>
   </data>
-  <data name="&gt;&gt;ToolStripSeparator.Name" xml:space="preserve">
-    <value>ToolStripSeparator</value>
+  <data name="BtnDirectoryPath.Text" xml:space="preserve">
+    <value>...</value>
   </data>
-  <data name="&gt;&gt;ToolStripSeparator.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="BtnLinkSet.Text" xml:space="preserve">
+    <value>Définir</value>
   </data>
-  <data name="&gt;&gt;EnregistrerToolStripMenuItem.Name" xml:space="preserve">
-    <value>EnregistrerToolStripMenuItem</value>
+  <data name="BtnLoadDirectory.Text" xml:space="preserve">
+    <value>charger le dossier</value>
   </data>
-  <data name="&gt;&gt;EnregistrerToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="BtnNEXT.Text" xml:space="preserve">
+    <value>Rechercher</value>
   </data>
-  <data name="&gt;&gt;EnregistrersousToolStripMenuItem.Name" xml:space="preserve">
-    <value>EnregistrersousToolStripMenuItem</value>
+  <data name="BtnRemove.Text" xml:space="preserve">
+    <value>Supprimer</value>
   </data>
-  <data name="&gt;&gt;EnregistrersousToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator1.Name" xml:space="preserve">
-    <value>ToolStripSeparator1</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator2.Name" xml:space="preserve">
-    <value>ToolStripSeparator2</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;QuitterToolStripMenuItem.Name" xml:space="preserve">
-    <value>QuitterToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;QuitterToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;OutilsToolStripMenuItem.Name" xml:space="preserve">
-    <value>OutilsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;OutilsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PersonnaliserToolStripMenuItem.Name" xml:space="preserve">
-    <value>PersonnaliserToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;PersonnaliserToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;OptionsToolStripMenuItem.Name" xml:space="preserve">
-    <value>OptionsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;OptionsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AideToolStripMenuItem.Name" xml:space="preserve">
-    <value>AideToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;AideToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator5.Name" xml:space="preserve">
-    <value>ToolStripSeparator5</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AproposdeToolStripMenuItem.Name" xml:space="preserve">
-    <value>AproposdeToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;AproposdeToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem1.Name" xml:space="preserve">
-    <value>ToolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FolderBrowserDialog1.Name" xml:space="preserve">
-    <value>FolderBrowserDialog1</value>
-  </data>
-  <data name="&gt;&gt;FolderBrowserDialog1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolTip1.Name" xml:space="preserve">
-    <value>ToolTip1</value>
-  </data>
-  <data name="&gt;&gt;ToolTip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Timerleft.Name" xml:space="preserve">
-    <value>Timerleft</value>
-  </data>
-  <data name="&gt;&gt;Timerleft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Translator</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="BtnXpathRSet.Text" xml:space="preserve">
+    <value>Définir</value>
   </data>
 </root>

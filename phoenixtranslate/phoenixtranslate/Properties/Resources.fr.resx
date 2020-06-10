@@ -117,46 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Auto activate" xml:space="preserve">
-    <value>Auto activate</value>
-  </data>
-  <data name="Auto desactivate" xml:space="preserve">
-    <value>Auto desactivate</value>
-  </data>
-  <data name="copy" xml:space="preserve">
-    <value>copy</value>
-  </data>
-  <data name="cut" xml:space="preserve">
-    <value>cut</value>
-  </data>
-  <data name="Doyouwanttoadd" xml:space="preserve">
-    <value>Do you want to add</value>
+  <data name="error incorrect config" xml:space="preserve">
+    <value>configuration incorrecte</value>
   </data>
   <data name="End" xml:space="preserve">
-    <value>End</value>
-  </data>
-  <data name="error incorrect config" xml:space="preserve">
-    <value>incorrect config</value>
-  </data>
-  <data name="Fillconfigorrestoredefault" xml:space="preserve">
-    <value>Fill config or restore default</value>
+    <value>Fin</value>
   </data>
   <data name="messagequotationremove" xml:space="preserve">
-    <value>Beware the quotation marks have been removed</value>
+    <value>Attention les guillemets ont été enlevés</value>
   </data>
-  <data name="past" xml:space="preserve">
-    <value>past</value>
+  <data name="Doyouwanttoadd" xml:space="preserve">
+    <value>Voulez-vous ajouter</value>
   </data>
-  <data name="SelectDirectory" xml:space="preserve">
-    <value>Select Directory!!</value>
+  <data name="Fillconfigorrestoredefault" xml:space="preserve">
+    <value>Remplir la configuration ou rétablir la valeur par défaut</value>
   </data>
   <data name="tothelistoftags" xml:space="preserve">
-    <value>to the list of tags</value>
+    <value>à la liste des balises</value>
+  </data>
+  <data name="past" xml:space="preserve">
+    <value>coller</value>
+  </data>
+  <data name="copy" xml:space="preserve">
+    <value>copier</value>
+  </data>
+  <data name="cut" xml:space="preserve">
+    <value>coller</value>
+  </data>
+  <data name="Auto desactivate" xml:space="preserve">
+    <value>Auto desactivé</value>
+  </data>
+  <data name="Auto activate" xml:space="preserve">
+    <value>Auto activé</value>
   </data>
   <data name="wasnotfound" xml:space="preserve">
-    <value> was not found do you want to restart the search from the beginning of the table</value>
+    <value> n'a pas été trouvé voulez-vous relancer la recherche depuis le début du tableau</value>
+  </data>
+  <data name="SelectDirectory" xml:space="preserve">
+    <value>Sélectionnez un répertoire !!</value>
   </data>
   <data name="wasnotfound2" xml:space="preserve">
-    <value> was not found</value>
+    <value> n'a pas été trouvé</value>
   </data>
 </root>

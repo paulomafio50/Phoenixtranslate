@@ -1,21 +1,22 @@
-﻿using System;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-using Gecko;
+﻿using Gecko;
 using Gecko.DOM;
-using System.Text.RegularExpressions;
 using Gecko.Events;
 using Microsoft.VisualBasic;
-using System.Xml.XPath;
+using phoenixtranslate.Properties;
+using System;
+using System.Data;
+using System.Drawing;
 using System.IO;
-using System.Media;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using System.Xml.XPath;
+
 namespace phoenixtranslate
 {
     public partial class Translator : Form
     {
-        Form import = new Import();
+
         //remetre droit ctrl+K et D
         public Boolean StatutSave = true;
         public string Path = "";
@@ -25,7 +26,9 @@ namespace phoenixtranslate
         public string textescible = "";
         public string textescibleold = "old";
         public string Etatauto = "activate";
-        public GeckoWebBrowser Wb1 => geckoWebBrowser1;
+        public bool panelleftopen = true;
+        public GeckoWebBrowser Wb1 => GeckoWebBrowser;
+        public DataSet Dt;
         public Translator()
         {
             InitializeComponent();
@@ -35,6 +38,13 @@ namespace phoenixtranslate
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            RadioButtonSearch1.Checked = true;
+            TextBoxsearch.Visible = false;
+            BtnNEXT.Visible = false;
+            Panelleft.Width = 40;
+            Paneltraducteur.Width += 260;
+            Paneltraducteur.Location = new Point(40, 27);
+            //panelleft.Width = 15;
             if (Properties.Settings.Default.Name_Translator.Cast<string>().ToArray().Length == 0)
             {
                 Properties.Settings.Default.index = -1;
@@ -42,48 +52,52 @@ namespace phoenixtranslate
             }
             else
             {
-                int a = Properties.Settings.Default.index;
-                geckoWebBrowser1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString());
+
+                GeckoWebBrowser.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString());
             }
-            tabControltextbox.SelectedTab = tabTarget;
-            checkBoxAuto.Checked = true;
+            TabControltextbox.SelectedTab = TabTarget;
+            CheckBoxAuto.Checked = true;
         }
         protected override void OnClosed(EventArgs e)
         {
-            geckoWebBrowser1.Dispose();
+            GeckoWebBrowser.Dispose();
             Xpcom.Shutdown();
             base.OnClosed(e);
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void BtnTranslate_Click(object sender, EventArgs e)
         {
-            buttonTranslate.Enabled = false;
-            buttonTranslate.UseWaitCursor = true;
+            BtnTranslate.Enabled = false;
+            BtnTranslate.UseWaitCursor = true;
+            CheckBoxAuto.Checked = true;
+            //if (CheckBoxAuto.Checked == false)
+            //{
+            //    CheckBoxAuto.Checked = true;
+            CheckBoxAuto_Verif();
+            currentRow = DataGridView.SelectedRows[0].Index;
+            //    Fill(DataGridView.Rows[currentRow].Cells[0].Value.ToString());
+            //    BtnTranslate.Enabled = true;
+            //    BtnTranslate.UseWaitCursor = false;
+            //    Timer1.Enabled = true;
+            //    return;
+            //}
 
-            if (checkBoxAuto.Checked==false)
-            {
-                checkBoxAuto.Checked = true;
-                currentRow = dataGridView1.SelectedRows[0].Index;
-                fill(Wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]), (Properties.Settings.Default.Querysender[Properties.Settings.Default.index]), dataGridView1.Rows[currentRow].Cells[0].Value.ToString());
-                wait(2000);
-            }
-            checkBoxAuto.Checked = true;
             if (Properties.Settings.Default.index != -1)
             {
                 string texttranslated = Extract(Wb1, Properties.Settings.Default.Xpathreceiver[Properties.Settings.Default.index], "text");
-               
+
                 if (texttranslated == null)
                 {
-                    MessageBox.Show("incorrect config");
-                    timer1.Enabled = false;
+                    MessageBox.Show(Resources.error_incorrect_config);
+                    Timer1.Enabled = false;
                 }
                 else
                 {
                     if (texttranslated.Contains(@""""))
                     {
                         texttranslated = texttranslated.Replace(@"""", @"");
-                       MessageBox.Show("Attention les guillemets ont été enlevés");
+                        MessageBox.Show(Resources.messagequotationremove);
                     }
-              
+
                     int a = 0;
                     foreach (string item in Properties.Settings.Default.CharacterName)
                     {
@@ -95,43 +109,55 @@ namespace phoenixtranslate
                     }
                     foreach (string item in Properties.Settings.Default.ListTag)
                     {
-                        if (dataGridView1.CurrentRow.Cells[0].Value.ToString().StartsWith(item))
+                        if (DataGridView.CurrentRow.Cells[0].Value.ToString().StartsWith(item))
                         {
                             texttranslated = texttranslated.Insert(0, item);
                         }
-                        if (dataGridView1.CurrentRow.Cells[0].Value.ToString().EndsWith(item))
+                        if (DataGridView.CurrentRow.Cells[0].Value.ToString().EndsWith(item))
                         {
                             texttranslated = texttranslated.Insert(texttranslated.Length, item);
                         }
                     }
-                    dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Value = texttranslated;
+                    DataGridView.Rows[DataGridView.CurrentRow.Index].Cells[1].Value = texttranslated;
                     RefreshCellResult();
                     foreach (string item in Properties.Settings.Default.ListTag)
                     {
-                        if (dataGridView1.CurrentRow.Cells[0].Value.ToString().Contains(item))
+                        if (DataGridView.CurrentRow.Cells[0].Value.ToString().Contains(item))
                         {
-                            int count = new Regex(Regex.Escape(item)).Matches(dataGridView1.CurrentRow.Cells[0].Value.ToString()).Count;
-                            int count2 = new Regex(Regex.Escape(item)).Matches(dataGridView1.CurrentRow.Cells[1].Value.ToString()).Count;
+                            int count = new Regex(Regex.Escape(item)).Matches(DataGridView.CurrentRow.Cells[0].Value.ToString()).Count;
+                            int count2 = new Regex(Regex.Escape(item)).Matches(DataGridView.CurrentRow.Cells[1].Value.ToString()).Count;
                             if (count != count2)
                             {
-                                dataGridView1.CurrentRow.Cells[1].Style.BackColor = Color.DarkBlue;
+                                DataGridView.CurrentRow.Cells[1].Style.BackColor = Color.DarkBlue;
                             }
                         }
                     }
-                    if (dataGridView1.SelectedRows[0].Index < dataGridView1.RowCount - 1)
+                    Doublon(DataGridView.CurrentRow);
+                    if (DataGridView.SelectedRows[0].Index < DataGridView.RowCount - 1)
                     {
-                        dataGridView1.Rows[++currentRow].Cells[0].Selected = true;
+                        if (DataGridView.Rows[currentRow + 1].DefaultCellStyle.BackColor == Color.Yellow)
+                        {
+                            while (DataGridView.Rows[currentRow + 1].DefaultCellStyle.BackColor == Color.Yellow)
+                            {
+                                currentRow += 1;
+                                if (DataGridView.RowCount == currentRow)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        DataGridView.Rows[++currentRow].Cells[0].Selected = true;
                     }
                     else
                     {
-                        MessageBox.Show("Fin.", "Important Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show(Resources.End, "Important Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
-                wait(2000);
-                buttonTranslate.Enabled = true;
-                buttonTranslate.UseWaitCursor = false;
-                timer1.Enabled = true;
-             
+                Wait(2000);
+                BtnTranslate.Enabled = true;
+                BtnTranslate.UseWaitCursor = false;
+                Timer1.Enabled = true;
+
             }
         }
         public string Extract(GeckoWebBrowser wb, string xpath, string type)
@@ -140,9 +166,9 @@ namespace phoenixtranslate
             {
                 string result = string.Empty;
                 GeckoHtmlElement Elm;
-                if (textBoxLink.Text != "")
+                if (TextBoxLink.Text != "")
                 {
-                    if (textBoxXpathreceiver.Text != "")
+                    if (TextBoxXpathreceiver.Text != "")
                     {
                         if (wb != null)
                         {
@@ -189,24 +215,24 @@ namespace phoenixtranslate
             }
             return result;
         }
-        private string GetHtmlFromGeckoDocument(GeckoDocument doc)
-        {
-            var result = string.Empty;
-            GeckoHtmlElement element;
-            var geckoDomElement = doc.DocumentElement;
-            if (geckoDomElement is GeckoHtmlElement)
-            {
-                element = (GeckoHtmlElement)geckoDomElement;
-                result = element.InnerHtml;
-            }
-            return result;
-        }
-        public void fill(GeckoWebBrowser wb, string xpath, string Query, string value)
+        //private string GetHtmlFromGeckoDocument(GeckoDocument doc)
+        //{
+        //    var result = string.Empty;
+        //    GeckoHtmlElement element;
+        //    var geckoDomElement = doc.DocumentElement;
+        //    if (geckoDomElement is GeckoHtmlElement)
+        //    {
+        //        element = (GeckoHtmlElement)geckoDomElement;
+        //        result = element.InnerHtml;
+        //    }
+        //    return result;
+        //}
+        public void Fill(string value)
         {
             string str = System.Uri.EscapeDataString(Tagextract(value));
             Wb1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString() + str);
         }
-        public void wait(int milliseconds)
+        public void Wait(int milliseconds)
         {
             System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
             if (milliseconds == 0 || milliseconds < 0) return;
@@ -223,21 +249,21 @@ namespace phoenixtranslate
                 Application.DoEvents();
             }
         }
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             textescible = Extract(Wb1, Properties.Settings.Default.Xpathreceiver[Properties.Settings.Default.index], "text");
-            if (buttonTranslate.Enabled == true)
+            if (BtnTranslate.Enabled == true)
             {
                 if (textescible == string.Empty || textescible == textescibleold)
                 {
-                    buttonTranslate.Enabled = false;
+                    BtnTranslate.Enabled = false;
                 }
             }
             else
             {
                 textescible = textescibleold;
-                buttonTranslate.Enabled = true;
-                timer1.Enabled = false;
+                BtnTranslate.Enabled = true;
+                Timer1.Enabled = false;
             }
         }
         private void Translator_FormClosing(object sender, FormClosingEventArgs e)
@@ -245,7 +271,7 @@ namespace phoenixtranslate
             e.Cancel = true;
             QuitProgramm();
         }
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        private void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.index != -1)
             {
@@ -255,27 +281,24 @@ namespace phoenixtranslate
                     {
                         if (Etatauto == "activate")
                         {
-                            currentRow = dataGridView1.SelectedRows[0].Index;
-                            fill(Wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]), (Properties.Settings.Default.Querysender[Properties.Settings.Default.index]), dataGridView1.Rows[currentRow].Cells[0].Value.ToString());
+                            currentRow = DataGridView.SelectedRows[0].Index;
+                            Fill(DataGridView.Rows[currentRow].Cells[0].Value.ToString());
                         }
                     }
                     catch { }
                 }
             }
         }
-        private void geckoWebBrowser1_Navigated(object sender, GeckoNavigatedEventArgs e)
-        {
-        }
-        private void geckoWebBrowser1_DocumentCompleted(object sender, GeckoDocumentCompletedEventArgs e)
+        private void GeckoWebBrowser_DocumentCompleted(object sender, GeckoDocumentCompletedEventArgs e)
         {
             if (Properties.Settings.Default.index != -1)
             {
                 if (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index] != string.Empty)
                 {
-                    wait(1000);
-                    if (dataGridView1.Rows.Count != 0)
+                    Wait(1000);
+                    if (DataGridView.Rows.Count != 0)
                     {
-                        fill(Wb1, (Properties.Settings.Default.Xpathsender[Properties.Settings.Default.index]), (Properties.Settings.Default.Querysender[Properties.Settings.Default.index]), dataGridView1.CurrentCell.Value.ToString());
+                        Fill(DataGridView.CurrentCell.Value.ToString());
                     }
                 }
             }
@@ -307,10 +330,10 @@ namespace phoenixtranslate
                 }
                 else
                 {
-                    DialogResult dialogResult = MessageBox.Show("Do you want to add " + match.ToString() + "to the list of tags", "Question", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show(Resources.Doyouwanttoadd + match.ToString() + Resources.tothelistoftags, "", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        dataGridViewGridListTag.Rows.Add(match.ToString());
+                        DataGridViewGridListTag.Rows.Add(match.ToString());
                         SaveProperyDatagridviewListTag();
                         text = text.Replace(match.ToString(), string.Empty);
                     }
@@ -331,24 +354,24 @@ namespace phoenixtranslate
             {
                 if (Properties.Settings.Default.Name_Translator.Count >= 1)
                 {
-                    comboBoxNav.DataSource = Properties.Settings.Default.Name_Translator.Cast<string>().ToArray();
-                    comboBoxNav.SelectedIndex = Properties.Settings.Default.index;
-                    textBoxLink.Text = Properties.Settings.Default.Link[Properties.Settings.Default.index];
-                    textBoxXpathreceiver.Text = Properties.Settings.Default.Xpathreceiver[Properties.Settings.Default.index];
+                    ComboBoxNav.DataSource = Properties.Settings.Default.Name_Translator.Cast<string>().ToArray();
+                    ComboBoxNav.SelectedIndex = Properties.Settings.Default.index;
+                    TextBoxLink.Text = Properties.Settings.Default.Link[Properties.Settings.Default.index];
+                    TextBoxXpathreceiver.Text = Properties.Settings.Default.Xpathreceiver[Properties.Settings.Default.index];
                 }
                 else
                 {
-                    comboBoxNav.DataSource = null;
-                    textBoxLink.Text = string.Empty;
-                    textBoxXpathreceiver.Text = string.Empty;
+                    ComboBoxNav.DataSource = null;
+                    TextBoxLink.Text = string.Empty;
+                    TextBoxXpathreceiver.Text = string.Empty;
                 }
             }
         }
-        private void buttonLinkSet_Click(object sender, EventArgs e)
+        private void BtnLinkSet_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Link[Properties.Settings.Default.index] = textBoxLink.Text;
+            Properties.Settings.Default.Link[Properties.Settings.Default.index] = TextBoxLink.Text;
         }
-        private void buttonAddTranslator_Click(object sender, EventArgs e)
+        private void BtnAddTranslator_Click(object sender, EventArgs e)
         {
             string result = Interaction.InputBox("Enter Name of translator");
             if (result != null)
@@ -361,55 +384,55 @@ namespace phoenixtranslate
                 InitializeComboBox();
             }
         }
-        private void buttonRemove_Click(object sender, EventArgs e)
+        private void BtnRemove_Click(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.index != -1)
             {
-                Properties.Settings.Default.Link.RemoveAt(comboBoxNav.SelectedIndex);
-                Properties.Settings.Default.Xpathreceiver.RemoveAt(comboBoxNav.SelectedIndex);
-                Properties.Settings.Default.Name_Translator.RemoveAt(comboBoxNav.SelectedIndex);
+                Properties.Settings.Default.Link.RemoveAt(ComboBoxNav.SelectedIndex);
+                Properties.Settings.Default.Xpathreceiver.RemoveAt(ComboBoxNav.SelectedIndex);
+                Properties.Settings.Default.Name_Translator.RemoveAt(ComboBoxNav.SelectedIndex);
                 Properties.Settings.Default.Save();
-                textBoxLink.Text = string.Empty;
-                textBoxXpathreceiver.Text = string.Empty;
+                TextBoxLink.Text = string.Empty;
+                TextBoxXpathreceiver.Text = string.Empty;
                 InitializeComboBox();
             }
         }
-        private void buttonLinkSet_Click_1(object sender, EventArgs e)
+        private void BtnLinkSet_Click_1(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Link[comboBoxNav.SelectedIndex] = textBoxLink.Text;
+            Properties.Settings.Default.Link[ComboBoxNav.SelectedIndex] = TextBoxLink.Text;
             Properties.Settings.Default.Save();
         }
-        private void buttonXpathRSet_Click(object sender, EventArgs e)
+        private void BtnXpathRSet_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Xpathreceiver[comboBoxNav.SelectedIndex] = textBoxXpathreceiver.Text;
+            Properties.Settings.Default.Xpathreceiver[ComboBoxNav.SelectedIndex] = TextBoxXpathreceiver.Text;
             Properties.Settings.Default.Save();
         }
-        private void textBoxLink_TextChanged(object sender, EventArgs e)
+        private void TextBoxLink_TextChanged(object sender, EventArgs e)
         {
             Regex regex = new Regex(@"^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)");
-            Match match = regex.Match(textBoxLink.Text);
+            Match match = regex.Match(TextBoxLink.Text);
             if (match.Success)
             {
-                textBoxLink.BackColor = Color.White;
-                buttonLinkSet.Enabled = true;
+                TextBoxLink.BackColor = Color.White;
+                BtnLinkSet.Enabled = true;
             }
             else
             {
-                textBoxLink.BackColor = Color.Red;
-                buttonLinkSet.Enabled = false;
+                TextBoxLink.BackColor = Color.Red;
+                BtnLinkSet.Enabled = false;
             }
         }
-        private void textBoxXpathreceiver_TextChanged(object sender, EventArgs e)
+        private void TextBoxXpathreceiver_TextChanged(object sender, EventArgs e)
         {
-            if (ValidateXpath(textBoxXpathreceiver.Text))
+            if (ValidateXpath(TextBoxXpathreceiver.Text))
             {
-                textBoxXpathreceiver.BackColor = Color.White;
-                buttonXpathRSet.Enabled = true;
+                TextBoxXpathreceiver.BackColor = Color.White;
+                BtnXpathRSet.Enabled = true;
             }
             else
             {
-                textBoxXpathreceiver.BackColor = Color.Red;
-                buttonXpathRSet.Enabled = false;
+                TextBoxXpathreceiver.BackColor = Color.Red;
+                BtnXpathRSet.Enabled = false;
             }
         }
         public bool ValidateXpath(string xpath)
@@ -426,17 +449,17 @@ namespace phoenixtranslate
         }
         private void Translator_config_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (textBoxLink.BackColor == Color.Red || textBoxXpathreceiver.BackColor == Color.Red)
+            if (TextBoxLink.BackColor == Color.Red || TextBoxXpathreceiver.BackColor == Color.Red)
             {
                 e.Cancel = true;
-                MessageBox.Show("Fill config or restore default", "Important Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(Resources.Fillconfigorrestoredefault, "Important Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
                 Wb1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString());
             }
         }
-        private void buttonDefault_Click(object sender, EventArgs e)
+        private void BtnDefault_Click(object sender, EventArgs e)
         {
             //efface les Properties.Settings.Default
             Properties.Settings.Default.Xpathreceiver.Clear();
@@ -453,19 +476,18 @@ namespace phoenixtranslate
             Properties.Settings.Default.Save();
             InitializeComboBox();
         }
-        private void comboBoxNav_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxNav_SelectedIndexChanged(object sender, EventArgs e)
         {
             //actualise les box suivant l'index
-          
             if (Properties.Settings.Default.index != -1)
             {
-                textBoxLink.Text = Properties.Settings.Default.Link[comboBoxNav.SelectedIndex];
-                textBoxXpathreceiver.Text = Properties.Settings.Default.Xpathreceiver[comboBoxNav.SelectedIndex];
+                TextBoxLink.Text = Properties.Settings.Default.Link[ComboBoxNav.SelectedIndex];
+                TextBoxXpathreceiver.Text = Properties.Settings.Default.Xpathreceiver[ComboBoxNav.SelectedIndex];
             }
             else
             {
-                textBoxLink.Text = string.Empty;
-                textBoxXpathreceiver.Text = string.Empty;
+                TextBoxLink.Text = string.Empty;
+                TextBoxXpathreceiver.Text = string.Empty;
             }
         }
         private void InitializedataGridViewTagName()
@@ -473,54 +495,52 @@ namespace phoenixtranslate
             int i = 0;
             foreach (string item in Properties.Settings.Default.CharacterTag)
             {
-                dataGridViewTagName.Rows.Add(item, Properties.Settings.Default.CharacterName[i].ToString());
+                DataGridViewTagName.Rows.Add(item, Properties.Settings.Default.CharacterName[i].ToString());
                 i += 1;
             }
             foreach (string item in Properties.Settings.Default.ListTag)
             {
-                dataGridViewGridListTag.Rows.Add(item);
+                DataGridViewGridListTag.Rows.Add(item);
             }
         }
-        private void DataGridViewTagName_CellEndEdit(object sender, DataGridViewCellEventArgs e) { SaveProperyDatagridviewCharcter(); }
-        private void DataGridViewTagName_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e) { SaveProperyDatagridviewCharcter(); }
-        private void SaveProperyDatagridviewCharcter()
-        {
-            Properties.Settings.Default.CharacterName.Clear();
-            Properties.Settings.Default.CharacterTag.Clear();
-            foreach (DataGridViewRow row in dataGridViewTagName.Rows)
-            {
-                if (!row.IsNewRow)
-                {
-                    string CharacterTag;
-                    string CharacterName;
-                    if (row.Cells[0].Value == null)
-                    {
-                        CharacterTag = "";
-                    }
-                    else
-                    {
-                        CharacterTag = row.Cells[0].Value.ToString();
-                    }
-                    if (row.Cells[1].Value == null)
-                    {
-                        CharacterName = "";
-                    }
-                    else
-                    {
-                        CharacterName = row.Cells[1].Value.ToString();
-                    }
-                    Properties.Settings.Default.CharacterName.Add(CharacterName);
-                    Properties.Settings.Default.CharacterTag.Add(CharacterTag);
-                }
-            }
-            Properties.Settings.Default.Save();
-        }
+        //private void SaveProperyDatagridviewCharcter()
+        //{
+        //    Properties.Settings.Default.CharacterName.Clear();
+        //    Properties.Settings.Default.CharacterTag.Clear();
+        //    foreach (DataGridViewRow row in DataGridViewTagName.Rows)
+        //    {
+        //        if (!row.IsNewRow)
+        //        {
+        //            string CharacterTag;
+        //            string CharacterName;
+        //            if (row.Cells[0].Value == null)
+        //            {
+        //                CharacterTag = "";
+        //            }
+        //            else
+        //            {
+        //                CharacterTag = row.Cells[0].Value.ToString();
+        //            }
+        //            if (row.Cells[1].Value == null)
+        //            {
+        //                CharacterName = "";
+        //            }
+        //            else
+        //            {
+        //                CharacterName = row.Cells[1].Value.ToString();
+        //            }
+        //            Properties.Settings.Default.CharacterName.Add(CharacterName);
+        //            Properties.Settings.Default.CharacterTag.Add(CharacterTag);
+        //        }
+        //    }
+        //    Properties.Settings.Default.Save();
+        //}
         private void DataGridViewGridListTag_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e) { SaveProperyDatagridviewListTag(); }
         private void DataGridViewGridListTag_CellEndEdit(object sender, DataGridViewCellEventArgs e) { SaveProperyDatagridviewListTag(); }
         private void SaveProperyDatagridviewListTag()
         {
             Properties.Settings.Default.ListTag.Clear();
-            foreach (DataGridViewRow row in dataGridViewGridListTag.Rows)
+            foreach (DataGridViewRow row in DataGridViewGridListTag.Rows)
             {
                 if (!row.IsNewRow)
                 {
@@ -532,110 +552,127 @@ namespace phoenixtranslate
         }
         private void Cut_Click(object sender, EventArgs e)
         {
-            textBox1.Cut();
+            TextBoxTarget.Cut();
         }
         private void Copy_Click(object sender, EventArgs e)
         {
-            textBox1.Copy();
+            TextBoxTarget.Copy();
         }
         private void Past_Click(object sender, EventArgs e)
         {
-            textBox1.Paste();
+            TextBoxTarget.Paste();
         }
         private void Insert_Item_Click(object sender, EventArgs e)
         {
             ToolStripItem item2 = sender as ToolStripItem;
-            int start = textBox1.SelectionStart;
-            textBox1.Text = textBox1.Text.Insert(textBox1.SelectionStart, item2.Text);
-            textBox1.Select(start, 0);
-            int count = new Regex(Regex.Escape(item2.Text)).Matches(dataGridView1.CurrentRow.Cells[0].Value.ToString()).Count;
-            int count2 = new Regex(Regex.Escape(item2.Text)).Matches(textBox1.Text).Count;
+            int start = TextBoxTarget.SelectionStart;
+            TextBoxTarget.Text = TextBoxTarget.Text.Insert(TextBoxTarget.SelectionStart, item2.Text);
+            TextBoxTarget.Select(start, 0);
+            int count = new Regex(Regex.Escape(item2.Text)).Matches(DataGridView.CurrentRow.Cells[0].Value.ToString()).Count;
+            int count2 = new Regex(Regex.Escape(item2.Text)).Matches(TextBoxTarget.Text).Count;
             if (count == count2)
             {
-                contextMenuStripTag.Items.Remove(item2);
-                dataGridView1.CurrentRow.Cells[1].Style.BackColor = Color.Empty;
+                ContextMenuStripTag.Items.Remove(item2);
+                DataGridView.CurrentRow.Cells[1].Style.BackColor = Color.Empty;
             }
         }
         private void Translator_MaximumSizeChanged(object sender, EventArgs e)
         {
-            dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
         }
-        private void timerrefreshtextbox_Tick(object sender, EventArgs e)
+        private void Timerrefreshtextbox_Tick(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow != null)
+            if (DataGridView.CurrentRow != null)
             {
-                if (textBox1.Focused == false)
+                if (TextBoxTarget.Focused == false)
                 {
-                    textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                    textBox2.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                    TextBoxTarget.Text = DataGridView.CurrentRow.Cells[1].Value.ToString();
+                    TextBoxSource.Text = DataGridView.CurrentRow.Cells[0].Value.ToString();
+                    TextBoxResult.Text = DataGridView.CurrentRow.Cells[2].Value.ToString();
                     RefreshContextmenu();
                 }
             }
         }
         private void RefreshContextmenu()
         {
-            contextMenuStripTag.Items.Clear();
-            ToolStripItem cut = contextMenuStripTag.Items.Add("cut");
+            ContextMenuStripTag.Items.Clear();
+            ToolStripItem cut = ContextMenuStripTag.Items.Add("cut");
             cut.Click += Cut_Click;
-            ToolStripItem copy = contextMenuStripTag.Items.Add("copy");
+            ToolStripItem copy = ContextMenuStripTag.Items.Add("copy");
             copy.Click += Copy_Click;
-            ToolStripItem past = contextMenuStripTag.Items.Add("past");
+            ToolStripItem past = ContextMenuStripTag.Items.Add("past");
             past.Click += Past_Click;
             foreach (string item in Properties.Settings.Default.ListTag)
             {
-                if (dataGridView1.CurrentRow.Cells[0].Value.ToString().Contains(item))
+                if (DataGridView.CurrentRow.Cells[0].Value.ToString().Contains(item))
                 {
-                    int count = new Regex(Regex.Escape(item)).Matches(dataGridView1.CurrentRow.Cells[0].Value.ToString()).Count;
-                    int count2 = new Regex(Regex.Escape(item)).Matches(dataGridView1.CurrentRow.Cells[1].Value.ToString()).Count;
+                    int count = new Regex(Regex.Escape(item)).Matches(DataGridView.CurrentRow.Cells[0].Value.ToString()).Count;
+                    int count2 = new Regex(Regex.Escape(item)).Matches(DataGridView.CurrentRow.Cells[1].Value.ToString()).Count;
                     if (count != count2)
                     {
-                        dataGridView1.CurrentRow.Cells[1].Style.BackColor = Color.DarkBlue;
-                        ToolStripItem item2 = contextMenuStripTag.Items.Add(item);
+                        DataGridView.CurrentRow.Cells[1].Style.BackColor = Color.DarkBlue;
+                        ToolStripItem item2 = ContextMenuStripTag.Items.Add(item);
                         item2.Click += Insert_Item_Click;
                     }
                 }
             }
         }
-        private void textBox1_Enter(object sender, EventArgs e)
+        private void TextBoxTarget_Enter(object sender, EventArgs e)
         {
-            timerrefreshtextbox.Enabled = false;
+            Timerrefreshtextbox.Enabled = false;
         }
-        private void textBox1_Leave(object sender, EventArgs e)
+        private void TextBoxTarget_Leave(object sender, EventArgs e)
         {
-            timerrefreshtextbox.Enabled = true;
+            Timerrefreshtextbox.Enabled = true;
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void TextBoxTarget_TextChanged(object sender, EventArgs e)
         {
-            if (timerrefreshtextbox.Enabled == false)
+            if (TextBoxTarget.Text.Length > 200)
             {
-                dataGridView1.CurrentRow.Cells[1].Value = textBox1.Text;
-                RefreshContextmenu();
-                if (textBox1.Text.Length >= 1)
+                TextBoxTarget.ScrollBars = ScrollBars.Vertical;
+            }
+            else
+            {
+                TextBoxTarget.ScrollBars = ScrollBars.None;
+            }
+            if (DataGridView.Rows.Count != 0)
+            {
+                if (Timerrefreshtextbox.Enabled == false)
                 {
-                    RefreshCellResult();
+                    DataGridView.CurrentRow.Cells[1].Value = TextBoxTarget.Text;
+                    RefreshContextmenu();
+                    if (TextBoxTarget.Text.Length >= 1)
+                    {
+                        RefreshCellResult();
+                    }
                 }
             }
+            if (DataGridView.CurrentRow.DefaultCellStyle.BackColor == Color.Yellow)
+            {
+                Doublon(DataGridView.CurrentRow);
+            }
         }
-        private void contextMenuStripTag_Opened(object sender, EventArgs e)
+        private void ContextMenuStripTag_Opened(object sender, EventArgs e)
         {
-            timerrefreshtextbox.Enabled = false;
+            Timerrefreshtextbox.Enabled = false;
         }
         private void RefreshCellResult()
         {
-            string contents = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            string contents = DataGridView.CurrentRow.Cells[2].Value.ToString();
             Match match = MatchRenpy(contents);
             if (match.Success)
             {
-                dataGridView1.CurrentRow.Cells[2].Value = match.Groups["result"].Value + dataGridView1.CurrentRow.Cells[1].Value + match.Groups["result2"].Value;
+                DataGridView.CurrentRow.Cells[2].Value = match.Groups["result"].Value + DataGridView.CurrentRow.Cells[1].Value + match.Groups["result2"].Value;
             }
         }
-        private void ouvrirToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OuvrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = openFileDialog1.ShowDialog();
+            DialogResult result = OpenFileDialog1.ShowDialog();
             if (result == DialogResult.OK) // Test result.
             {
-                dataGridView1.Rows.Clear();
-                Path = openFileDialog1.FileName;
+
+                DataGridView.Rows.Clear();
+                Path = OpenFileDialog1.FileName;
                 string contents;
                 using (StreamReader reader = new StreamReader(Path))
                 {
@@ -643,20 +680,21 @@ namespace phoenixtranslate
                     Match match = MatchRenpy(contents);
                     while (match.Success)
                     {
-                        dataGridView1.Rows.Add(match.Groups["text"].Value, match.Groups["text2"].Value, match.Value);
+
+                        DataGridView.Rows.Add(match.Groups["text"].Value, match.Groups["text2"].Value, match.Value);
                         match = match.NextMatch();
                     }
                 }
                 StatutSave = false;
             }
         }
-        private void enregistrerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EnregistrerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Path != "")
             {
                 using (StreamWriter sw = new StreamWriter(Path))
                 {
-                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    foreach (DataGridViewRow row in DataGridView.Rows)
                     {
                         sw.Write(row.Cells[2].Value);
                     }
@@ -664,72 +702,73 @@ namespace phoenixtranslate
                 }
             }
         }
-        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OptionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (panelConfig_Translator.Visible == false)
+            if (PanelConfig_Translator.Visible == false)
             {
-                checkBoxAuto.Visible = false;
-                panelConfig_Translator.Visible = true;
-                buttonTranslate.Visible = false;
-                paneltraducteur.Visible = false;
-                timer1.Enabled = false;
+                Panelleft.Visible = false;
+                CheckBoxAuto.Visible = false;
+                PanelConfig_Translator.Visible = true;
+                BtnTranslate.Visible = false;
+                Paneltraducteur.Visible = false;
+                Timer1.Enabled = false;
             }
         }
-        private void buttonBack_Click(object sender, EventArgs e)
+        private void BtnBack_Click(object sender, EventArgs e)
         {
-            if (textBoxLink.BackColor == Color.Red || textBoxXpathreceiver.BackColor == Color.Red)
+            if (TextBoxLink.BackColor == Color.Red || TextBoxXpathreceiver.BackColor == Color.Red)
             {
-                MessageBox.Show("Fill config or restore default", "Important Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(Resources.Fillconfigorrestoredefault, "Important Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                  Properties.Settings.Default.index = comboBoxNav.SelectedIndex;
-            Properties.Settings.Default.Save();
-                checkBoxAuto.Visible = true;
+                Properties.Settings.Default.index = ComboBoxNav.SelectedIndex;
+                Properties.Settings.Default.Save();
+                Panelleft.Visible = true;
+                CheckBoxAuto.Visible = true;
                 Wb1.Navigate(Properties.Settings.Default.Link[Properties.Settings.Default.index].ToString());
-                panelConfig_Translator.Visible = false;
-                buttonTranslate.Visible = true;
-                paneltraducteur.Visible = true;
-                timer1.Enabled = true;
+                PanelConfig_Translator.Visible = false;
+                BtnTranslate.Visible = true;
+                Paneltraducteur.Visible = true;
+                Timer1.Enabled = true;
             }
         }
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (this.geckoWebBrowser1.Visible == true)
+            if (this.GeckoWebBrowser.Visible == true)
             {
-                this.geckoWebBrowser1.Visible = false;
-                this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-                dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-                toolStripMenuItem1.Text = "↓";
+                this.GeckoWebBrowser.Visible = false;
+                this.DataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+                DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+                ToolStripMenuItem1.Text = "↓";
             }
             else
             {
-                this.geckoWebBrowser1.Visible = true;
-                this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-                dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-                toolStripMenuItem1.Text = "↑";
+                this.GeckoWebBrowser.Visible = true;
+                this.DataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+                DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+                ToolStripMenuItem1.Text = "↑";
             }
         }
-
-        private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
+        private void QuitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             QuitProgramm();
         }
-        private void enregistrersousToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EnregistrersousToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("In developpement");
+            MessageBox.Show("In development");
         }
-        private void personnaliserToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PersonnaliserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("In developpement");
+            DejaDoublon();
         }
-        private void rechercherToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RechercherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("In developpement");
+            MessageBox.Show("In development");
         }
-        private void àproposdeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AproposdeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("In developpement");
+            MessageBox.Show("In development");
         }
         private void QuitProgramm()
         {
@@ -743,13 +782,13 @@ namespace phoenixtranslate
                                              MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    timer1.Enabled = false;
+                    Timer1.Enabled = false;
                     Environment.Exit(0);
                 }
             }
             else
             {
-                timer1.Enabled = false;
+                Timer1.Enabled = false;
                 Environment.Exit(0);
             }
         }
@@ -758,37 +797,292 @@ namespace phoenixtranslate
             Match match = Regex.Match(contents, "(?<result>(?<debut>(# TODO: Translation updated.+\\d+\\s*\\n)?(translate.+strings:\\s+)?(# game.+\\d+\\s*\\n)?(translate.+:\\s*\\n)?\\s*(#)?\\s*)(?<character>[^\\s]+)?\\s+\"(?<text>(?(?<=\\\\).|[^\"])+)\"([^\\n]+(?<fin>(?(?<=\\\\).|[^\"\\n])+))?\\s*\\n\\s*(?<character2>[^\\s]+)?\\s+\")(?<text2>(?(?<=\\\\).|[^\"])+)(?<result2>\"([^\\n]+(?<fin2>(?(?<=\\\\).|[^\"\\n])+))?(\\s*)?(\\n)?)", RegexOptions.Multiline);
             return match;
         }
-
-
-        private void checkBoxAuto_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxAuto_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxAuto.Checked == true)
+            CheckBoxAuto_Verif();
+        }
+        private void CheckBoxAuto_Verif()
+        {
+            if (CheckBoxAuto.Checked == true)
             {
-                checkBoxAuto.Text = "Auto activate";
+                CheckBoxAuto.Text = Resources.Auto_activate;
                 Etatauto = "activate";
+                if (DataGridView.Rows.Count != 0)
+                {
+                    Fill(DataGridView.CurrentRow.Cells[0].Value.ToString());
+                    Wait(2000);
+                }
             }
             else
             {
-                checkBoxAuto.Text = "Auto desactivate";
+                CheckBoxAuto.Text = Resources.Auto_desactivate;
                 Etatauto = "desactivate";
             }
         }
-
-        private void geckoWebBrowser1_Click(object sender, EventArgs e)
+        private void RadioButtonBasic_CheckedChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void radioButtonBasic_CheckedChanged(object sender, EventArgs e)
-        {
-            if(radioButtonBasic.Checked==true)
+            if (RadioButtonBasic.Checked == true)
             {
-                panelAdvenced.Visible = false;
+                PanelAdvenced.Visible = false;
             }
             else
             {
-                panelAdvenced.Visible = true;
+                PanelAdvenced.Visible = true;
             }
+        }
+        private void BtnNEXT_Click(object sender, EventArgs e)
+        {
+            if (DataGridView.Rows.Count != 0)
+            {
+                string searchValue = TextBoxsearch.Text;
+                int rowIndex = DataGridView.SelectedRows[0].Index + 1;
+                int Column = 1;
+                if(RadioButtonSearch1.Checked==true)
+                {
+                    Column = 0;
+                }
+                DataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                try
+                {
+                    for (int t = 0; t < 2; t++)
+                    {
+                        bool valueResulet = false;
+                        for (int i = rowIndex; i < DataGridView.Rows.Count; i++)
+                        {
+                            if (DataGridView.Rows[i].Cells[Column].Value.ToString().Contains(searchValue))
+                            {
+                                CheckBoxAuto.Checked = false;
+                                DataGridView.Rows[i].Selected = true;
+                                DataGridView.FirstDisplayedScrollingRowIndex = i;
+                                valueResulet = true;
+                                break;
+                            }
+                        }
+                        if (valueResulet == false)
+                        {
+                            if (rowIndex != 0)
+                            {
+                                DialogResult dialogResult = MessageBox.Show(searchValue + Resources.wasnotfound, "", MessageBoxButtons.YesNo);
+                                if (dialogResult == DialogResult.Yes)
+                                {
+                                    rowIndex = 0;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show(searchValue + Resources.wasnotfound2);
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            t = 2;
+                        }
+                    }
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message);
+                }
+            }
+        }
+        private void BtnDirectoryPath_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog1.SelectedPath = TxtDirectoryPath.Text;
+            DialogResult drResult = FolderBrowserDialog1.ShowDialog();
+            if (drResult == System.Windows.Forms.DialogResult.OK)
+                TxtDirectoryPath.Text = FolderBrowserDialog1.SelectedPath;
+            try
+            {
+                ProgressBar1.Value = 0;
+                // Clear All Nodes if Already Exists  
+                TreeView1.Nodes.Clear();
+                ToolTip1.ShowAlways = true;
+                if (TxtDirectoryPath.Text != "" && Directory.Exists(TxtDirectoryPath.Text))
+                    LoadDirectory(TxtDirectoryPath.Text);
+                else
+                    MessageBox.Show(Resources.SelectDirectory);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void BtnLoadDirectory_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ProgressBar1.Value = 0;
+                // Clear All Nodes if Already Exists  
+                TreeView1.Nodes.Clear();
+                ToolTip1.ShowAlways = true;
+                if (TxtDirectoryPath.Text != "" && Directory.Exists(TxtDirectoryPath.Text))
+                    LoadDirectory(TxtDirectoryPath.Text);
+                else
+                    MessageBox.Show(Resources.SelectDirectory);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void LoadDirectory(string Dir)
+        {
+            DirectoryInfo di = new DirectoryInfo(Dir);
+            //Setting ProgressBar Maximum Value  
+            ProgressBar1.Maximum = Directory.GetFiles(Dir, "*.*", SearchOption.AllDirectories).Length + Directory.GetDirectories(Dir, "**", SearchOption.AllDirectories).Length;
+            TreeNode tds = TreeView1.Nodes.Add(di.Name);
+            tds.Tag = di.FullName;
+            tds.StateImageIndex = 0;
+            LoadFiles(Dir, tds);
+            LoadSubDirectories(Dir, tds);
+        }
+        private void LoadSubDirectories(string dir, TreeNode td)
+        {
+            // Get all subdirectories  
+            string[] subdirectoryEntries = Directory.GetDirectories(dir);
+            // Loop through them to see if they have any other subdirectories  
+            foreach (string subdirectory in subdirectoryEntries)
+            {
+                DirectoryInfo di = new DirectoryInfo(subdirectory);
+                TreeNode tds = td.Nodes.Add(di.Name);
+                tds.StateImageIndex = 0;
+                tds.Tag = di.FullName;
+                LoadFiles(subdirectory, tds);
+                LoadSubDirectories(subdirectory, tds);
+                UpdateProgress();
+            }
+        }
+        private void LoadFiles(string dir, TreeNode td)
+        {
+            string[] Files = Directory.GetFiles(dir, "*.*");
+
+            // Loop through them to see files  
+            foreach (string file in Files)
+            {
+                FileInfo fi = new FileInfo(file);
+                TreeNode tds = td.Nodes.Add(fi.Name);
+                tds.Tag = fi.FullName;
+                tds.StateImageIndex = 1;
+                UpdateProgress();
+            }
+        }
+        private void UpdateProgress()
+        {
+            if (ProgressBar1.Value < ProgressBar1.Maximum)
+            {
+                ProgressBar1.Value++;
+                int percent = (int)(((double)ProgressBar1.Value / (double)ProgressBar1.Maximum) * 100);
+                ProgressBar1.CreateGraphics().DrawString(percent.ToString() + "%", new Font("Arial", (float)8.25, FontStyle.Regular), Brushes.Black, new PointF(ProgressBar1.Width / 2 - 10, ProgressBar1.Height / 2 - 7));
+
+                Application.DoEvents();
+            }
+        }
+
+        private void TreeView1_MouseMove(object sender, MouseEventArgs e)
+        {
+            // Get the node at the current mouse pointer location.  
+            TreeNode theNode = this.TreeView1.GetNodeAt(e.X, e.Y);
+
+            // Set a ToolTip only if the mouse pointer is actually paused on a node.  
+            if (theNode != null && theNode.Tag != null)
+            {
+                // Change the ToolTip only if the pointer moved to a new node.  
+                if (theNode.Tag.ToString() != this.ToolTip1.GetToolTip(this.TreeView1))
+                    this.ToolTip1.SetToolTip(this.TreeView1, theNode.Tag.ToString());
+
+            }
+            else     // Pointer is not over a node so clear the ToolTip.  
+            {
+                this.ToolTip1.SetToolTip(this.TreeView1, "");
+            }
+        }
+        private void Btnopenslide_Click(object sender, EventArgs e)
+        {
+            if (Panelleft.Width == 300)
+            {
+                TextBoxsearch.Visible = false;
+                BtnNEXT.Visible = false;
+                Panelleft.Width = 40;
+                Paneltraducteur.Width += 260;
+                Paneltraducteur.Location = new Point(40, 27);
+
+            }
+            else
+            {
+                TextBoxsearch.Visible = true;
+                BtnNEXT.Visible = true;
+                Panelleft.Width = 300;
+                Paneltraducteur.Width -= 260;
+                Paneltraducteur.Location = new Point(300, 27);
+            }
+        }
+        private void Doublon(DataGridViewRow rowtocompare)
+        {
+            string text = rowtocompare.Cells[1].Value.ToString();
+            int compteur = 0;
+            foreach (DataGridViewRow row in DataGridView.Rows)
+            {
+                if (rowtocompare.Cells[0].Value.ToString() == row.Cells[0].Value.ToString()) { compteur++; }
+            }
+            if (compteur >= 2)
+            {
+                foreach (DataGridViewRow row in DataGridView.Rows)
+                {
+                    if (rowtocompare.Cells[0].Value.ToString() == row.Cells[0].Value.ToString())
+                    {
+                        row.Cells[1].Value = text;
+                        DataGridView.Rows[row.Index].DefaultCellStyle.BackColor = Color.Yellow;
+                    }
+                }
+            }
+        }
+        private void Dejatraduit()
+        {
+            int compteur = 0;
+            foreach (DataGridViewRow row in DataGridView.Rows)
+            {
+                if (row.Cells[0].Value.ToString() != row.Cells[1].Value.ToString())
+                {
+                    compteur = row.Index;
+
+                }
+            }
+            DataGridView.Rows[compteur + 1].Selected = true;
+            DataGridView.FirstDisplayedScrollingRowIndex = compteur;
+            //foreach (DataGridViewRow row in DataGridView.Rows)
+            //{
+            //    if (compteur + 1 > row.Index)
+            //        row.DefaultCellStyle.BackColor = Color.DarkGreen;
+            //}
+        }
+        private void DejaDoublon()
+        {
+
+            foreach (DataGridViewRow row in DataGridView.Rows)
+            {
+
+                for (int i = 0; i < DataGridView.Rows.Count; i++)
+                { 
+                    if (row.Index != DataGridView.Rows[i].Index)
+                    {
+                        if (row.Cells[0].Value.ToString() == DataGridView.Rows[i].Cells[0].Value.ToString())
+                        {
+                            row.DefaultCellStyle.BackColor = Color.Yellow;
+                        }
+                    }
+                }
+            }
+            MessageBox.Show("fini");
+        }
+
+        private void BtnfindLast_Click(object sender, EventArgs e)
+        {
+            Dejatraduit();
         }
     }
 }
