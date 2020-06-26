@@ -89,6 +89,7 @@
             this.TabResult = new Manina.Windows.Forms.Tab();
             this.TextBoxResult = new System.Windows.Forms.TextBox();
             this.Panelleft = new System.Windows.Forms.Panel();
+            this.BtnfindLast = new System.Windows.Forms.Button();
             this.RadioButtonSearch1 = new System.Windows.Forms.RadioButton();
             this.RadioButtonSearch2 = new System.Windows.Forms.RadioButton();
             this.ProgressBar1 = new System.Windows.Forms.ProgressBar();
@@ -103,7 +104,6 @@
             this.FolderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Timerleft = new System.Windows.Forms.Timer(this.components);
-            this.BtnfindLast = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.Paneltraducteur.SuspendLayout();
             this.PanelConfig_Translator.SuspendLayout();
@@ -601,6 +601,13 @@
             this.Panelleft.Controls.Add(this.TextBoxsearch);
             this.Panelleft.Name = "Panelleft";
             // 
+            // BtnfindLast
+            // 
+            resources.ApplyResources(this.BtnfindLast, "BtnfindLast");
+            this.BtnfindLast.Name = "BtnfindLast";
+            this.BtnfindLast.UseVisualStyleBackColor = true;
+            this.BtnfindLast.Click += new System.EventHandler(this.BtnfindLast_Click);
+            // 
             // RadioButtonSearch1
             // 
             resources.ApplyResources(this.RadioButtonSearch1, "RadioButtonSearch1");
@@ -674,13 +681,6 @@
             this.Panelbottom.Controls.Add(this.CheckBoxAuto);
             resources.ApplyResources(this.Panelbottom, "Panelbottom");
             this.Panelbottom.Name = "Panelbottom";
-            // 
-            // BtnfindLast
-            // 
-            resources.ApplyResources(this.BtnfindLast, "BtnfindLast");
-            this.BtnfindLast.Name = "BtnfindLast";
-            this.BtnfindLast.UseVisualStyleBackColor = true;
-            this.BtnfindLast.Click += new System.EventHandler(this.BtnfindLast_Click);
             // 
             // Translator
             // 

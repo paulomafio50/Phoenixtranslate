@@ -72,7 +72,7 @@ namespace phoenixtranslate
             //if (CheckBoxAuto.Checked == false)
             //{
             //    CheckBoxAuto.Checked = true;
-            CheckBoxAuto_Verif();
+            //CheckBoxAuto_Verif();
             currentRow = DataGridView.SelectedRows[0].Index;
             //    Fill(DataGridView.Rows[currentRow].Cells[0].Value.ToString());
             //    BtnTranslate.Enabled = true;
@@ -503,38 +503,38 @@ namespace phoenixtranslate
                 DataGridViewGridListTag.Rows.Add(item);
             }
         }
-        //private void SaveProperyDatagridviewCharcter()
-        //{
-        //    Properties.Settings.Default.CharacterName.Clear();
-        //    Properties.Settings.Default.CharacterTag.Clear();
-        //    foreach (DataGridViewRow row in DataGridViewTagName.Rows)
-        //    {
-        //        if (!row.IsNewRow)
-        //        {
-        //            string CharacterTag;
-        //            string CharacterName;
-        //            if (row.Cells[0].Value == null)
-        //            {
-        //                CharacterTag = "";
-        //            }
-        //            else
-        //            {
-        //                CharacterTag = row.Cells[0].Value.ToString();
-        //            }
-        //            if (row.Cells[1].Value == null)
-        //            {
-        //                CharacterName = "";
-        //            }
-        //            else
-        //            {
-        //                CharacterName = row.Cells[1].Value.ToString();
-        //            }
-        //            Properties.Settings.Default.CharacterName.Add(CharacterName);
-        //            Properties.Settings.Default.CharacterTag.Add(CharacterTag);
-        //        }
-        //    }
-        //    Properties.Settings.Default.Save();
-        //}
+        private void SaveProperyDatagridviewCharcter()
+        {
+            Properties.Settings.Default.CharacterName.Clear();
+            Properties.Settings.Default.CharacterTag.Clear();
+            foreach (DataGridViewRow row in DataGridViewTagName.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    string CharacterTag;
+                    string CharacterName;
+                    if (row.Cells[0].Value == null)
+                    {
+                        CharacterTag = "";
+                    }
+                    else
+                    {
+                        CharacterTag = row.Cells[0].Value.ToString();
+                    }
+                    if (row.Cells[1].Value == null)
+                    {
+                        CharacterName = "";
+                    }
+                    else
+                    {
+                        CharacterName = row.Cells[1].Value.ToString();
+                    }
+                    Properties.Settings.Default.CharacterName.Add(CharacterName);
+                    Properties.Settings.Default.CharacterTag.Add(CharacterTag);
+                }
+            }
+            Properties.Settings.Default.Save();
+        }
         private void DataGridViewGridListTag_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e) { SaveProperyDatagridviewListTag(); }
         private void DataGridViewGridListTag_CellEndEdit(object sender, DataGridViewCellEventArgs e) { SaveProperyDatagridviewListTag(); }
         private void SaveProperyDatagridviewListTag()
@@ -731,6 +731,7 @@ namespace phoenixtranslate
                 BtnTranslate.Visible = true;
                 Paneltraducteur.Visible = true;
                 Timer1.Enabled = true;
+                SaveProperyDatagridviewCharcter();
             }
         }
         private void ToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1044,16 +1045,24 @@ namespace phoenixtranslate
         private void Dejatraduit()
         {
             int compteur = 0;
-            foreach (DataGridViewRow row in DataGridView.Rows)
-            {
-                if (row.Cells[0].Value.ToString() != row.Cells[1].Value.ToString())
-                {
-                    compteur = row.Index;
 
+ 
+                for (int i = DataGridView.CurrentCell.RowIndex; i < DataGridView.Rows.Count; i++)
+                {
+                    if (DataGridView.Rows[i].Cells[0].Value.ToString() == DataGridView.Rows[i].Cells[1].Value.ToString())
+                    {
+                        compteur = DataGridView.Rows[i].Index;
+                        break;
+                    }
                 }
+
+            
+            if (compteur+1!= DataGridView.RowCount)
+            {
+                DataGridView.Rows[compteur + 1].Selected = true;
+                DataGridView.FirstDisplayedScrollingRowIndex = compteur;
             }
-            DataGridView.Rows[compteur + 1].Selected = true;
-            DataGridView.FirstDisplayedScrollingRowIndex = compteur;
+        
             //foreach (DataGridViewRow row in DataGridView.Rows)
             //{
             //    if (compteur + 1 > row.Index)
